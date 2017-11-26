@@ -38,7 +38,8 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  main-theme: #5077aa,
 );
 
 
@@ -46,7 +47,8 @@ $colors: (
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
-
+// 自定义导航条的背景颜色
+$toolbar-background: color($colors, main-theme);
 
 
 // App Material Design Variables

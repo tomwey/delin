@@ -1,14 +1,51 @@
-<ion-header>
+<ion-header no-border>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+      <img src="assets/imgs/logo.png" class="logo">
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content class="content">
+  <!-- Banner -->
+  <div class="banners">
+    <ion-slides *ngIf="bannersData.length > 0" [loop]="bannersData.length > 1" [pager]="bannersData.length > 1" autoplay="3000">
+      <ion-slide *ngFor="let banner of bannersData">
+        <div class="banner-btn" (tap)="openBanner(banner)">
+          <img [src]="banner.image">
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <!-- 顶部主要功能 -->
+  <div class="main-sections">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6 *ngFor="let sec of mainSections;let i = index">
+          <div class="section-item" tappable [class.no-bottom-border]="i === 4 || i === 5" [class.no-right-border]="i % 2 === 1">
+            <div class="icon">
+              <img [src]="sec.icon">
+            </div>
+            <div class="info">
+              <h2>{{sec.name}}</h2>
+              <p>{{sec.intro}}</p>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div class="section" *ngFor="let sec of sections">
+    <h2><span class="tag" [style.background-color]="sec.color"></span>{{sec.name}}</h2>
+    <div class="items">
+      <ion-row>
+        <ion-col col-3 *ngFor="let item of sec.items">
+          <div class="s-item" tappable>
+            <img src="assets/imgs/{{item.icon}}">
+            <p>{{item.name}}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
 </ion-content>

@@ -14,3 +14,19 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.logo {
+    max-height: 30px;
+    margin-left: 5px;
+}
+
+.title {
+    padding: 0;
+    margin: 0;
+    margin-top: 20px;
+    margin-left: 10px;
+    // margin-bottom: 10px;
+    color: color($colors, main-theme);
+    font-size: 3rem;
+    font-weight: normal;
+    // font-family: 'PingFang SC';
+}
