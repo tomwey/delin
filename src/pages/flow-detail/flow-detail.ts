@@ -27,7 +27,9 @@ export class FlowDetailPage {
   }
 
   doAgree() {
-    this.modalCtrl.create('FlowCommitPage').present();
+    this.modalCtrl.create('FlowCommitPage', {
+      enableBackdropDismiss: false
+    }).present();
   }
 
   empInfos: any = [
