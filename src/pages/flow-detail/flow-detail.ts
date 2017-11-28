@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ModalController } from 'ionic-angular/components/modal/modal-controller';
 
 /**
  * Generated class for the FlowDetailPage page.
@@ -16,11 +17,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class FlowDetailPage {
 
   
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+    private modalCtrl: ModalController, 
+    public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FlowDetailPage');
+  }
+
+  doAgree() {
+    this.modalCtrl.create('FlowCommitPage').present();
   }
 
   empInfos: any = [
