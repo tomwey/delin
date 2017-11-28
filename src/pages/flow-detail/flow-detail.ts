@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ModalController } from 'ionic-angular/components/modal/modal-controller';
+import { App } from 'ionic-angular/components/app/app';
 
 /**
  * Generated class for the FlowDetailPage page.
@@ -16,20 +17,28 @@ import { ModalController } from 'ionic-angular/components/modal/modal-controller
 })
 export class FlowDetailPage {
 
-  
+  showCharts: boolean = false;
+
   constructor(public navCtrl: NavController,
     private modalCtrl: ModalController, 
+    private app: App,
     public navParams: NavParams) {
+      if (this.navParams.data)
+        this.showCharts = this.navParams.data.showCharts;
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FlowDetailPage');
+    // console.log('ionViewDidLoad FlowDetailPage');
   }
 
   doAgree() {
     this.modalCtrl.create('FlowCommitPage', {
       enableBackdropDismiss: false
     }).present();
+  }
+
+  openFlowChart() {
+    this.app.getRootNavs()[0].push('FlowDetailPage', { showCharts: true });
   }
 
   empInfos: any = [
