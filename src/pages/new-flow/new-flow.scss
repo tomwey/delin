@@ -1,0 +1,77 @@
+page-new-flow {
+    
+    .help-tip {
+        color: #999;
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .catalogs-container {
+        height: 100%;
+        ion-row {
+            margin: 0;
+            padding: 0;
+            ion-col {
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        .list-ios > .item-block:first-child {
+            border-top: 0 !important;
+        }
+    }
+    
+    .catalogs {
+        // min-height: 100%;
+        background: rgb(244,244,244);
+        // margin: 0;
+        // position: fixed;
+        // // width: 100%;
+        // height: 100%;
+        // left: 0;
+        // top: 0;
+        // // background: rgba(51,51,51,0.7);
+        // z-index: 10;
+        .catalog {
+            margin: 0;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .active {
+            background: rgb(220,219,219);
+            color: rgb(51,51,51);
+            position: relative;
+        }
+
+        .active:after {
+            content: '';
+            width: 30px;
+            height: 30px;
+            background-image: url('../../assets/imgs/icon_triangle.png');
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-size: contain;
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            right: -15px;
+        }
+
+    }
+
+    .subcatalogs {
+        ion-list {
+            margin-top: 1px;
+        }
+        h2 {
+            color: rgb(51,51,51);
+        }
+    }
+}
