@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ModalController } from 'ionic-angular/components/modal/modal-controller';
 import { App } from 'ionic-angular/components/app/app';
+
+// declare var flowchart;
 
 /**
  * Generated class for the FlowDetailPage page.
@@ -18,7 +20,7 @@ import { App } from 'ionic-angular/components/app/app';
 export class FlowDetailPage {
 
   showCharts: boolean = false;
-
+  @ViewChild('flowChart') flowChart;
   constructor(public navCtrl: NavController,
     private modalCtrl: ModalController, 
     private app: App,
@@ -29,6 +31,21 @@ export class FlowDetailPage {
 
   ionViewDidLoad() {
     // console.log('ionViewDidLoad FlowDetailPage');
+    if (this.showCharts) {
+      // var diagram = flowchart.parse('st=>start: Start:>http://www.google.com[blank]\n' +
+      //                               'e=>end:>http://www.google.com\n' +
+      //                               'op1=>operation: My Operation\n' +
+      //                               'sub1=>subroutine: My Subroutine\n' +
+      //                               'cond=>condition: Yes \n' + 
+      //                               'or No?\n:>http://www.google.com' +
+      //                               'io=>inputoutput|request: catch something...\n' +
+      //                               '' +
+      //                               'st->op1->cond\n' +
+      //                               'cond(yes)->io->e\n' + 
+      //                               'cond(no)->sub1(right)->op1');
+    
+      // diagram.drawSVG('flowChart');
+    }
   }
 
   doAgree() {
