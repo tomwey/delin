@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { App } from 'ionic-angular/components/app/app';
 
 @Component({
   selector: 'page-home',
@@ -7,11 +8,15 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private app: App) {
   }
 
   openBanner() {
 
+  }
+
+  openModule(sec) {
+    this.app.getRootNavs()[0].push(sec.page);
   }
 
   bannersData: any = [{

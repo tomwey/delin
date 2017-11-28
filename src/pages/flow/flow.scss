@@ -1,0 +1,23 @@
+page-flow {
+    .segment-box {
+        background-color: white;
+        padding: 5px 15px;
+    }
+    .user-time {
+        clear: both;
+        // height: 50px;
+        // line-height: 50px;
+    }
+    .user-avatar {
+        float: left;
+        width: 30px;
+        height: 30px;
+        display: block;
+        border-radius: 50%;
+    }
+
+    .other-info {
+        float: left;
+        margin-top: 6px;
+    }
+}
