@@ -107,4 +107,17 @@ page-flow-detail {
             }
         }
     }
+
+    .flow-buttons {
+        ion-col {
+            text-align: center;
+        }
+        button {
+            font-size: 22px;
+            color: #333;
+        }
+        img {
+            max-width: 30px;
+        }
+    }
 }
