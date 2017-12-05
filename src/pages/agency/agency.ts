@@ -55,7 +55,7 @@ export class AgencyPage {
     // this.app.getRootNavs()[0].push('NewFlowPage');
     let modal = this.modalCtrl.create('CatalogPage');
     modal.onDidDismiss((data) => {
-      
+      this.app.getRootNavs()[0].push('NewAgencyPage', data);
     });
     modal.present();
   }
