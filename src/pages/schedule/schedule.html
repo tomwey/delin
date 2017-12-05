@@ -17,7 +17,32 @@
 
 </ion-header>
 
-
 <ion-content class="content">
+  <ion-calendar [(ngModel)]="currentDate"
+    [options]="dateOptions"
+    [format]="'YYYY-MM-DD'">
+  </ion-calendar>
 
+  <div class="events">
+    <h2 class="heading">日程安排<span class="edit-btn" tappable (tap)="doEdit();">编辑</span></h2>
+    <ion-list>
+      <ion-item-sliding *ngFor="let event of events">
+        <ion-item >
+          <h2><ion-icon name="ios-time-outline"></ion-icon>&nbsp;{{event.time}}</h2>
+          <h2 text-wrap>{{event.title}}</h2>
+          <p text-wrap>{{event.body}}</p>
+        </ion-item>
+        <ion-item-options side="right">
+            <button ion-button color="primary">
+              <ion-icon name="ios-create-outline"></ion-icon>
+              编辑
+            </button>
+            <button ion-button color="danger">
+              <ion-icon name="ios-trash-outline"></ion-icon>
+              删除
+            </button>
+          </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
 </ion-content>

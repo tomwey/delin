@@ -2,4 +2,27 @@ page-schedule {
     .content {
         background-color: rgb(244,244,244);
     }
+
+    .events {
+        background: white;
+        margin-top: 10px;
+        .heading {
+            margin: 0;
+            padding: 10px;
+            border-bottom: 0.55px solid #ccc; 
+            font-size: 16px;
+            color: rgb(120,120,120);
+
+            clear: both;
+            .edit-btn {
+                float: right;
+                display: block;
+                // background: red;
+                padding: 5px 10px;
+                margin-top: -5px;
+                margin-right: -5px;
+                cursor: pointer;
+            }
+        }
+    }
 }
