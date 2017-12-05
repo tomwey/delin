@@ -1,0 +1,56 @@
+page-setting {
+    .content {
+        background: rgb(244, 244, 244);
+    }
+
+    .caption {
+        padding: 20px;
+        background-color: color($colors, main-theme);
+        color: white;
+        text-align: center;
+        margin-bottom: 10px;
+        .name, .job {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .avatar {
+            max-width: 64px;
+        }
+
+        .name {
+            font-size: 18px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .name:after {
+            content: '';
+            background-image: url(data:image/png;base64,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);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            display: block;
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            top: 0px;
+            left: 170px;
+            // right: 0;
+        }
+    }
+
+    .item-name {
+        font-size: 18px;
+        color: rgb(51,51,51);
+        position: relative;
+        padding-left: 33px;
+        img {
+            max-width: 30px;
+            position: absolute;
+            top: -5px;
+            left: 0;
+        }
+    }
+}

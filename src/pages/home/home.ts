@@ -16,7 +16,7 @@ export class HomePage {
   }
 
   gotoSetting() {
-    
+    this.app.getRootNavs()[0].push('SettingPage');
   }
 
   openModule(sec) {
