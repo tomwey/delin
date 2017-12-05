@@ -1,0 +1,87 @@
+page-contacts {
+    .content {
+        background-color: rgb(242,242,242);
+    }
+    .sub-navbar {
+        background-color: white;
+        .search {
+            background: white;
+        }
+
+        .breadcrumb-container {
+            padding: 0 10px;
+        }
+
+        
+
+        .breadcrumb::-webkit-scrollbar {
+            border:none;
+            width:0;
+            background: rgba(0,0,0,0);
+          }
+           
+          .breadcrumb::-webkit-scrollbar-track {
+            border:none;
+            width:0;
+            background: rgba(0,0,0,0);
+          }
+           
+          .breadcrumb::-webkit-scrollbar-thumb {
+            border:none;
+            width:0;
+            background: rgba(0,0,0,0);
+          }
+
+        .breadcrumb {
+            width: 100%; 
+            height: 50px; 
+            line-height: 50px;
+            white-space: nowrap;
+            font-size: 18px;
+            color: color($colors, main-theme);
+            .scroll-content {
+                overflow-x: false !important;
+            }
+            
+            ion-icon {
+                color: #999;
+                font-size: 22px;
+            }
+
+            .breadcrumb-item {
+                // display: inline-block;
+                padding-right: 6px;
+            }
+
+            .active {
+                color: #999;
+            }
+            // padding: 0 10px;
+        }
+        // .breadcrumb {
+        //     padding: 10px 15px;
+        //     list-style: none;
+        //     // background: #C72314;
+        //     height: 40px;
+        //     font-weight: normal;
+        //     color: color($colors, main-theme);
+        //     overflow: hidden;
+        //     li {
+        //       display: inline-block;
+        //       color: color($colors, main-theme);
+        //     }
+        //     a {
+        //       color:color($colors, main-theme);
+        //       text-decoration: none;
+        //     }
+        //     .active {
+        //         color: #999;
+        //     }
+        //     .right-arrow {
+        //       padding: 0 10px;
+        //       font-size: 13px;
+        //       color: #ddd;
+        //     }
+        //   }
+    }
+}

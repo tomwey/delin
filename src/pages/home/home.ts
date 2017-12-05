@@ -23,6 +23,10 @@ export class HomePage {
     this.app.getRootNavs()[0].push(sec.page);
   }
 
+  forwardTo(item) {
+    this.app.getRootNavs()[0].push(item.page);
+  }
+
   bannersData: any = [{
     image: 'assets/imgs/p1.jpeg',
   },{
@@ -128,7 +132,7 @@ export class HomePage {
           {
             icon: 'icon_comp_contact.png',
             name: '公司通讯录',
-            page: 'CustomerPage',
+            page: 'ContactsPage',
           },
           {
             icon: 'icon_my_mp.png',

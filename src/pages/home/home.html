@@ -48,7 +48,7 @@
     <div class="items">
       <ion-row>
         <ion-col col-3 *ngFor="let item of sec.items">
-          <div class="s-item" tappable>
+          <div class="s-item" tappable (tap)="forwardTo(item)">
             <img src="assets/imgs/{{item.icon}}">
             <p>{{item.name}}</p>
           </div>
