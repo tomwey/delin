@@ -12,7 +12,7 @@ export class HomePage {
   }
 
   openBanner() {
-
+    this.app.getRootNavs()[0].push('ArticlePage');
   }
 
   openModule(sec) {
