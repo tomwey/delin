@@ -22,4 +22,12 @@ export class FlowFormPage {
     console.log('ionViewDidLoad FlowFormPage');
   }
 
+  formControls: any = [
+    {
+      label: '申请人',
+      type: 'custom',
+      
+    }
+  ];
+
 }
