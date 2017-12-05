@@ -15,6 +15,10 @@ export class HomePage {
     this.app.getRootNavs()[0].push('ArticlePage');
   }
 
+  gotoSetting() {
+    
+  }
+
   openModule(sec) {
     this.app.getRootNavs()[0].push(sec.page);
   }
