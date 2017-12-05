@@ -6,6 +6,23 @@ page-flow {
     .user-time {
         clear: both;
     }
+
+    .item-custom h2 {
+        position: relative;
+        padding-left: 10px;
+    }
+
+    .item-custom h2:before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: rgb(199, 70, 51);
+        top: 7px;
+        left: 0;
+    }
     
     .user-avatar {
         float: left;
