@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { App } from 'ionic-angular/components/app/app';
+import { ModalController } from 'ionic-angular/components/modal/modal-controller';
 
 /**
  * Generated class for the AgencyPage page.
@@ -18,7 +20,11 @@ export class AgencyPage {
   itemHeight: number = 0;
   selectedIndex: number = 0;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              private app: App,
+              private modalCtrl: ModalController,
+            ) {
   }
 
   ionViewDidLoad() {
@@ -43,6 +49,15 @@ export class AgencyPage {
 
     });
     
+  }
+
+  newEvent() {
+    // this.app.getRootNavs()[0].push('NewFlowPage');
+    let modal = this.modalCtrl.create('CatalogPage');
+    modal.onDidDismiss((data) => {
+      
+    });
+    modal.present();
   }
 
   dataList: any = [

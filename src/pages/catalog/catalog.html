@@ -1,0 +1,55 @@
+<!--
+  Generated template for the CatalogPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+    
+      <ion-navbar>
+        <ion-buttons start>
+            <button ion-button icon-only (click)="close();">
+              <ion-icon name="ios-close-outline"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>新建委托</ion-title>
+        <ion-buttons end>
+          <button ion-button (click)="done();">
+            完成
+          </button>
+        </ion-buttons>
+      </ion-navbar>
+    
+    </ion-header>
+    
+    <ion-content class="content">
+      <h2 class="help-tip">
+        请选择新建委托类型
+      </h2>
+      <div class="catalogs-container">
+        <ion-row>
+          <ion-col col-3>
+            <div class="catalogs">
+              <p tappable class="catalog" 
+                [class.active]="currentCatalog === cata.name" 
+                *ngFor="let cata of catalogs" (tap)="selectCatalog(cata)">
+                {{cata.name}}
+              </p>
+            </div>
+          </ion-col>
+          <ion-col col-9>
+            <div class="subcatalogs">
+              <ion-list>
+                <ion-item *ngFor="let catalog of subcatalogs" (tap)="selectSubcatalog(catalog);" detail-none>
+                  <h2>{{catalog.name}}</h2>
+                  <p>{{catalog.intro}}</p>
+                  <ion-note *ngIf="!catalog.can_select || catalog.selected" item-right>
+                    <img src="{{catalog.selected ? 'assets/imgs/icon_selected.png' : 'assets/imgs/icon_disabled_select.png'}}" class="select-icon">
+                  </ion-note>
+                </ion-item>
+              </ion-list>
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-content>

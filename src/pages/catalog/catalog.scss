@@ -1,0 +1,82 @@
+page-catalog {
+    .help-tip {
+        color: #999;
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .catalogs-container {
+        height: 100%;
+        ion-row {
+            margin: 0;
+            padding: 0;
+            ion-col {
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        .list-ios > .item-block:first-child {
+            border-top: 0 !important;
+        }
+    }
+    
+    .catalogs {
+        // min-height: 100%;
+        background: rgb(244,244,244);
+        // margin: 0;
+        // position: fixed;
+        // // width: 100%;
+        // height: 100%;
+        // left: 0;
+        // top: 0;
+        // // background: rgba(51,51,51,0.7);
+        // z-index: 10;
+        .catalog {
+            margin: 0;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .active {
+            background: rgb(220,219,219);
+            color: rgb(51,51,51);
+            position: relative;
+        }
+
+        .active:after {
+            content: '';
+            width: 30px;
+            height: 30px;
+            background-image: url(data:image/png;base64,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);
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-size: contain;
+            // -webkit-background-size: contain;
+            // -moz-background-size: contain;
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            right: -15px;
+        }
+
+    }
+
+    .subcatalogs {
+        ion-list {
+            margin-top: 1px;
+        }
+        h2 {
+            color: rgb(51,51,51);
+        }
+    }
+
+    .select-icon {
+        max-width: 25px;
+    }
+}
