@@ -25,7 +25,7 @@ import { HomePage } from '../pages/home/home';
   entryComponents: [
     MyApp,
     HomePage,
-    LoginPage
+    LoginPage,
   ],
   providers: [
     StatusBar,
