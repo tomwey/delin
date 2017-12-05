@@ -60,7 +60,7 @@ export class HomePage {
       icon: 'assets/imgs/icon_schedule.png',
       name: '日程中心',
       intro: '重要日程如影随形',
-      page: ''//'SchedulePage',
+      page: 'SchedulePage',
       },
     {
       icon: 'assets/imgs/icon_agency.png',

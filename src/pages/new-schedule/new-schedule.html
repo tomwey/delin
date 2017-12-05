@@ -1,0 +1,37 @@
+<!--
+  Generated template for the NewSchedulePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar>
+    <ion-title>新增日程</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>日程主题</ion-label>
+      <ion-input type="text" placeholder="输入日程主题（必填）"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>时间</ion-label>
+      <ion-datetime displayFormat="YYYY年MM月DD日 HH:mm:ss" placeholder="请选择时间"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>日程备注</ion-label>
+      <ion-textarea placeholder="请输入详细日程备注（120字以内）" rows="6"></ion-textarea>
+    </ion-item>
+
+    <div padding>
+    <button ion-button block color="main-theme">
+        确定
+      </button>
+    </div>
+  </ion-list>
+</ion-content>
