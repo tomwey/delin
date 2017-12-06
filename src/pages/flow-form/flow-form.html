@@ -13,6 +13,49 @@
 </ion-header>
 
 <ion-content class="content">
+  <ion-list>
+    <ion-item>
+      <ion-label>请假人</ion-label>
+      <ion-select placeholder='请选择请假人'></ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-label>请假类型</ion-label>
+      <ion-select placeholder='请选择类型'>
+        <ion-option>事假</ion-option>
+        <ion-option>病假</ion-option>
+        <ion-option>年假</ion-option>
+        <ion-option>产假</ion-option>
+        <ion-option>婚假</ion-option>
+        <ion-option>陪产假</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-label>开始时间</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD hh:mm:ss" placeholder='设置开始时间'></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>结束时间</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD hh:mm:ss" placeholder='设置结束时间'></ion-datetime>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>请假天数</ion-label>
+      <ion-input type="number" placeholder="请输入请假天数（必填）" pattern="[0-9]*"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>请假事由</ion-label>
+      <ion-textarea placeholder="请输入请假事由（必填）" rows="6"></ion-textarea>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
 
