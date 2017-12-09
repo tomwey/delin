@@ -28,14 +28,14 @@ page-home {
             margin: 0;
             padding-bottom: 10px;
             border-bottom: 1px solid #ddd;
-            font-size: 18px;
+            font-size: 12px;
             color: #333;
-            font-weight: normal;
+            // font-weight: normal;
         }
         .tag {
             display: inline-block;
-            width: 4px;
-            height: 13px;
+            width: 3px;
+            height: 8px;
             margin-right: 5px;
         }
 
@@ -53,6 +53,7 @@ page-home {
                     padding: 0;
                     margin-top: 5px;
                     color: #333;
+                    font-size: 12px;
                 }
             }
         }
@@ -65,6 +66,11 @@ page-home {
             margin: 0;
             padding: 10px;
             border-bottom: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .info p {
+            font-size: 12px;
         }
 
         ion-grid {
@@ -84,13 +90,16 @@ page-home {
         
         .section-item {
             // background-color: red;
-            clear: both;
-            border-right: 1px solid #ddd;
-            border-bottom: 1px solid #ddd;
+            // clear: both;
+            border-right: 1px solid #e6e6e6;
+            border-bottom: 1px solid #e6e6e6;
             width: 100%;
-            height: 90px;
+            // height: 90px;
             // line-height: 80px;
             // padding: 10px
+            overflow: hidden;
+
+            padding: 10px 0;
         }
 
         .no-bottom-border {
@@ -107,7 +116,7 @@ page-home {
             width: 46px;
             height: 46px;
             margin-left: 10px;
-            margin-top: 22px;
+            // margin-top: 22px;
             // line-height: 45px;
             background-color: rgb(244,244,244);
             border-radius: 50%;
@@ -121,7 +130,7 @@ page-home {
             }
         }
         .info {
-            margin-top: 20px;
+            // margin-top: 22px;
             float: left;
             margin-left: 8px;
             width: calc(100% - 70px);
@@ -129,7 +138,8 @@ page-home {
             h2 {
                 margin: 0;
                 padding: 0;
-                font-size: 18px;
+                font-size: 16px;
+                margin-top: 5px;
                 font-weight: normal;
                 color: #333;
                 margin-bottom: 3px;
@@ -138,6 +148,10 @@ page-home {
                 margin: 0;
                 padding: 0;
                 color: #999;
+                font-size: 12px;
+                height: 36px;
+                line-height: 18px;
+                overflow: hidden;
             }
         }
     }

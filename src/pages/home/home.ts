@@ -15,10 +15,6 @@ export class HomePage {
     this.app.getRootNavs()[0].push('ArticlePage');
   }
 
-  gotoSetting() {
-    this.app.getRootNavs()[0].push('SettingPage');
-  }
-
   openModule(sec) {
     if (sec.page) {
       this.app.getRootNavs()[0].push(sec.page);
@@ -32,9 +28,9 @@ export class HomePage {
   }
 
   bannersData: any = [{
-    image: 'assets/imgs/p1.jpeg',
+    image: 'assets/imgs/banner1.png',
   },{
-    image: 'assets/imgs/p2.jpeg'
+    image: 'assets/imgs/banner2.png'
   }];
   
   mainSections: any = [
@@ -141,7 +137,7 @@ export class HomePage {
           {
             icon: 'icon_my_mp.png',
             name: '我的名片',
-            page: ''//'CustomerPage',
+            page: 'SettingPage',//'CustomerPage',
           },
           {
             icon: 'icon_qjd.png',
