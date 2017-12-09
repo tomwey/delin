@@ -99,7 +99,7 @@ page-home {
             // padding: 10px
             overflow: hidden;
 
-            padding: 10px 0;
+            padding: 18px 0;
         }
 
         .no-bottom-border {
@@ -149,9 +149,11 @@ page-home {
                 padding: 0;
                 color: #999;
                 font-size: 12px;
-                height: 36px;
+                // height: 36px;
                 line-height: 18px;
                 overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
             }
         }
     }
