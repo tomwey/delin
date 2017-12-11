@@ -1,3 +1,62 @@
 page-my-audit-detail {
+    .total-stat {
+        background-color: rgb(135,147,166);
+        color: white;
+        ion-row {
+            padding: 15px 0;
+            margin: 0;
+            font-size: 12px;
+            .money {
+                font-size: 22px;
+                font-weight: 'PingFang SC';
+            }
+            ion-col {
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                border-right: .8px solid white;
+            }
+            .no-right-border {
+                border: 0;
+            }
+        }
+    }
 
+    .content-box {
+        padding: 15px;
+
+        table {
+            font-size: 14px;
+            color: #333;
+            width: 100%;
+        }
+
+        td {
+            vertical-align: top;
+        }
+
+        .name {
+            font-size: 14px;
+            color: #999;
+            width: 40%;
+        }
+
+        td {
+            padding: 2px 0;
+        }
+
+        .value {
+            width: 60px;
+            font-size: 16px;
+            color: rgb(18,18,18);
+        }
+
+        .other-info {
+            padding-top: 10px;
+            border-top: 1px solid #ccc;
+        }
+        .base-info {
+            padding-bottom: 10px;
+        }
+    }
 }
