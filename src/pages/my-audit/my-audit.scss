@@ -1,0 +1,72 @@
+page-my-audit {
+    .box-container {
+        padding: 10px;
+    }
+    .box {
+        // background: red;
+        border: 0.6px solid #e6e6e6;
+        border-radius: 6px;
+        padding-top: 10px;
+        margin-bottom: 15px;
+
+        font-size: 14px;
+
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        color: rgb(168,168,168);
+    }
+
+    .pull-left {
+        float: left;
+    }
+
+    .pull-right {
+        float: right;
+        padding-right: 20px;
+        font-size: 14px;
+
+        .name {
+            text-align: right;
+        }
+        .value {
+            padding-left: 5px;
+        }
+    }
+
+    .label {
+        font-size: 10px;
+    }
+    .money {
+        font-size: 26px;
+        color: rgb(237,112,45);
+        font-family: 'PingFang SC';
+        // padding-left: 5px;
+    }
+
+    .info-1 {
+        padding: 0 10px;
+    }
+
+    .info-2 {
+        // clear: both;
+        padding: 0 10px;
+        overflow: hidden;
+        margin-top: 15px;
+    }
+
+    .info-3 {
+        margin-top: 15px;
+        border-top: 0.6px dashed #e6e6e6;
+        padding: 10px;
+        padding-bottom: 5px;
+        font-size: 10px;
+        background: rgb(244,244,244);
+        p {
+            margin-bottom: 5px;
+            padding: 0;
+        }
+    }
+}

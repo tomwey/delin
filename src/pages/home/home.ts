@@ -68,7 +68,7 @@ export class HomePage {
       icon: 'assets/imgs/icon_my_sale.png',
       name: '我的业绩',
       intro: '有动力才有业绩',
-      page: ''//'SalePage',
+      page: 'MyAuditPage'//'SalePage',
       },
     ];
 
@@ -105,7 +105,7 @@ export class HomePage {
           {
             icon: 'icon_ydkq.png',
             name: '移动考勤',
-            page: ''//'CustomerPage',
+            page: 'AttendancePage'//'CustomerPage',
           },
         ]
       },
