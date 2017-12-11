@@ -117,7 +117,7 @@ export class HomePage {
           {
             icon: 'icon_gzrz.png',
             name: '工作日志',
-            page: ''//'CustomerPage',
+            page: 'WorkLogPage'//'CustomerPage',
           },
           {
             icon: 'icon_qc.png',
