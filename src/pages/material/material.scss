@@ -1,0 +1,28 @@
+page-material {
+    h2 {
+        color: #666;
+    }
+
+    .info-1 {
+        margin-top: 10px;
+        .name {
+            font-size: 12px;
+            color: #999;
+        }
+        .value {
+            font-size: 22px;
+            color: #333;
+            &.first-value {
+                color: rgb(57,108,199);
+            }
+        }
+    }
+
+    .info-2 {
+        p {
+            font-size: 12px;
+            color: #999;
+        }
+        
+    }
+}

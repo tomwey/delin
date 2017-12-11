@@ -50,7 +50,7 @@ export class HomePage {
       icon: 'assets/imgs/icon_czone.png',
       name: '云助动态',
       intro: '动态信息一览无遗',
-      page: ''//'CloudZonePage',
+      page: 'CloudZonePage'//'CloudZonePage',
     },
     {
       icon: 'assets/imgs/icon_schedule.png',
@@ -176,12 +176,12 @@ export class HomePage {
           {
             icon: 'icon_product.png',
             name: '产品',
-            page: ''//'CustomerPage',
+            page: 'ProductListPage'//'CustomerPage',
           },
           {
             icon: 'icon_wl.png',
             name: '物料',
-            page: ''//'CustomerPage',
+            page: 'MaterialPage',//'CustomerPage',
           },
           {
             icon: 'icon_jld.png',
