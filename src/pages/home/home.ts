@@ -95,12 +95,12 @@ export class HomePage {
           {
             icon: 'icon_dd.png',
             name: '定单',
-            page: ''//'CustomerPage',
+            page: 'OrderPage',//'CustomerPage',
           },
           {
             icon: 'icon_jxq.png',
             name: '矫形器',
-            page: ''//'CustomerPage',
+            page: 'OrthoticsPage'//'CustomerPage',
           },
           {
             icon: 'icon_ydkq.png',
