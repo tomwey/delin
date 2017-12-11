@@ -16,7 +16,7 @@
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="let item of dataList" detail-none (click)="gotoDetail(item);">
+    <button class="product" ion-item *ngFor="let item of dataList" detail-none (click)="gotoDetail(item);">
       
       <h2 text-wrap>{{item.name}}</h2>
       <p>编号:{{item.ID}}</p>
