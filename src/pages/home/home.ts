@@ -80,7 +80,7 @@ export class HomePage {
           {
             icon: 'icon_my_customer.png',
             name: '我的客户',
-            page: ''//'CustomerPage',
+            page: 'MyCustomerPage'//'CustomerPage',
           },
           {
             icon: 'icon_customer_share.png',
