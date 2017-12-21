@@ -127,7 +127,7 @@ export class HomePage {
           {
             icon: 'icon_personal_contact.png',
             name: '个人通讯录',
-            page: ''//'CustomerPage',
+            page: 'MyContactsPage'//'CustomerPage',
           },
           {
             icon: 'icon_comp_contact.png',
