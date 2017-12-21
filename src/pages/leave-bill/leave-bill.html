@@ -1,0 +1,43 @@
+<!--
+  Generated template for the LeaveBillPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar>
+    <ion-title>请假单</ion-title>
+  </ion-navbar>
+  <ion-toolbar color="white-color">
+    <ion-searchbar placeholder="搜索"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button ion-item detail-none
+      *ngFor="let item of dataList"
+      class="custom-item">
+      <h2>{{item.name}}<span class="time">{{item.time}}</span></h2>
+      <p class="days">请假天数: {{item.days}}</p>
+      <p class="begin-date">开始日期: {{item.begin_time}}</p>
+      <ion-row>
+        <ion-col col-9>
+          <p class="end-date">结束日期: {{item.end_time}}</p>
+        </ion-col>
+        <ion-col col-3 style="text-align:right;">
+          <span class="state state-{{item.state}}">{{item.state_name}}</span>
+        </ion-col>
+      </ion-row>
+    </button>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+    <div padding>
+    <button ion-button color="main-theme" block>
+      新增请假单
+    </button>
+  </div>
+</ion-footer>

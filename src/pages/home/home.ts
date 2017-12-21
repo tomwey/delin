@@ -142,12 +142,12 @@ export class HomePage {
           {
             icon: 'icon_qjd.png',
             name: '请假单',
-            page: 'FlowFormPage'//'CustomerPage',
+            page: 'LeaveBillPage'//'CustomerPage',
           },
           {
             icon: 'icon_jbsq.png',
             name: '加班申请',
-            page: ''//'CustomerPage',
+            page: 'OvertimeApplyPage'//'CustomerPage',
           },
         ]
       },
