@@ -85,7 +85,7 @@ export class HomePage {
           {
             icon: 'icon_customer_share.png',
             name: '客户转移共享',
-            page: ''//'CustomerPage',
+            page: 'CustomSharePage'//'CustomerPage',
           },
           {
             icon: 'icon_yxkh.png',
@@ -142,7 +142,7 @@ export class HomePage {
           {
             icon: 'icon_qjd.png',
             name: '请假单',
-            page: ''//'CustomerPage',
+            page: 'FlowFormPage'//'CustomerPage',
           },
           {
             icon: 'icon_jbsq.png',

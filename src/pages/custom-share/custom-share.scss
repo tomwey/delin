@@ -1,0 +1,60 @@
+page-custom-share {
+    .custom-item {
+        .name {
+            font-size: 16px;
+            font-weight: normal;
+            color: #333;
+        }
+        .sex {
+            font-size: 14px;
+            color: #999;
+        }
+        .mobile {
+            float: right;
+            display: block;
+            font-size: 12px;
+            color: rgb(60,112,207);
+        }
+
+        p {
+            font-size: 14px!important;
+            color: #999;
+        }
+        .info {
+            margin-top: 5px;
+        }
+
+        ion-row, ion-col {
+            margin: 0;
+            padding: 0;
+        }
+
+        .state {
+            // width: 55px;
+            // height: 22px;
+            // line-height: 20px;
+            display: inline-block;
+            padding: 2px 3px;
+            border-radius: 2px;
+            text-align: center;
+            font-size: 10px;
+            // background: red;
+            border: 1px solid #ccc;
+        }
+
+        .state-1 {
+            color: rgb(44,102,177);
+            border-color: rgb(44,102,177);
+        }
+
+        .state-2 {
+            color: rgb(204,81,64);
+            border-color: rgb(204,81,64);
+        }
+
+        .state-3 {
+            color: rgb(110,187,97);
+            border-color: rgb(110,187,97);
+        }
+    }
+}
