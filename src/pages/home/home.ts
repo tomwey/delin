@@ -186,7 +186,7 @@ export class HomePage {
           {
             icon: 'icon_jld.png',
             name: '借料单',
-            page: ''//'CustomerPage',
+            page: 'LoanSheetPage'//'CustomerPage',
           },
         ]
       },

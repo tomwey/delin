@@ -1,0 +1,58 @@
+page-loan-sheet {
+
+    .custom-item {
+        ion-row,ion-col {
+            margin: 0;
+            padding: 0;
+        }
+
+        p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        h2 {
+            margin-top: 5px;
+        }
+
+        .time {
+            float: right;
+            display: inline-block;
+        }
+
+        .desc {
+            margin: 8px 0;
+        }
+
+        ion-row {
+            background: rgb(245,245,245);
+            padding: 6px;
+            p {
+                font-size: 12px;
+                margin: 0;
+            }
+
+            border-bottom: 0.6px solid rgb(233,233,233);
+        }
+
+        .state {
+            // width: 55px;
+            // height: 22px;
+            // line-height: 20px;
+            display: inline-block;
+            padding: 2px 3px;
+            border-radius: 2px;
+            text-align: center;
+            font-size: 10px;
+            // background: red;
+            border: 1px solid #ccc;
+
+            margin-top: 8px;
+        }
+
+        .state-1 {
+            color: rgb(44,102,177);
+            border-color: rgb(44,102,177);
+        }
+    }
+}
