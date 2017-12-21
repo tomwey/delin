@@ -164,7 +164,7 @@ export class HomePage {
           {
             icon: 'icon_clbxd.png',
             name: '差旅报销单',
-            page: ''//'CustomerPage',
+            page: 'TravelReimbursementPage'//'CustomerPage',
           },
         ]
       },
