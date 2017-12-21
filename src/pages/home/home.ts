@@ -159,7 +159,7 @@ export class HomePage {
           {
             icon: 'icon_jkd.png',
             name: '借款单',
-            page: ''//'CustomerPage',
+            page: 'LoanBillPage'//'CustomerPage',
           },
           {
             icon: 'icon_clbxd.png',
