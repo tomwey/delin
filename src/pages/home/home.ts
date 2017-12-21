@@ -90,7 +90,7 @@ export class HomePage {
           {
             icon: 'icon_yxkh.png',
             name: '意向客户',
-            page: ''//'CustomerPage',
+            page: 'PotentialCustomerPage'//'CustomerPage',
           },
           {
             icon: 'icon_dd.png',
