@@ -37,7 +37,7 @@ export class HomePage {
     {
     icon: 'assets/imgs/icon_new_flow.png',
     name: '新建事项',
-    intro: '简单快捷',
+    intro: '简单、快捷',
     page: 'NewFlowPage',
     },
     {
@@ -48,7 +48,7 @@ export class HomePage {
     },
     {
       icon: 'assets/imgs/icon_czone.png',
-      name: '云助动态',
+      name: '云康动态',
       intro: '动态信息一览无遗',
       page: 'CloudZonePage'//'CloudZonePage',
     },
