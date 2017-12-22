@@ -1,12 +1,12 @@
 page-potential-customer {
     .custom-item {
         .name {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: normal;
             color: #333;
         }
         .sex {
-            font-size: 14px;
+            font-size: 11px;
             color: #999;
         }
         .mobile {
@@ -17,7 +17,7 @@ page-potential-customer {
         }
 
         p {
-            font-size: 14px!important;
+            font-size: 12px!important;
             color: #999;
         }
         .info {
@@ -27,10 +27,6 @@ page-potential-customer {
         ion-row, ion-col {
             margin: 0;
             padding: 0;
-        }
-
-        .time {
-            // padding-top: 10px;
         }
 
         .stars {

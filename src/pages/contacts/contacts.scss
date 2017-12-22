@@ -1,6 +1,16 @@
 page-contacts {
     .content {
         background-color: rgb(242,242,242);
+
+        h2 {
+            font-size: 14px;
+            color: #333;
+        }
+
+        ion-note {
+            font-size: 14px;
+            color: #999;
+        }
     }
     .sub-navbar {
         background-color: white;
@@ -37,15 +47,15 @@ page-contacts {
             height: 50px; 
             line-height: 50px;
             white-space: nowrap;
-            font-size: 18px;
+            font-size: 14px;
             color: color($colors, main-theme);
             .scroll-content {
                 overflow-x: false !important;
             }
             
             ion-icon {
-                color: #999;
-                font-size: 22px;
+                color: #ccc;
+                font-size: 16px;
             }
 
             .breadcrumb-item {

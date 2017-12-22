@@ -1,16 +1,17 @@
 page-material {
     h2 {
-        color: #666;
+        color: #333!important;
+        font-size: 14px!important;
     }
 
     .info-1 {
         margin-top: 10px;
         .name {
-            font-size: 12px;
+            font-size: 10px;
             color: #999;
         }
         .value {
-            font-size: 22px;
+            font-size: 16px;
             color: #333;
             &.first-value {
                 color: rgb(57,108,199);

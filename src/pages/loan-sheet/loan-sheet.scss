@@ -7,12 +7,19 @@ page-loan-sheet {
         }
 
         p {
-            font-size: 14px;
+            font-size: 12px;
             color: #666;
         }
 
         h2 {
             margin-top: 5px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .info-1 {
+            font-size: 12px;
+            color: #999;
         }
 
         .time {
@@ -22,14 +29,17 @@ page-loan-sheet {
 
         .desc {
             margin: 8px 0;
+            color: #999;
+            font-size: 12px;
         }
 
         ion-row {
             background: rgb(245,245,245);
             padding: 6px;
             p {
-                font-size: 12px;
+                font-size: 10px;
                 margin: 0;
+                color: #999;
             }
 
             border-bottom: 0.6px solid rgb(233,233,233);
