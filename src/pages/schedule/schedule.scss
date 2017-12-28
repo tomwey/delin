@@ -25,4 +25,18 @@ page-schedule {
             }
         }
     }
+
+    .custom-item {
+        h2 {
+            font-size: 14px;
+            // margin-top: 3px;
+        }
+        p {
+            font-size: 12px;
+        }
+
+        ion-icon {
+            font-size: 13px;
+        }
+    }
 }

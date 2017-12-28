@@ -2,7 +2,7 @@ page-new-flow {
     
     .help-tip {
         color: #999;
-        font-size: 14px;
+        font-size: 12px;
         margin: 0;
         padding: 0;
         padding: 10px;
@@ -40,7 +40,7 @@ page-new-flow {
             margin: 0;
             padding: 15px;
             border-bottom: 1px solid #ddd;
-            font-size: 16px;
+            font-size: 14px;
             color: #666;
         }
 
@@ -74,6 +74,10 @@ page-new-flow {
         }
         h2 {
             color: rgb(51,51,51);
+            font-size: 14px;
+        }
+        p {
+            font-size: 12px;
         }
     }
 }

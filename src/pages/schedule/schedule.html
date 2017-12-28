@@ -26,7 +26,7 @@
   <div class="events">
     <h2 class="heading">日程安排</h2>
     <ion-list>
-      <ion-item-sliding *ngFor="let event of events">
+      <ion-item-sliding *ngFor="let event of events" class="custom-item">
         <ion-item >
           <h2><ion-icon name="ios-time-outline"></ion-icon>&nbsp;{{event.time}}</h2>
           <h2 text-wrap>{{event.title}}</h2>
