@@ -1,0 +1,66 @@
+<!--
+  Generated template for the MyContactDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar>
+    <ion-title>个人通讯录</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <div class="user-head">
+    <img src="assets/imgs/default_avatar.png" class="avatar">
+    <h2>{{contact?.name}}</h2>
+  </div>
+  <div class="user-info">
+    <table>
+      <tr>
+        <td class="label">性别</td>
+        <td class="value">{{contact?.sex}}</td>
+      </tr>
+      <tr>
+        <td class="label">联系电话</td>
+        <td class="value">{{contact?.mobile}}
+          <a class="custom-btn"><img src="assets/imgs/btn_tel.png"></a>
+        </td>
+      </tr>
+      <tr>
+        <td class="label">办公电话</td>
+        <td class="value">{{contact?.phone1}}
+          <a class="custom-btn"><img src="assets/imgs/btn_tel.png"></a>
+        </td>
+      </tr>
+      <tr>
+        <td class="label">住宅电话</td>
+        <td class="value">{{contact?.phone2}}
+          <a class="custom-btn"><img src="assets/imgs/btn_tel.png"></a>
+        </td>
+      </tr>
+      <tr>
+        <td class="label">电子邮件</td>
+        <td class="value">{{contact?.email}}</td>
+      </tr>
+      <tr>
+        <td class="label">地区</td>
+        <td class="value">{{contact?.city}}</td>
+      </tr>
+      <tr>
+        <td class="label">地址</td>
+        <td class="value">{{contact?.address}}</td>
+      </tr>
+      <tr>
+        <td class="label">公司</td>
+        <td class="value">{{contact?.company}}</td>
+      </tr>
+      <tr>
+        <td class="label">邮编</td>
+        <td class="value">{{contact?.zip}}</td>
+      </tr>
+    </table>
+  </div>
+</ion-content>

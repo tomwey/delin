@@ -1,0 +1,73 @@
+<!--
+  Generated template for the MyContactFormPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label fixed>姓名</ion-label>
+      <ion-input [(ngModel)]="contact.name" placeholder="输入姓名(必填)"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>性别</ion-label>
+      <ion-select [(ngModel)]="contact.sex" placeholder="选择性别" cancelText="取消" okText="确定">
+        <ion-option value="男">男</ion-option>
+        <ion-option value="女">女</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>联系电话</ion-label>
+      <ion-input [(ngModel)]="contact.mobile" type="number" pattern="[0-9]*" placeholder="输入联系电话(必填)"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>办公电话</ion-label>
+      <ion-input [(ngModel)]="contact.phone1" type="number" placeholder="输入办公电话(必填)"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>住宅电话</ion-label>
+      <ion-input [(ngModel)]="contact.phone2" type="number" placeholder="输入住宅电话(必填)"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>邮箱</ion-label>
+      <ion-input [(ngModel)]="contact.email" placeholder="输入邮箱"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>地址</ion-label>
+      <ion-input [(ngModel)]="contact.address" placeholder="输入地址"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>邮编</ion-label>
+      <ion-input [(ngModel)]="contact.zip" type="number" pattern="[0-9]*" placeholder="输入邮编"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>地区</ion-label>
+      <ion-input [(ngModel)]="contact.city" placeholder="输入地区"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>公司</ion-label>
+      <ion-input [(ngModel)]="contact.company" placeholder="输入公司"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>备注</ion-label>
+      <ion-textarea [(ngModel)]="contact.note" placeholder="输入备注" rows="6"></ion-textarea>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <div padding>
+    <button ion-button color="main-theme" block (click)="saveContact();">
+      保存
+    </button>
+  </div>
+</ion-footer>

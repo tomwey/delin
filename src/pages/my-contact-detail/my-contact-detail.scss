@@ -1,0 +1,49 @@
+page-my-contact-detail {
+    .user-head {
+        width: 100%;
+        // height: 180px;
+        padding: 20px;
+        text-align: center;
+        background-color: color($colors, main-theme);
+        .avatar {
+            max-width: 60px;
+            // margin-top: 20px;
+        }
+        h2 {
+            color: white;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    }
+
+    .user-info {
+       table {
+        //    padding: 10px;
+           font-size: 14px;
+           width: 100%;
+       }
+
+       td {
+        padding: 15px;
+        // padding-right: 0;
+        border-bottom: 0.55px solid #e6e6e6;
+       }
+
+       td.label {
+           width: 100px;
+           color: #666;
+       }
+
+       td.value {
+           .custom-btn {
+               display: block;
+               float: right;
+               cursor: pointer;
+               img {
+                   max-height: 24px;
+               }
+           }
+       }
+
+    }
+}
