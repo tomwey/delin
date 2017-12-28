@@ -24,7 +24,7 @@ export class ProductListPage {
     console.log('ionViewDidLoad ProductListPage');
   }
 
-  gotoDetail(item) {
+  openItem(item) {
     let actionSheet = this.actionSheetCtrl.create({
       title: '',
       buttons: [

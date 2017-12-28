@@ -17,7 +17,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item>
+    <button ion-item detail-none (click)="openItem();">
       <p class="order-no">DD20170127 (新增)</p>
       <ion-row class="info-1">
         <ion-col col-4 class="left">
@@ -35,8 +35,8 @@
           <span class="state approving">审核中</span>
         </ion-col>
       </ion-row>
-    </ion-item>
-    <ion-item>
+    </button>
+    <button ion-item detail-none (click)="openItem();">
         <p class="order-no">DD20170127 (提升档次)</p>
         <ion-row class="info-1">
           <ion-col col-4 class="left">
@@ -55,8 +55,8 @@
           </ion-col>
         </ion-row>
         
-      </ion-item>
-      <ion-item>
+      </button>
+      <button ion-item detail-none (click)="openItem();">
           <p class="order-no">DD20170127 (配件兑换+提升档次)</p>
           <ion-row class="info-1">
             <ion-col col-4 class="left">
@@ -75,14 +75,14 @@
             </ion-col>
           </ion-row>
           
-        </ion-item>
+        </button>
   </ion-list>
   
 </ion-content>
 
 <ion-footer>
   <div padding>
-  <button ion-button color="main-theme" block>
+  <button ion-button color="main-theme" block (click)="newOrder();">
     新增定单
   </button>
 </div>
