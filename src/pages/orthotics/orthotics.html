@@ -18,39 +18,25 @@
 
 <ion-content>
     <ion-list>
-        <ion-item>
-          <p class="order-no">jxqsales2017000049 (新增)</p>
-          <ion-row class="info-1">
-            <ion-col col-6>
-              <h2>ML 可调式头颈胸支架</h2>
-              <p>型号:3.ML.1.1-1001</p>
-            </ion-col>
-            <ion-col col-6 class="right">
-              <div class="money">2180.23</div>
-              <span class="state approving">审核中</span>
-            </ion-col>
-          </ion-row>
-        </ion-item>
-        <ion-item>
-            <p class="order-no">jxqsales2017000049 (改单)</p>
-            <ion-row class="info-1">
-              <ion-col col-6>
-                <h2>ML 可调式头颈胸支架</h2>
-                <p>型号:3.ML.1.1-1001</p>
-              </ion-col>
-              <ion-col col-6 class="right">
-                <div class="money">1920</div>
-                <span class="state approved">已审核</span>
-              </ion-col>
-            </ion-row>
-          </ion-item>
-        
-      </ion-list>
+      <button ion-item detail-none *ngFor="let item of dataList" (click)="openItem(item);">
+        <p class="order-no">{{item.ID}} ({{item.type}})</p>
+        <ion-row class="info-1">
+          <ion-col col-6>
+            <h2>{{item.name}}</h2>
+            <p>型号:{{item.mode}}</p>
+          </ion-col>
+          <ion-col col-6 class="right">
+            <div class="money">{{item.money}}</div>
+            <span class="state {{item.state}}">{{item.state_name}}</span>
+          </ion-col>
+        </ion-row>
+      </button>
+    </ion-list>
 </ion-content>
 
 <ion-footer>
     <div padding>
-    <button ion-button color="main-theme" block>
+    <button ion-button color="main-theme" block (click)="newItem();">
       新增销售单
     </button>
     </div>
