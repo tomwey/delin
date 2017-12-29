@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, App } from 'ionic-angular';
 
 /**
  * Generated class for the LoanSheetPage page.
@@ -15,11 +15,66 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoanSheetPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private actionSheetCtrl: ActionSheetController,private app: App) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoanSheetPage');
+  }
+
+  openItem(item)
+  {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: '',
+      buttons: [
+        {
+          text: '查看',
+          handler: () => {
+            // console.log('Archive clicked');
+            this.viewItem(item);
+          }
+        },
+        {
+          text: '编辑',
+          handler: () => {
+            // console.log('Archive clicked');
+            this.editItem(item);
+          }
+        },
+        {
+          text: '删除',
+          role: 'destructive',
+          handler: () => {
+            // console.log('Destructive clicked');
+            this.deleteItem(item);
+          }
+        },{
+          text: '取消',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+  viewItem(item) {
+    this.app.getRootNavs()[0].push('LoanSheetDetailPage', { item: item });
+  }
+
+  editItem(item) {
+    this.app.getRootNavs()[0].push('LoanSheetFormPage', { item: item });
+  }
+
+  deleteItem(item) {
+
+  }
+
+  newLoanSheet() {
+    this.app.getRootNavs()[0].push('LoanSheetFormPage');
   }
 
   dataList: any = [

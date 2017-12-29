@@ -1,0 +1,80 @@
+<!--
+  Generated template for the LoanSheetFormPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="content">
+  <ion-list>
+    <ion-item>
+      <ion-label fixed>借料单编码</ion-label>
+      <ion-input [(ngModel)]="loan.ID" disabled></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>制单人</ion-label>
+      <ion-input [(ngModel)]="loan.zd_man" disabled></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>制单人部门</ion-label>
+      <ion-input [(ngModel)]="loan.zd_dept" disabled></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>制单时间</ion-label>
+      <ion-input [(ngModel)]="loan.zd_time" disabled></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-list> 
+    <ion-item>
+      <ion-label fixed>发货仓库</ion-label>
+      <ion-select [(ngModel)]="loan.fh_warehouse" okText="确定" cancelText="取消" placeholder="选择发货仓库">
+        <ion-option value="0">成都主仓</ion-option>
+        <ion-option value="1">上海主仓</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label fixed>借料人</ion-label>
+        <ion-select [(ngModel)]="loan.jl_man" okText="确定" cancelText="取消" placeholder="选择借料人">
+          <ion-option value="0">周朝</ion-option>
+          <ion-option value="1">王五</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+          <ion-label fixed>借料类型</ion-label>
+          <ion-select [(ngModel)]="loan.jl_type" okText="确定" cancelText="取消" placeholder="选择借料类型">
+            <ion-option value="0">定单借料</ion-option>
+            <ion-option value="1">上海主仓</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>生产定单</ion-label>
+            <ion-select [(ngModel)]="loan.order" okText="确定" cancelText="取消" placeholder="选择生产定单">
+              <ion-option value="0">定单借料</ion-option>
+              <ion-option value="1">上海主仓</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+              <ion-label fixed>计划还料时间</ion-label>
+              <ion-datetime placeholder="设置计划还料时间" [(ngModel)]="loan.plan_hl_time"></ion-datetime>
+            </ion-item>
+        <ion-item>
+            <ion-label fixed>用途</ion-label>
+            <ion-textarea placeholder="输入用途" rows="6" [(ngModel)]="loan.use_desc"></ion-textarea>
+        </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+    <div padding>
+      <button ion-button color="main-theme" block (click)="saveContact();">
+        保存
+      </button>
+    </div>
+  </ion-footer>
