@@ -15,7 +15,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item>
+    <button detail-none ion-item (click)="openItem();">
       <ion-row class="info">
         <ion-col col-9>
           <span class="time">创建于 2017-10-27</span>
@@ -27,8 +27,8 @@
       <p class="body" text-wrap>
         1、处理T3单据事项。2、处理深圳系统维护事项。3、检测并导入BOM数据。4、处理成都护理费晨报问题。5、重新部署测试服务器。
       </p>
-    </ion-item>
-    <ion-item>
+    </button>
+    <button detail-none ion-item (click)="openItem();">
         <ion-row class="info">
           <ion-col col-9>
             <span class="time">创建于 2017-10-27</span>
@@ -40,13 +40,13 @@
         <p class="body" text-wrap>
           1、处理T3单据事项。2、处理深圳系统维护事项。3、检测并导入BOM数据。
         </p>
-      </ion-item>
+      </button>
   </ion-list>
 </ion-content>
 
 <ion-footer>
     <div padding>
-    <button ion-button color="main-theme" block>
+    <button ion-button color="main-theme" block (click)="newLog();">
       新增日志
     </button>
     </div>
