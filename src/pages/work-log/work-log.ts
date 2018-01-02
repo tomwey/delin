@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, ActionSheetController } from 'ionic-angular';
 
 /**
  * Generated class for the WorkLogPage page.
@@ -17,6 +17,7 @@ export class WorkLogPage {
 
   constructor(public navCtrl: NavController, 
     private actionSheetCtrl: ActionSheetController,
+    private app: App,
     public navParams: NavParams) {
   }
 
@@ -36,13 +37,14 @@ export class WorkLogPage {
         },{
           text: '查看',
           handler: () => {
-            console.log('Archive clicked');
+            // console.log('Archive clicked');
           }
         },
         {
           text: '编辑',
           handler: () => {
             console.log('Destructive clicked');
+            this.editLog();
           }
         },{
           text: '删除',
@@ -63,6 +65,10 @@ export class WorkLogPage {
   }
 
   newLog() {
+    this.app.getRootNavs()[0].push('WorkLogFormPage');
+  }
 
+  editLog() {
+    this.app.getRootNavs()[0].push('WorkLogFormPage', { log: { time: '2018-01-02', content: 'test' } });
   }
 }
