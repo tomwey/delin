@@ -62,7 +62,33 @@ export class LoanSheetPage {
   }
 
   viewItem(item) {
-    this.app.getRootNavs()[0].push('LoanSheetDetailPage', { item: item });
+    let data = [
+      {
+        label:  '名称',
+        value: '1.A.AEDZ021 上臂三指电子手',
+      },
+      {
+        label: '规格',
+        value: '',
+      },
+      {
+        label: '单位',
+        value: '具'
+      },
+      {
+        label: '借料数量',
+        value: 100,
+      },
+      {
+        label: '可用库存',
+        value: 1000,
+      },
+      {
+        label: '备注',
+        value: '',
+      }
+    ];
+    this.app.getRootNavs()[0].push('ItemDetailPage', { title: '借料单明细', data: data });
   }
 
   editItem(item) {
