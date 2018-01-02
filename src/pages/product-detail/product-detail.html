@@ -14,5 +14,33 @@
 
 
 <ion-content>
-  
+  <div class="table-content">
+    <table>
+      <tr *ngFor="let item of dataList">
+        <td class="label">{{item.label}}</td>
+        <td class="value">{{item.value}}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="bx-box">
+    <h2>保修政策</h2>
+    <div class="bx-content">
+      <div class="table-box" *ngFor="let o of baoxiuList">
+        <table>
+          <tr>
+            <td class="label">保修部件名称</td>
+            <td class="value">{{o.name}}</td>
+          </tr>
+          <tr>
+            <td class="label">保修时长（月）</td>
+            <td class="value">{{o.duration}}</td>
+          </tr>
+          <tr>
+            <td class="label">备注</td>
+            <td class="value">{{o.note}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
 </ion-content>
