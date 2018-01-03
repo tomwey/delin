@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ActionSheetController,App } from 'ionic-angular';
 
 /**
  * Generated class for the PotentialCustomerPage page.
@@ -15,11 +15,94 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PotentialCustomerPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+    private actionSheetCtrl: ActionSheetController, 
+    private app: App,
+    public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PotentialCustomerPage');
+    // console.log('ionViewDidLoad PotentialCustomerPage');
+  }
+
+  openItem(item) {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: '',
+      buttons: [
+        {
+          text: '查看',
+          handler: () => {
+            // console.log('Archive clicked');
+            // this.viewContact(item);
+            this.viewItem(item);
+          }
+        },
+        {
+          text: '编辑',
+          handler: () => {
+            // console.log('Archive clicked');
+            // this.editContact(item);
+            this.editItem(item);
+          }
+        },
+        {
+          text: '删除',
+          role: 'destructive',
+          handler: () => {
+            // console.log('Destructive clicked');
+            // this.deleteContact(item);
+          }
+        },{
+          text: '取消',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+  viewItem(item) {
+    let data = [
+      {
+        label: '制单时间',
+        value: '',
+      },
+      {
+        label: '拜访日期',
+        value: '',
+      },
+      {
+        label: '拜访类别',
+        value: '',
+      },
+      {
+        label: '拜访人',
+        value: '',
+      },
+      {
+        label: '协作人员',
+        value: '',
+      },
+      {
+        label: '洽谈情况',
+        value: '',
+      },
+    ];
+    this.app.getRootNavs()[0].push('ItemDetailPage', {
+      title: '意向客户详情',
+      data: data,
+    })
+  }
+
+  editItem(item) {
+    this.app.getRootNavs()[0].push('PotentialCustomerFormPage', { item: item });
+  }
+
+  newItem(item) {
+    this.app.getRootNavs()[0].push('PotentialCustomerFormPage');
   }
 
   dataList: any = [

@@ -17,7 +17,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let item of dataList" class="custom-item">
+    <button detail-none ion-item *ngFor="let item of dataList" class="custom-item" (click)="openItem(item);">
       <h2 class="name">{{item.name}}
         <span class="sex">({{item.sex}})</span>
         <span class="mobile">{{item.mobile}}</span>
@@ -34,13 +34,13 @@
             </span>亲密度</p>
         </ion-col>
       </ion-row>
-    </ion-item>
+    </button>
   </ion-list>
 </ion-content>
 
 <ion-footer>
   <div padding>
-  <button ion-button color="main-theme" block>
+  <button ion-button color="main-theme" block (click)="newItem();">
     新增意向客户
   </button>
 </div>
