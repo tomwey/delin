@@ -1,0 +1,243 @@
+<!--
+  Generated template for the MyCustomerFormPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label fixed>客户编码</ion-label>
+      <ion-input [(ngModel)]="customer.ID"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>制单人员</ion-label>
+      <ion-input [(ngModel)]="customer.author"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>制单时间</ion-label>
+      <ion-datetime [(ngModel)]="customer.create_time" displayFormat="YYYY-MM-DD"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>所属区域</ion-label>
+      <ion-input [(ngModel)]="customer.area" placeholder="必填"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>客户性质</ion-label>
+      <ion-select [(ngModel)]="customer._type" placeholder="请选择">
+        <ion-option value="1">单位1</ion-option>
+        <ion-option value="2">单位2</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>拜访周期</ion-label>
+      <ion-input [(ngModel)]="customer.times" placeholder="可选"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>客户名称</ion-label>
+      <ion-input [(ngModel)]="customer.name" placeholder="可选"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>客户类别</ion-label>
+      <ion-select [(ngModel)]="customer.type" placeholder="请选择">
+        <ion-option value="1">单位1</ion-option>
+        <ion-option value="2">单位2</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>治疗医院</ion-label>
+      <ion-select [(ngModel)]="customer.hospital" placeholder="请选择">
+        <ion-option value="1">单位1</ion-option>
+        <ion-option value="2">单位2</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>民族</ion-label>
+      <ion-select [(ngModel)]="customer.mz" placeholder="请选择">
+        <ion-option value="1">单位1</ion-option>
+        <ion-option value="2">单位2</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>截肢日期</ion-label>
+      <ion-datetime [(ngModel)]="customer.jz_time" displayFormat="YYYY-MM-DD"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>社保单位</ion-label>
+      <ion-select [(ngModel)]="customer.sb_company" placeholder="请选择">
+        <ion-option value="1">单位1</ion-option>
+        <ion-option value="2">单位2</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>性别</ion-label>
+      <ion-select [(ngModel)]="customer.sex" placeholder="请选择">
+        <ion-option value="1">单位1</ion-option>
+        <ion-option value="2">单位2</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>原因</ion-label>
+      <ion-select [(ngModel)]="customer.reason" placeholder="请选择">
+        <ion-option value="1">单位1</ion-option>
+        <ion-option value="2">单位2</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>商业保险</ion-label>
+      <ion-select [(ngModel)]="customer.sybx" placeholder="请选择">
+        <ion-option value="1">单位1</ion-option>
+        <ion-option value="2">单位2</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>出生日期</ion-label>
+      <ion-datetime [(ngModel)]="customer.birth" displayFormat="YYYY-MM-DD"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>截肢部位1</ion-label>
+      <ion-select [(ngModel)]="customer.jz1" placeholder="请选择">
+        <ion-option value="1">单位1</ion-option>
+        <ion-option value="2">单位2</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>截肢部位2</ion-label>
+      <ion-select [(ngModel)]="customer.jz2" placeholder="请选择">
+        <ion-option value="1">单位1</ion-option>
+        <ion-option value="2">单位2</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>截肢部位3</ion-label>
+      <ion-select [(ngModel)]="customer.jz3" placeholder="请选择">
+        <ion-option value="1">单位1</ion-option>
+        <ion-option value="2">单位2</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>截肢部位4</ion-label>
+      <ion-select [(ngModel)]="customer.jz4" placeholder="请选择">
+        <ion-option value="1">单位1</ion-option>
+        <ion-option value="2">单位2</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>截瘫平面</ion-label>
+      <ion-select [(ngModel)]="customer.jtpm" placeholder="请选择">
+        <ion-option value="1">单位1</ion-option>
+        <ion-option value="2">单位2</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>截瘫情况</ion-label>
+      <ion-select [(ngModel)]="customer.jtqk" placeholder="请选择">
+        <ion-option value="1">单位1</ion-option>
+        <ion-option value="2">单位2</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>老客户推荐</ion-label>
+      <ion-input [(ngModel)]="customer.invitee" placeholder="可选"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>决定权人</ion-label>
+      <ion-input [(ngModel)]="customer.jdq_man" placeholder="可选"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>决定权人电话</ion-label>
+      <ion-input [(ngModel)]="customer.jdq_man_mobile" placeholder="可选"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>身份证号码</ion-label>
+      <ion-input [(ngModel)]="customer.id_card" placeholder="可选"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>所在单位</ion-label>
+      <ion-select [(ngModel)]="customer.company" placeholder="请选择">
+        <ion-option value="1">单位1</ion-option>
+        <ion-option value="2">单位2</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>单位备注</ion-label>
+      <ion-input [(ngModel)]="customer.comp_memo" placeholder="可选"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>固定电话</ion-label>
+      <ion-input [(ngModel)]="customer.phone" placeholder="可选"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>手机</ion-label>
+      <ion-input [(ngModel)]="customer.mobile" placeholder="可选"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>传真</ion-label>
+      <ion-input [(ngModel)]="customer.fax" placeholder="可选"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>所在省份</ion-label>
+      <ion-select [(ngModel)]="customer.province" placeholder="请选择">
+        <ion-option value="1">单位1</ion-option>
+        <ion-option value="2">单位2</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>所在城市</ion-label>
+      <ion-select [(ngModel)]="customer.city" placeholder="请选择">
+        <ion-option value="1">单位1</ion-option>
+        <ion-option value="2">单位2</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>邮政编码</ion-label>
+      <ion-input [(ngModel)]="customer.zip" placeholder="可选"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>下次机会时间</ion-label>
+      <ion-datetime [(ngModel)]="customer.next_face_time" displayFormat="YYYY-MM-DD" placeholder="设置时间"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>原系统标识</ion-label>
+      <ion-input [(ngModel)]="customer.old_sys_id" placeholder="可选"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>原客户编码</ion-label>
+      <ion-input [(ngModel)]="customer.old_sys_no" placeholder="可选"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>常住地址</ion-label>
+      <ion-input [(ngModel)]="customer.address" placeholder="可选"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>户籍地址</ion-label>
+      <ion-input [(ngModel)]="customer.hj_address" placeholder="最大长度30 (可选)"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>备注</ion-label>
+      <ion-textarea [(ngModel)]="customer.note" rows="6" placeholder="可选"></ion-textarea>
+    </ion-item>
+
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+    <div padding>
+    <button ion-button color="main-theme" block>
+      保存
+    </button>
+  </div>
+  </ion-footer>
