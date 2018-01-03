@@ -1,0 +1,102 @@
+<!--
+  Generated template for the LoanBillFormPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label fixed>单据编号</ion-label>
+      <ion-input [(ngModel)]="bill.ID"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>借款日期</ion-label>
+      <ion-datetime [(ngModel)]="bill.time" displayFormat="YYYY-MM-DD"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>借款人</ion-label>
+      <ion-input [(ngModel)]="bill.author"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>部门</ion-label>
+      <ion-input [(ngModel)]="bill.dept"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>费用申请</ion-label>
+      <ion-select [(ngModel)]="bill.fee_apply" placeholder="请选择">
+        <ion-option value="1">单位1</ion-option>
+        <ion-option value="2">单位2</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>单据类别</ion-label>
+      <ion-select [(ngModel)]="bill.bill_type" placeholder="请选择">
+        <ion-option value="1">单位1</ion-option>
+        <ion-option value="2">单位2</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>费用分类</ion-label>
+      <ion-select [(ngModel)]="bill.fee_type" placeholder="请选择">
+        <ion-option value="1">单位1</ion-option>
+        <ion-option value="2">单位2</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>费用科目</ion-label>
+      <ion-select [(ngModel)]="bill.fee_kemu" placeholder="请选择">
+        <ion-option value="1">单位1</ion-option>
+        <ion-option value="2">单位2</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>借款金额</ion-label>
+      <ion-input [(ngModel)]="bill.money" placeholder="必填"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>大写</ion-label>
+      <ion-input [(ngModel)]="bill.money2" disabled></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>经办人</ion-label>
+      <ion-select [(ngModel)]="bill.operator" placeholder="请选择">
+        <ion-option value="1">单位1</ion-option>
+        <ion-option value="2">单位2</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>还款日期</ion-label>
+      <ion-datetime [(ngModel)]="bill.time2" displayFormat="YYYY-MM-DD"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>借款用途</ion-label>
+      <ion-textarea [(ngModel)]="bill.use_desc" rows="6" placeholder="可选"></ion-textarea>
+    </ion-item>
+
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <div padding>
+    <button ion-button color="main-theme" block>
+      保存
+    </button>
+  </div>
+</ion-footer>
