@@ -1,0 +1,70 @@
+<!--
+  Generated template for the OvertimeItemFormPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="close();">
+        <ion-icon name="ios-close-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>加班明细表</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="form-box">
+    <ion-list>
+      <ion-item>
+        <ion-label fixed>姓名</ion-label>
+        <ion-input [(ngModel)]="formData.name" placeholder="输入姓名"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>部门</ion-label>
+        <ion-input [(ngModel)]="formData.dept" placeholder="输入部门"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>职务等级</ion-label>
+        <ion-input [(ngModel)]="formData.level" placeholder="输入职务等级"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>加班日期</ion-label>
+        <ion-datetime [(ngModel)]="formData.overtime_date" placeholder="设置加班日期" displayFormat="YYYY-MM-DD"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>星期</ion-label>
+        <ion-input [(ngModel)]="formData.week_day" placeholder="输入星期"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>开始时间</ion-label>
+        <ion-datetime [(ngModel)]="formData.start_time" placeholder="设置开始时间" displayFormat="hh:mm:ss"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>结束时间</ion-label>
+        <ion-datetime [(ngModel)]="formData.end_time" placeholder="设置结束时间" displayFormat="hh:mm:ss"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>加班工时</ion-label>
+        <ion-input [(ngModel)]="formData.overtime_length" type="number" placeholder="输入加班工时"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>加班事由</ion-label>
+        <ion-textarea [(ngModel)]="formData.overtime_reason" rows="6" placeholder="输入加班事由"></ion-textarea>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+
+<ion-footer>
+    <div padding>
+    <button ion-button color="main-theme" block (click)="save();">
+      保存
+    </button>
+  </div>
+</ion-footer>

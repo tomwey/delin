@@ -1,0 +1,73 @@
+<!--
+  Generated template for the OvertimeApplyFormPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <div class="form-box">
+    <h2>基本资料</h2>
+    <ion-list>
+      <ion-item>
+        <ion-label fixed><span class="required">*</span>单据编号</ion-label>
+        <ion-input [(ngModel)]="formData.ID"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed><span class="required">*</span>申请人</ion-label>
+        <ion-input [(ngModel)]="formData.owner"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed><span class="required">*</span>加班工时</ion-label>
+        <ion-input [(ngModel)]="formData.apply_length" type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed><span class="required">*</span>加班类型</ion-label>
+        <ion-select [(ngModel)]="formData.overtime_type" placeholder="选择加班类型">
+          <ion-option value="0">休息日加班</ion-option>
+          <ion-option value="1">工作日加班</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed><span class="required">*</span>是否考勤卡为准</ion-label>
+        <ion-toggle [(ngModel)]="formData.is_kq"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>加班事由</ion-label>
+        <ion-textarea [(ngModel)]="formData.overtime_reason" rows="6" placeholder="请填写事由"></ion-textarea>
+      </ion-item>
+    </ion-list>
+
+    <h2>加班明细</h2>
+    <div class="overtime-items">
+      <div class="item-list" *ngIf="formData.overtime_items.length > 0">
+        <ion-list>
+          <button ion-item *ngFor="let item of formData.overtime_items;let i = index" (click)="openItem(item);">
+            加班明细{{i+1}}
+            <button ion-button small clear item-right color="danger" (click)="removeItem($event,item);">
+              <ion-icon name="ios-trash-outline"></ion-icon>
+            </button>
+          </button>
+        </ion-list>
+      </div>
+      <div class="add-button">
+        <button ion-button round outline (click)="addItem();">添加加班明细</button>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+    <div padding>
+    <button ion-button color="main-theme" block>
+      保存
+    </button>
+  </div>
+</ion-footer>
