@@ -1,0 +1,88 @@
+<!--
+  Generated template for the LeaveBillFormPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar>
+    <ion-title>请假单</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <div class="form-box">
+    <ion-list>
+      <ion-item>
+        <ion-label fixed><span class="required">*</span>单据编号</ion-label>
+        <ion-input [(ngModel)]="formData.ID"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed><span class="required">*</span>制单日期</ion-label>
+        <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="formData.create_date"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed><span class="required">*</span>制单人</ion-label>
+        <ion-input [(ngModel)]="formData.create_man"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed><span class="required">*</span>申请人</ion-label>
+        <ion-input [(ngModel)]="formData.owner"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed><span class="required">*</span>部门</ion-label>
+        <ion-input [(ngModel)]="formData.dept"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed><span class="required">*</span>请假类型</ion-label>
+        <ion-select [(ngModel)]="formData.type" placeholder="选择请假类型">
+          <ion-option value="0">病假</ion-option>
+          <ion-option value="1">事假</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed><span class="required">*</span>开始时间</ion-label>
+        <ion-datetime [(ngModel)]="formData.start_time" placeholder="设置开始时间" displayFormat="hh:mm:ss"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed><span class="required">*</span>结束时间</ion-label>
+        <ion-datetime [(ngModel)]="formData.end_time" placeholder="设置结束时间" displayFormat="hh:mm:ss"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed><span class="required">*</span>请假天数</ion-label>
+        <ion-input [(ngModel)]="formData.days" type="number" placeholder="输入请假天数"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed><span class="required">*</span>职务代理人</ion-label>
+        <ion-select [(ngModel)]="formData.agency_man" placeholder="选择职务代理人">
+          <ion-option value="0">张三</ion-option>
+          <ion-option value="1">李四</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed><span class="required">*</span>请假事由</ion-label>
+        <ion-textarea [(ngModel)]="formData.reason" rows="6" placeholder="输入请假事由"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>备注</ion-label>
+        <ion-textarea [(ngModel)]="formData.note" rows="6" placeholder="输入备注"></ion-textarea>
+      </ion-item>
+
+    </ion-list>
+  </div>
+</ion-content>
+
+<ion-footer>
+    <div padding>
+    <button ion-button color="main-theme" block>
+      保存
+    </button>
+  </div>
+</ion-footer>

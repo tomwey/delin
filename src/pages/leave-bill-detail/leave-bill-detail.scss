@@ -1,0 +1,39 @@
+page-leave-bill-detail {
+    .state-image {
+        position: absolute;
+        top: -10px;
+        right: - 10px;
+        max-width: 60px;
+    }
+    .table-content {
+        padding-top: 20px;
+        table {
+            //    padding: 10px;
+               font-size: 14px;
+               width: 100%;
+           }
+    
+           td {
+            padding: 15px;
+            vertical-align: top;
+            // padding-right: 0;
+            // border-bottom: 0.55px solid #e6e6e6;
+           }
+    
+           td.label {
+               width: 100px;
+               color: #666;
+           }
+    
+           td.value {
+               .custom-btn {
+                   display: block;
+                   float: right;
+                   cursor: pointer;
+                   img {
+                       max-height: 24px;
+                   }
+               }
+           }
+    }
+}

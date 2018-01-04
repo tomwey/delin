@@ -1,0 +1,30 @@
+<!--
+  Generated template for the LeaveBillDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar>
+    <ion-title>请假单</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <img class="state-image" src="assets/imgs/img_{{state}}.png">
+  <div class="table-content">
+    <table>
+      <tr *ngFor="let item of dataList">
+        <td class="label">{{item.label}}</td>
+        <td class="value">{{item.value}}</td>
+      </tr>
+    </table>
+  </div>
+</ion-content>
+<ion-footer>
+    <div style="text-align:center;padding: 20px;">
+        <button ion-button>查看流程</button>
+    </div>
+</ion-footer>

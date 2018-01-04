@@ -18,7 +18,7 @@
   <ion-list>
     <button ion-item detail-none
       *ngFor="let item of dataList"
-      class="custom-item">
+      class="custom-item" (click)="openItem(item);">
       <h2>{{item.name}}<span class="time">{{item.time}}</span></h2>
       <p class="days">请假天数: {{item.days}}</p>
       <p class="begin-date">开始日期: {{item.begin_time}}</p>
@@ -36,7 +36,7 @@
 
 <ion-footer>
     <div padding>
-    <button ion-button color="main-theme" block>
+    <button ion-button color="main-theme" block (click)="newItem();">
       新增请假单
     </button>
   </div>
