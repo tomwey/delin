@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { App } from 'ionic-angular';
+import { App, ActionSheetController, ModalController } from 'ionic-angular';
 
 /**
  * Generated class for the CustomSharePage page.
@@ -17,7 +17,9 @@ import { App } from 'ionic-angular';
 export class CustomSharePage {
 
   constructor(public navCtrl: NavController,
-    private app: App,
+      private app: App,
+      private actionSheetCtrl: ActionSheetController,
+      private modalCtrl: ModalController,
       public navParams: NavParams) {
   }
 
@@ -25,8 +27,77 @@ export class CustomSharePage {
     console.log('ionViewDidLoad CustomSharePage');
   }
 
-  new() {
-    this.app.getRootNavs()[0].push('NewCustomSharePage');
+  openItem(item) {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: '',
+      buttons: [
+        {
+          text: '发送',
+          handler: () => {
+            // console.log('Archive clicked');
+            // this.viewContact(item);
+            this.sendItem(item);
+          }
+        },
+        {
+          text: '查看',
+          handler: () => {
+            // console.log('Archive clicked');
+            // this.viewContact(item);
+            this.viewItem(item);
+          }
+        },
+        {
+          text: '编辑',
+          handler: () => {
+            // console.log('Archive clicked');
+            // this.editContact(item);
+            this.editItem(item);
+          }
+        },
+        {
+          text: '删除',
+          role: 'destructive',
+          handler: () => {
+            // console.log('Destructive clicked');
+            // this.deleteContact(item);
+          }
+        },{
+          text: '取消',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+  sendItem(item) {
+
+  }
+
+  editItem(item) {
+
+  }
+
+  viewItem(item) {
+    let data = [];
+    this.app.getRootNavs()[0].push('ItemDetailPage', {
+      title: '客户转移共享',
+      data: data,
+    });
+  }
+
+  newItem() {
+    let modal = this.modalCtrl.create('ManSearchPage', { title: '选择客户', uri: '' });
+    modal.onDidDismiss((data) => {
+      if (data) {
+        this.app.getRootNavs()[0].push('CustomerShareFormPage');
+      }
+    });
+    modal.present();
   }
 
   dataList: any = [
