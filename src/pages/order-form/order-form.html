@@ -1,0 +1,364 @@
+<!--
+  Generated template for the OrderFormPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar>
+    <ion-title>填写信息</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div class="form-box">
+        <h2>基本资料</h2>
+        <ion-list>
+          <ion-item>
+            <ion-label fixed><span class="required">*</span>定单编号</ion-label>
+            <ion-input [(ngModel)]="formData.ID"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label fixed>制单时间</ion-label>
+            <ion-datetime [(ngModel)]="formData.create_date" displayFormat="YYYY-MM-DD"></ion-datetime>
+          </ion-item>
+          <ion-item>
+            <ion-label fixed>制单人</ion-label>
+            <ion-input [(ngModel)]="formData.create_man"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label fixed><span class="required">*</span>客户姓名</ion-label>
+            <ion-input [(ngModel)]="formData.man_name"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label fixed><span class="required">*</span>性别</ion-label>
+            <ion-select [(ngModel)]="formData.man_sex" placeholder="请选择">
+              <ion-option value="0">男</ion-option>
+              <ion-option value="1">女</ion-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label fixed><span class="required">*</span>业务员</ion-label>
+            <ion-select [(ngModel)]="formData.saler" placeholder="选择人员">
+              <ion-option value="0">张三</ion-option>
+              <ion-option value="1">李四</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label fixed>民族</ion-label>
+            <ion-select [(ngModel)]="formData.man_mz" placeholder="选择民族">
+              <ion-option value="0">汉族</ion-option>
+              <ion-option value="1">藏族</ion-option>
+            </ion-select>
+          </ion-item>
+          
+          <ion-item>
+            <ion-label fixed><span class="required">*</span>身份证号码</ion-label>
+            <ion-input [(ngModel)]="formData.id_card"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label fixed><span class="required">*</span>身份证地址</ion-label>
+            <ion-input [(ngModel)]="formData.id_address"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label fixed><span class="required">*</span>手机号码</ion-label>
+            <ion-input [(ngModel)]="formData.mobile" type="number"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label fixed><span class="required">*</span>接待人员</ion-label>
+            <ion-select [(ngModel)]="formData.jd_man" placeholder="选择">
+              <ion-option value="0">三医院</ion-option>
+              <ion-option value="1">李四</ion-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label fixed>更正客户姓名</ion-label>
+            <ion-input [(ngModel)]="formData.change_man_name"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label fixed><span class="required">*</span>定单类型</ion-label>
+            <ion-select [(ngModel)]="formData.type" placeholder="选择类型">
+              <ion-option value="0">三医院</ion-option>
+              <ion-option value="1">李四</ion-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label fixed>收款金额</ion-label>
+            <ion-input [(ngModel)]="formData.money"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label fixed>储值卡余额</ion-label>
+            <ion-input [(ngModel)]="formData.balance"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label fixed>已开发票</ion-label>
+              <ion-input [(ngModel)]="formData.ticket"></ion-input>
+            </ion-item>
+  
+            <ion-item>
+              <ion-label fixed>销售机会主题</ion-label>
+              <ion-input [(ngModel)]="formData.sale_title"></ion-input>
+            </ion-item>
+
+        <ion-item>
+            <ion-label fixed>销售机会来源</ion-label>
+            <ion-input [(ngModel)]="formData.sale_source"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label fixed>客户类型</ion-label>
+            <ion-input [(ngModel)]="formData.man_type"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label fixed>采购申请单号</ion-label>
+              <ion-input [(ngModel)]="formData.buy_no"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label fixed>客户编码</ion-label>
+                <ion-input [(ngModel)]="formData.man_code"></ion-input>
+              </ion-item>
+
+          <ion-item>
+            <ion-label fixed>社保单位</ion-label>
+            <ion-select [(ngModel)]="formData.sb_company" placeholder="选择">
+              <ion-option value="0">单位1</ion-option>
+              <ion-option value="1">单位2</ion-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+              <ion-label fixed>审批单号</ion-label>
+              <ion-input [(ngModel)]="formData.approve_no"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label fixed>下次机会时间</ion-label>
+              <ion-datetime [(ngModel)]="formData.next_face_time" displayFormat="YYYY-MM-DD"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label fixed>住宿费/天</ion-label>
+                <ion-input [(ngModel)]="formData.zs_unit"></ion-input>
+              </ion-item>
+
+          <ion-item>
+              <ion-label fixed>优惠申请说明</ion-label>
+              <ion-textarea [(ngModel)]="formData.discount_desc" rows="6" placeholder="请填写"></ion-textarea>
+            </ion-item>
+
+        </ion-list>
+    
+        <h2>商品明细</h2>
+        <div class="overtime-items">
+          <div class="item-list" *ngIf="formData.products.length > 0">
+            <ion-list>
+              <button ion-item *ngFor="let item of formData.products" (click)="openItem(item);">
+                {{item.product_name}}
+                <button ion-button small clear item-right color="danger" (click)="removeItem($event,item);">
+                  <ion-icon name="ios-trash-outline"></ion-icon>
+                </button>
+              </button>
+            </ion-list>
+          </div>
+          <div class="add-button">
+            <button ion-button round outline (click)="addItem();">添加商品</button>
+          </div>
+        </div>
+
+        <h2>交付事项</h2>
+        <ion-list>
+            <ion-item>
+              <ion-label fixed><span class="required">*</span>协议总价</ion-label>
+              <ion-input [(ngModel)]="formData.xy_price" type="number"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label fixed><span class="required">*</span>结算金额</ion-label>
+              <ion-input [(ngModel)]="formData.js_money" placeholder="输入"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label fixed><span class="required">*</span>折扣比例</ion-label>
+                <ion-input [(ngModel)]="formData.discount_rate" type="number"></ion-input>
+              </ion-item>
+            <ion-item>
+              <ion-label fixed><span class="required">*</span>交付地址</ion-label>
+              <ion-input [(ngModel)]="formData.jf_address" placeholder="输入"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label fixed><span class="required">*</span>生产单位</ion-label>
+                <ion-select [(ngModel)]="formData.company">
+                  <ion-option value="0">成都总经理室T3小组</ion-option>
+                </ion-select>
+              </ion-item>
+
+            <ion-item>
+              <ion-label fixed>协议补充条款</ion-label>
+              <ion-input [(ngModel)]="formData.agreement" placeholder="输入"></ion-input>
+            </ion-item>
+            
+            <ion-item>
+              <ion-label fixed>备注</ion-label>
+              <ion-textarea [(ngModel)]="formData.note2" rows="6" placeholder="不需打印的请说明"></ion-textarea>
+            </ion-item>
+  
+          </ion-list>
+
+          <h2>付款方及开具发票明细</h2>
+          <div class="overtime-items">
+              <div class="item-list" *ngIf="formData.pay_items.length > 0">
+                <ion-list>
+                  <button ion-item *ngFor="let item of formData.pay_items" (click)="openPayItem(item);">
+                    {{item.pay_name}}
+                    <button ion-button small clear item-right color="danger" (click)="removePayItem($event,item);">
+                      <ion-icon name="ios-trash-outline"></ion-icon>
+                    </button>
+                  </button>
+                </ion-list>
+              </div>
+              <div class="add-button">
+                <button ion-button round outline (click)="addPayItem();">添加付款方明细</button>
+              </div>
+            </div>
+          
+          <h2>业绩分配基本资料</h2>
+          <ion-list>
+              <ion-item>
+                <ion-label fixed>定单收款额</ion-label>
+                <ion-input [(ngModel)]="formData.order_payin" type="number"></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-label fixed>是否报销</ion-label>
+                  <ion-toggle [(ngModel)]="formData.is_bx"></ion-toggle>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>税前金额</ion-label>
+                <ion-input [(ngModel)]="formData.tax_money" type="number"></ion-input>
+              </ion-item>
+            <ion-item>
+              <ion-label fixed>税后金额</ion-label>
+              <ion-input [(ngModel)]="formData.tax_money2" type="number"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label fixed>已收订金</ion-label>
+                <ion-input [(ngModel)]="formData.order_money" type="number"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>其它费用</ion-label>
+                <ion-input [(ngModel)]="formData.other_money" type="number"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>比例%</ion-label>
+                <ion-input [(ngModel)]="formData.rate2" type="number"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                  <ion-label fixed>情况说明</ion-label>
+                  <ion-textarea [(ngModel)]="formData.note3" rows="6" placeholder="请说明"></ion-textarea>
+                </ion-item>
+
+          </ion-list>
+
+          <h2>奖金基本资料</h2>
+          <ion-list>
+              <ion-item>
+                  <ion-label fixed>奖金综合比例</ion-label>
+                  <ion-input [(ngModel)]="formData.jj_rate2" type="number"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label fixed>奖金比例调整</ion-label>
+                  <ion-input [(ngModel)]="formData.jj_rate_change" type="number"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label fixed>奖金总额</ion-label>
+                  <ion-input [(ngModel)]="formData.jj_total_money" type="number"></ion-input>
+                </ion-item>
+          </ion-list>
+
+          <h2>业绩分配</h2>
+          <ion-list>
+              <ion-item>
+                  <ion-label fixed>业绩调整</ion-label>
+                  <ion-input [(ngModel)]="formData.yj_change" type="number"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label fixed>业绩总额</ion-label>
+                  <ion-input [(ngModel)]="formData.yj_total" type="number"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label fixed>不计业绩总额</ion-label>
+                  <ion-input [(ngModel)]="formData.yj_total2" type="number"></ion-input>
+                </ion-item>
+          </ion-list>
+          <div class="overtime-items">
+              <div class="item-list" *ngIf="formData.audit_items.length > 0">
+                <ion-list>
+                  <button ion-item *ngFor="let item of formData.audit_items;let i = index;" (click)="openAuditItem(item);">
+                    业绩分配明细{{i+1}}
+                    <button ion-button small clear item-right color="danger" (click)="removeAuditItem($event,item);">
+                      <ion-icon name="ios-trash-outline"></ion-icon>
+                    </button>
+                  </button>
+                </ion-list>
+              </div>
+              <div class="add-button">
+                <button ion-button round outline (click)="addAuditItem();">添加业绩分配明细</button>
+              </div>
+            </div>
+
+        <h2>定单修改记录</h2>
+        <div class="overtime-items">
+          <div class="item-list" *ngIf="formData.order_change_items.length > 0">
+            <ion-list>
+              <ion-item *ngFor="let item of formData.order_change_items">
+                
+              </ion-item>
+            </ion-list>
+          </div>
+        </div>
+
+        <h2>商品明细修改记录</h2>
+        <div class="overtime-items">
+          <div class="item-list" *ngIf="formData.product_change_items.length > 0">
+            <ion-list>
+              <ion-item *ngFor="let item of formData.product_change_items">
+                
+              </ion-item>
+            </ion-list>
+          </div>
+        </div>
+
+        <h2>付款方修改记录</h2>
+        <div class="overtime-items">
+          <div class="item-list" *ngIf="formData.pay_change_items.length > 0">
+            <ion-list>
+              <ion-item *ngFor="let item of formData.pay_change_items">
+                
+              </ion-item>
+            </ion-list>
+          </div>
+        </div>
+
+
+      </div>
+
+</ion-content>
+
+<ion-footer>
+    <div padding>
+      <button ion-button block color="main-theme">保存</button>
+    </div>
+  </ion-footer>

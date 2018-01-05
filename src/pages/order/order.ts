@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, ActionSheetController } from 'ionic-angular';
 
 /**
  * Generated class for the OrderPage page.
@@ -17,6 +17,7 @@ export class OrderPage {
 
   constructor(public navCtrl: NavController, 
     private actionSheetCtrl: ActionSheetController,
+    private app: App,
     public navParams: NavParams) {
   }
 
@@ -62,7 +63,43 @@ export class OrderPage {
     }).present();
   }
 
-  newOrder() {
-
+  newItem() {
+    this.app.getRootNavs()[0].push('OrderFormPage');
   }
+
+  dataList: any = [
+    {
+      ID: 'DD20170127',
+      type: '新增',
+      man_name: '赵亚斌',
+      dept: '贵阳管理',
+      time: '2017-06-03',
+      money: '53800',
+      discount: '0.3283',
+      state: 'approving',
+      state_desc: '审核中',
+    },
+    {
+      ID: 'DD20170127',
+      type: '提升档次',
+      man_name: '赵亚斌',
+      dept: '贵阳管理',
+      time: '2017-06-03',
+      money: '53800',
+      discount: '1',
+      state: '',
+      state_desc: '未发送',
+    },
+    {
+      ID: 'DD20170127',
+      type: '配件兑换+提升档次',
+      man_name: '赵亚斌',
+      dept: '贵阳管理',
+      time: '2017-06-03',
+      money: '53800',
+      discount: '0.3283',
+      state: 'approved',
+      state_desc: '已审核',
+    },
+  ];
 }

@@ -1,0 +1,73 @@
+<!--
+  Generated template for the OrderAuditItemFormPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar>
+      <ion-buttons start>
+          <button ion-button icon-only (click)="close();">
+            <ion-icon name="ios-close-outline"></ion-icon>
+          </button>
+        </ion-buttons>
+    <ion-title>业绩分配明细</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div class="form-box">
+        <ion-list>
+          <ion-item>
+            <ion-label fixed>负责业务员</ion-label>
+            <ion-input [(ngModel)]="formData.saler"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label fixed>所属部门</ion-label>
+              <ion-select [(ngModel)]="formData.dept" placeholder="请选择">
+                <ion-option value="">部门1</ion-option>
+              </ion-select>
+            </ion-item>
+              <ion-item>
+                  <ion-label fixed>金额</ion-label>
+                  <ion-input [(ngModel)]="formData.money" type="number" placeholder="输入"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label fixed>比例</ion-label>
+                    <ion-input [(ngModel)]="formData.rate" type="number" placeholder="输入"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                      <ion-label fixed>已发业绩</ion-label>
+                      <ion-input [(ngModel)]="formData.sent_yj" type="number" placeholder="输入"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label fixed>奖金分配</ion-label>
+                        <ion-input [(ngModel)]="formData.jjfp" type="number" placeholder="输入"></ion-input>
+                      </ion-item>
+                      <ion-item>
+                          <ion-label fixed>已算奖金</ion-label>
+                          <ion-input [(ngModel)]="formData.calc_jj" type="number" placeholder="输入"></ion-input>
+                        </ion-item>
+              <ion-item>
+                <ion-label fixed>是否计算业绩</ion-label>
+                <ion-toggle [(ngModel)]="formData.is_calc_yj"></ion-toggle>
+              </ion-item>
+            <ion-item>
+              <ion-label fixed>备注</ion-label>
+              <ion-textarea rows="6" [(ngModel)]="formData.note" placeholder="请填写"></ion-textarea>
+            </ion-item>
+      
+          </ion-list>
+        </div>
+</ion-content>
+
+<ion-footer>
+    <div padding>
+    <button ion-button color="main-theme" block (click)="save();">
+      保存
+    </button>
+  </div>
+</ion-footer>

@@ -17,72 +17,32 @@
 
 <ion-content>
   <ion-list>
-    <button ion-item detail-none (click)="openItem();">
-      <p class="order-no">DD20170127 (新增)</p>
+    <button ion-item detail-none *ngFor="let item of dataList" (click)="openItem(item);">
+      <p class="order-no">{{item.ID}} ({{item.type}})</p>
       <ion-row class="info-1">
         <ion-col col-4 class="left">
-          <div class="man">赵亚斌</div>
-          <div class="name">贵阳管理</div>
-          <p>2017-06-03</p>
+          <div class="man">{{item.man_name}}</div>
+          <div class="name">{{item.dept}}</div>
+          <p>{{item.time}}</p>
         </ion-col>
         <ion-col col-4 class="right">
-          <div class="money">538100</div>
+          <div class="money">{{item.money}}</div>
           <div class="name">定单协议总价</div>
         </ion-col>
         <ion-col col-4 class="right">
-          <div class="discount">0.3283</div>
+          <div class="discount">{{item.discount}}</div>
           <div class="name">折扣</div>
-          <span class="state approving">审核中</span>
+          <span class="state {{item.state}}">{{item.state_desc}}</span>
         </ion-col>
       </ion-row>
     </button>
-    <button ion-item detail-none (click)="openItem();">
-        <p class="order-no">DD20170127 (提升档次)</p>
-        <ion-row class="info-1">
-          <ion-col col-4 class="left">
-            <div class="man">赵亚斌</div>
-            <div class="name">贵阳管理</div>
-            <p>2017-06-03</p>
-          </ion-col>
-          <ion-col col-4 class="right">
-            <div class="money">538100</div>
-            <div class="name">定单协议总价</div>
-          </ion-col>
-          <ion-col col-4 class="right">
-            <div class="discount">1</div>
-            <div class="name">折扣</div>
-            <span class="state">未发送</span>
-          </ion-col>
-        </ion-row>
-        
-      </button>
-      <button ion-item detail-none (click)="openItem();">
-          <p class="order-no">DD20170127 (配件兑换+提升档次)</p>
-          <ion-row class="info-1">
-            <ion-col col-4 class="left">
-              <div class="man">赵亚斌</div>
-              <div class="name">贵阳管理</div>
-              <p>2017-06-03</p>
-            </ion-col>
-            <ion-col col-4 class="right">
-              <div class="money">538100</div>
-              <div class="name">定单协议总价</div>
-            </ion-col>
-            <ion-col col-4 class="right">
-              <div class="discount">0.3283</div>
-              <div class="name">折扣</div>
-              <span class="state approved">已审核</span>
-            </ion-col>
-          </ion-row>
-          
-        </button>
   </ion-list>
   
 </ion-content>
 
 <ion-footer>
   <div padding>
-  <button ion-button color="main-theme" block (click)="newOrder();">
+  <button ion-button color="main-theme" block (click)="newItem();">
     新增定单
   </button>
 </div>
