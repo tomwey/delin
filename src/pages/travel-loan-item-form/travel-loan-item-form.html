@@ -1,0 +1,62 @@
+<!--
+  Generated template for the TravelLoanItemFormPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar>
+      <ion-buttons start>
+          <button ion-button icon-only (click)="close();">
+            <ion-icon name="ios-close-outline"></ion-icon>
+          </button>
+        </ion-buttons>
+    <ion-title>借款明细表</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="form-box">
+    <ion-list>
+      <ion-item>
+        <ion-label fixed>借款单编号</ion-label>
+        <ion-input [(ngModel)]="formData.ID" disabled></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>费用科目</ion-label>
+        <ion-select [(ngModel)]="formData.fee_km">
+          <ion-option value="汽车费用">汽车费用</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>费用分类</ion-label>
+        <ion-select [(ngModel)]="formData.fee_type">
+          <ion-option value="0">办公类</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>借款金额</ion-label>
+        <ion-input [(ngModel)]="formData.money" type="number" placeholder="输入金额"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>未核销金额</ion-label>
+        <ion-input [(ngModel)]="formData.money2" type="number" placeholder="输入金额"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>借款日期</ion-label>
+        <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="formData.date"></ion-datetime>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+
+<ion-footer>
+    <div padding>
+    <button ion-button color="main-theme" block (click)="save();">
+      保存
+    </button>
+  </div>
+</ion-footer>

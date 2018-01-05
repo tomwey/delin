@@ -16,7 +16,7 @@
 
 <ion-content>
   <ion-list>
-    <button ion-item detail-none *ngFor="let item of dataList" class="custom-item">
+    <button ion-item detail-none *ngFor="let item of dataList" class="custom-item" (click)="openItem(item);">
       <p class="_no">{{item.ID}}</p>
       <ion-row>
         <ion-col col-8>
@@ -39,7 +39,7 @@
 
 <ion-footer>
     <div padding>
-    <button ion-button color="main-theme" block>
+    <button ion-button color="main-theme" block (click)="newItem();">
       新增差旅报销单
     </button>
   </div>

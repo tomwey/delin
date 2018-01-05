@@ -56,6 +56,10 @@
         }
     }
 
+    ion-input, ion-select, ion-datetime, ion-textarea {
+        font-size: 14px;
+    }
+
     .add-button {
         text-align: center;
         button {

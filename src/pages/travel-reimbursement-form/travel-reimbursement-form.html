@@ -1,0 +1,156 @@
+<!--
+  Generated template for the TravelReimbursementFormPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar>
+    <ion-title>填写信息</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <div class="form-box">
+        <h2>基本资料</h2>
+        <ion-list>
+          <ion-item>
+            <ion-label fixed><span class="required">*</span>单据编号</ion-label>
+            <ion-input [(ngModel)]="formData.ID" disabled></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label fixed><span class="required">*</span>报销人</ion-label>
+            <ion-input [(ngModel)]="formData.owner" disabled></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label fixed><span class="required">*</span>部门</ion-label>
+            <ion-input [(ngModel)]="formData.dept" disabled></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label fixed><span class="required">*</span>目的地</ion-label>
+            <ion-input [(ngModel)]="formData.dest"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label fixed><span class="required">*</span>事项</ion-label>
+            <ion-select [(ngModel)]="formData.event" placeholder="选择事项">
+              <ion-option value="0">内部培训学习</ion-option>
+              <ion-option value="1">工作日加班</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label fixed><span class="required">*</span>费用分类</ion-label>
+            <ion-select [(ngModel)]="formData.fee_type" placeholder="选择费用分类">
+              <ion-option value="0">内部培训学习</ion-option>
+              <ion-option value="1">工作日加班</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label fixed><span class="required">*</span>费用科目</ion-label>
+            <ion-select [(ngModel)]="formData.fee_km" placeholder="选择费用科目">
+              <ion-option value="0">内部培训学习</ion-option>
+              <ion-option value="1">工作日加班</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label fixed><span class="required">*</span>费用所属部门</ion-label>
+            <ion-select [(ngModel)]="formData.fee_dept" placeholder="选择费用所属部门">
+              <ion-option value="0">内部培训学习</ion-option>
+              <ion-option value="1">工作日加班</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label fixed>行程预报单</ion-label>
+            <ion-select [(ngModel)]="formData.xcybd" placeholder="选择预报单">
+              <ion-option value="0">内部培训学习</ion-option>
+              <ion-option value="1">工作日加班</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label fixed>事由</ion-label>
+            <ion-textarea [(ngModel)]="formData.reason" rows="6" placeholder="请填写事由"></ion-textarea>
+          </ion-item>
+        </ion-list>
+    
+        <h2>支出明细表</h2>
+        <div class="overtime-items">
+          <div class="item-list" *ngIf="formData.pay_items.length > 0">
+            <ion-list>
+              <button ion-item *ngFor="let item of formData.pay_items" (click)="openPayItem(item);">
+               {{item.event}}
+                <button ion-button small clear item-right color="danger" (click)="removePayItem($event,item);">
+                  <ion-icon name="ios-trash-outline"></ion-icon>
+                </button>
+              </button>
+            </ion-list>
+          </div>
+          <div class="add-button">
+            <button ion-button round outline (click)="addPayItem();">添加支出明细表</button>
+          </div>
+        </div>
+
+        <h2>借款明细表</h2>
+        <div class="overtime-items">
+          <div class="item-list" *ngIf="formData.loan_items.length > 0">
+            <ion-list>
+              <button ion-item *ngFor="let item of formData.loan_items" (click)="openLoanItem(item);">
+                {{item.fee_km}}
+                <button ion-button small clear item-right color="danger" (click)="removeLoanItem($event,item);">
+                  <ion-icon name="ios-trash-outline"></ion-icon>
+                </button>
+              </button>
+            </ion-list>
+          </div>
+          <div class="add-button">
+            <button ion-button round outline (click)="addLoanItem();">添加借款明细表</button>
+          </div>
+        </div>
+
+        <h2>汇总信息</h2>
+        <ion-list>
+          <ion-item>
+            <ion-label fixed>报销总金额</ion-label>
+            <ion-input [(ngModel)]="formData.total_money" type="number"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label fixed>大写</ion-label>
+            <ion-input [(ngModel)]="formData.total_money2" placeholder="输入大写"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label fixed>交通票据张数</ion-label>
+            <ion-input [(ngModel)]="formData.jtpj_count" type="number" placeholder="输入数量"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label fixed>住宿票据张数</ion-label>
+            <ion-input [(ngModel)]="formData.zspj_count" type="number" placeholder="输入数量"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label fixed>公交票据张数</ion-label>
+            <ion-input [(ngModel)]="formData.gjpj_count" type="number" placeholder="输入数量"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label fixed>其他票据张数</ion-label>
+            <ion-input [(ngModel)]="formData.qtpj_money" type="number" placeholder="输入数量"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label fixed>粘贴单页数</ion-label>
+            <ion-input [(ngModel)]="formData.paste_page" type="number" placeholder="输入页数"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label fixed>出纳支出金额</ion-label>
+            <ion-input [(ngModel)]="formData.pay_money" type="number" placeholder="输入金额"></ion-input>
+          </ion-item>
+
+        </ion-list>
+
+      </div>
+</ion-content>
+
+<ion-footer>
+    <div padding>
+    <button ion-button color="main-theme" block>
+      保存
+    </button>
+  </div>
+</ion-footer>
