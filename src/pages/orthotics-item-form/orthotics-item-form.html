@@ -1,0 +1,96 @@
+<!--
+  Generated template for the OrthoticsItemFormPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar>
+      <ion-buttons start>
+          <button ion-button icon-only (click)="close();">
+            <ion-icon name="ios-close-outline"></ion-icon>
+          </button>
+        </ion-buttons>
+    <ion-title>商品明细</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <div class="form-box">
+    <ion-list>
+      <button ion-item (click)="selectProduct();">
+        <ion-label fixed>商品名称</ion-label>
+        <!-- <ion-note item-content>{{formData.product_name}}</ion-note> -->
+        <ion-input [(ngModel)]="formData.product_name" placeholder="选择商品" disabled></ion-input>
+      </button>
+      <ion-item>
+        <ion-label fixed>单位</ion-label>
+        <ion-input [(ngModel)]="formData.unit" placeholder="输入"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>价格版本</ion-label>
+        <ion-input [(ngModel)]="formData.price_version" placeholder="输入"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>产品种类</ion-label>
+        <ion-select [(ngModel)]="formData.product_type" placeholder="请选择">
+          <ion-option value="">种类1</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>价格</ion-label>
+        <ion-input [(ngModel)]="formData.price" type="number" placeholder="输入"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>数量</ion-label>
+        <ion-input [(ngModel)]="formData.quantity" type="number" placeholder="输入"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>总计</ion-label>
+        <ion-note>{{formData.price * formData.quantity}}</ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>医院产品名称</ion-label>
+        <ion-input [(ngModel)]="formData.hospital_prod_name" placeholder="输入"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>医院产品代码</ion-label>
+        <ion-input [(ngModel)]="formData.hospital_prod_code" placeholder="输入"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>产品注册证代码(1类)</ion-label>
+        <ion-input [(ngModel)]="formData.product_reg_code1" placeholder="输入"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>产品注册证代码(2类)</ion-label>
+        <ion-input [(ngModel)]="formData.product_reg_code2" placeholder="输入"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>比例</ion-label>
+        <ion-input [(ngModel)]="formData.rate" type="number" placeholder="输入"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>产品奖金比例</ion-label>
+        <ion-input [(ngModel)]="formData.jj_rate" type="number" placeholder="输入"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>产品奖金</ion-label>
+        <ion-input [(ngModel)]="formData.product_jj" type="number" placeholder="输入"></ion-input>
+      </ion-item>
+
+    </ion-list>
+  </div>
+</ion-content>
+
+<ion-footer>
+    <div padding>
+    <button ion-button color="main-theme" block (click)="save();">
+      保存
+    </button>
+  </div>
+</ion-footer>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, ActionSheetController } from 'ionic-angular';
 
 /**
  * Generated class for the OrthoticsPage page.
@@ -17,6 +17,7 @@ export class OrthoticsPage {
 
   constructor(public navCtrl: NavController, 
     private actionSheetCtrl: ActionSheetController,
+    private app: App,
     public navParams: NavParams) {
   }
 
@@ -84,7 +85,7 @@ export class OrthoticsPage {
   }
 
   newItem() {
-
+    this.app.getRootNavs()[0].push('OrthoticsFormPage');
   }
 
   dataList: any = [
