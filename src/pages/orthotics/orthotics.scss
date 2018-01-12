@@ -38,10 +38,11 @@ page-orthotics {
 
     .state {
         display: inline-block;
-        padding: 2px 4px;
-        border: .55px solid #ccc;
+        padding: 2px 3px;
+        border: 1px solid #ccc;
         font-size: 10px;
-        border-radius: 4px;
+        text-align: center;
+        border-radius: 2px;
     }
 
     .approving {
