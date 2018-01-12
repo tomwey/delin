@@ -119,11 +119,11 @@ export class HomePage {
             name: '工作日志',
             page: 'WorkLogPage'//'CustomerPage',
           },
-          {
-            icon: 'icon_qc.png',
-            name: '签呈',
-            page: ''//'CustomerPage',
-          },
+          // {
+          //   icon: 'icon_qc.png',
+          //   name: '签呈',
+          //   page: ''//'CustomerPage',
+          // },
           {
             icon: 'icon_personal_contact.png',
             name: '个人通讯录',

@@ -1,6 +1,6 @@
 page-order {
     .order-no {
-        margin-bottom: 15px;
+        margin-bottom: 10px;
         font-size: 12px;
     }
     ion-row {
@@ -11,8 +11,6 @@ page-order {
             padding: 0 !important;
         }
 
-        
-
         color: #666;
 
         .man {
@@ -21,12 +19,12 @@ page-order {
         }
 
         .money {
-            font-size: 16px;
+            font-size: 20px;
             color: rgb(237,112,45);
         }
 
         .discount {
-            font-size: 16px;
+            font-size: 20px;
             color: color($colors, main-theme);
         }
 
