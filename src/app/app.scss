@@ -73,3 +73,13 @@ ion-footer {
         margin: 0!important;
     }
 }
+
+// 修改ion-list 第一个元素顶部线和最后一个元素底部线的颜色
+.list-ios, .list-md {
+    .item-block:first-child {
+        border-top: 1px solid #e6e6e6!important;
+    }
+    .item-block:last-child {
+        border-bottom: 1px solid #e6e6e6!important;
+    }
+}
