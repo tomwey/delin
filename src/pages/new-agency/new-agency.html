@@ -14,6 +14,7 @@
 
 
 <ion-content class="content">
+  <div class="form-box">
   <ion-list>
     <ion-item>
       <ion-label>委托人</ion-label>
@@ -34,7 +35,7 @@
     <ion-item>
       <ion-label>委托清单</ion-label>
       <ion-note item-right>
-        <img src="assets/imgs/icon_agency_1.png" style="max-width: 30px;">
+        <img src="assets/imgs/icon_agency_1.png" style="max-width: 30px;" tappable (tap)="openCatalog();">
       </ion-note>
     </ion-item>
     <ion-item *ngFor="let task of tasks" class="custom-item">
@@ -44,6 +45,7 @@
       </ion-note>
     </ion-item>
   </ion-list>
+</div>
 </ion-content>
 
 <ion-footer>

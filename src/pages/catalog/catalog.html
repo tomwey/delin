@@ -43,7 +43,7 @@
                 <ion-item *ngFor="let catalog of subcatalogs" (tap)="selectSubcatalog(catalog);" detail-none>
                   <h2>{{catalog.name}}</h2>
                   <p>{{catalog.intro}}</p>
-                  <ion-note *ngIf="!catalog.can_select || catalog.selected" item-right>
+                  <ion-note item-right>
                     <img src="{{catalog.selected ? 'assets/imgs/icon_selected.png' : 'assets/imgs/icon_disabled_select.png'}}" class="select-icon">
                   </ion-note>
                 </ion-item>
