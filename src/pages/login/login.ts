@@ -48,7 +48,7 @@ export class LoginPage {
         this.app.getRootNavs()[0].setRoot(HomePage);
       })
       .catch(error => {
-        // this.nativeService.showToast(error.message || error);
+        this.nativeService.showToast(error.message || error);
       });
   }
 

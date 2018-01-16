@@ -4,6 +4,9 @@ import { ApiService } from "../providers/api-service";
 
 @Injectable()
 export class UserService {
+
+    user: any = null;
+
     constructor(
         private storage: Storage,
         private api: ApiService,
@@ -23,5 +26,21 @@ export class UserService {
                     reject(error);
                 });
         });
+    }
+
+    currentUser(): Promise<any> {
+        if (this.user) {
+            return new Promise(resolve => {
+                resolve(this.user);
+            });
+        } else {
+            return new Promise(resolve => {
+                this.storage.get('logined.user')
+                    .then(data => {
+                        this.user = JSON.parse(data);
+                        resolve(this.user);
+                    });
+            });
+        }
     }
 }
