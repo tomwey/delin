@@ -51,6 +51,12 @@ $colors: (
 // 自定义导航条的背景颜色
 $toolbar-background: color($colors, main-theme);
 
+$loading-ios-max-width: 268px;
+$loading-ios-max-height: 80px;
+$loading-ios-background: rgba(0,0,0,0.8);
+$loading-ios-spinner-color: white;
+$loading-ios-text-color: white;
+
 
 // App Material Design Variables
 // --------------------------------------------------
