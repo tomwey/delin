@@ -18,7 +18,7 @@ export class UserService {
         return new Promise((resolve, reject) => {
             this.api.post('EmpLogin', { loginname: loginname, pwd: pwd }, '登录中...')
                 .then(data => {
-                    this.storage.set('logined.user', JSON.stringify(data));
+                    this.storage.set('logined.user', JSON.stringify(data.Model));
                     resolve(data);
                 })
                 .catch(error => {

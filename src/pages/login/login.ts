@@ -20,8 +20,8 @@ import { UserService } from '../../services/user-service';
 export class LoginPage {
 
   emp: any = {
-    loginname: '',
-    pwd: '',
+    loginname: 'huyue',
+    pwd: '123321',
   };
   constructor(
     public navCtrl: NavController,

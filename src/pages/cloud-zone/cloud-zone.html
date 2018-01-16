@@ -13,5 +13,14 @@
 </ion-header>
 
 <ion-content>
-  <img src="assets/imgs/img-yz-list.png" tappable (tap)="gotoDetail();" >
+  <!-- <img src="assets/imgs/img-yz-list.png" tappable (tap)="gotoDetail();" > -->
+  <ion-list>
+    <button class="custom-item" ion-item detail-none *ngFor="let item of dataList" (click)="gotoDetail(item);">
+      <h2>{{item.Topic}}</h2>
+      <p>{{item.Summary}}</p>
+      <ion-thumbnail item-right>
+        <img [src]="item.CoverImg">
+      </ion-thumbnail>
+    </button>
+  </ion-list>
 </ion-content>

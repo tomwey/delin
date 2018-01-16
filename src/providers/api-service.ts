@@ -99,11 +99,12 @@ export class ApiService {
           let body = resp.json();
           console.log(`result: ${JSON.stringify(body)}`);
           if (body.status == 101) {
-            if (body.total) {
-              resolve({ total: body.total, data: body.Model });
-            } else {
-              resolve(body.Model || {});
-            }
+            // if (body.total) {
+            //   resolve({ total: body.total, data: body.Model });
+            // } else {
+            //   resolve(body.Model || {});
+            // }
+            resolve(body);
           } else {
             reject(body.resultdes);
           }
@@ -111,7 +112,9 @@ export class ApiService {
         })
         .catch(error => {
           this.hideLoading();
-          reject(this.handleError(error));
+          let errorMsg = this.handleError(error);
+          this.nativeService.showToast(errorMsg);
+          reject(errorMsg);
         });
     });
   } // end post

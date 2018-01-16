@@ -18,6 +18,7 @@ import { ApiService } from '../providers/api-service';
 import { NativeService } from '../providers/NativeService';
 import { UserService } from '../services/user-service';
 import { GlobalData } from '../providers/GlobalData';
+import { NewsService } from '../services/news.service';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { GlobalData } from '../providers/GlobalData';
     ApiService,
     NativeService,
     UserService,
+    NewsService,
     GlobalData,
   ]
 })

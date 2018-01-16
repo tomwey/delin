@@ -7,12 +7,16 @@
 <ion-header no-border>
 
   <ion-navbar>
-    <ion-title></ion-title>
+    <ion-title>详情</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-    <img src="assets/imgs/img-yz-detail.png" >
+  <div class="page">
+      <h2>{{item.Topic}}</h2>
+      <div class="body" [innerHTML]="body"></div>
+  </div>
+  
 </ion-content>

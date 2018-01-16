@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ActionSheetController } from 'ionic-angular';
 // import { ActionSheetController } from 'ionic-angular/components/action-sheet/action-sheet-controller';
-
+import { DomSanitizer } from '@angular/platform-browser';
 /**
  * Generated class for the CloudZoneDetailPage page.
  *
@@ -16,9 +16,15 @@ import { IonicPage, NavController, NavParams,ActionSheetController } from 'ionic
 })
 export class CloudZoneDetailPage {
 
+  item: any = null;
+  body: any = null;
   constructor(public navCtrl: NavController, 
     private actionSheetCtrl: ActionSheetController,
+    private sanitizer: DomSanitizer,
     public navParams: NavParams) {
+      this.item = this.navParams.data;
+
+      this.body = this.sanitizer.bypassSecurityTrustHtml(this.item.ContentDetail);
   }
 
   ionViewDidLoad() {
