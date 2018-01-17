@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ModalController } from 'ionic-angular/components/modal/modal-controller';
 import { App } from 'ionic-angular/components/app/app';
+import { OAService } from '../../services/oa.service';
 
 // declare var flowchart;
 
@@ -18,15 +19,18 @@ import { App } from 'ionic-angular/components/app/app';
   templateUrl: 'flow-detail.html',
 })
 export class FlowDetailPage {
-
+  item: any = null;
   showCharts: boolean = false;
   @ViewChild('flowChart') flowChart;
   constructor(public navCtrl: NavController,
     private modalCtrl: ModalController, 
     private app: App,
+    private oa: OAService,
     public navParams: NavParams) {
       if (this.navParams.data)
         this.showCharts = this.navParams.data.showCharts;
+      
+      this.item = this.navParams.data.item;
   }
 
   ionViewDidLoad() {
@@ -45,7 +49,31 @@ export class FlowDetailPage {
       //                               'cond(no)->sub1(right)->op1');
     
       // diagram.drawSVG('flowChart');
+    } else {
+      this.loadData();
     }
+  }
+
+  loadData() {
+    this.oa.getOAFormInstanceDetail(this.item.Model.FormInstanceID, (data, error) => {
+      console.log(data);
+
+      if (data && data.FieldList) {
+        data.FieldList.forEach(element => {
+          this.fieldsList.push({ 
+            label: element.FieldValue.FieldName, 
+            value: element.FieldValue.ControlText });
+        });
+      } else {
+        this.fieldsList = [];
+      }
+
+      if (data && data.SignApproverList) {
+        this.flowOpinions = data.SignApproverList;
+      } else {
+        this.flowOpinions = [];
+      }
+    });
   }
 
   doAgree() {
@@ -54,52 +82,27 @@ export class FlowDetailPage {
     }).present();
   }
 
+  public formatSignState(opinion): string {
+    if (opinion.SignType == 0) {
+      return '待签核';
+    } else if (opinion.SignType == 1) {
+      return '签核通过';
+    } else if (opinion.SignType == 2) {
+      return '签核驳回';
+    } else if (opinion.SignType == 3) {
+      return '处理';
+    } else if (opinion.SignType == 4) {
+      return '知会';
+    } 
+
+    return null;
+  }
+
   openFlowChart() {
     this.app.getRootNavs()[0].push('FlowDetailPage', { showCharts: true });
   }
 
-  empInfos: any = [
-    { 
-      label: '申请人:',
-      value: '王文静'
-    },
-    { 
-      label: '职务:',
-      value: '总务'
-    },
-    { 
-      label: '职务级别:',
-      value: '内务人员'
-    },
-    { 
-      label: '所在部门:',
-      value: ' 成都管理'
-    },
-    { 
-      label: '职员类别:',
-      value: '正式编制内'
-    },
-    { 
-      label: '入职时间:',
-      value: '2010-10-20'
-    },
-    { 
-      label: '转正时间:',
-      value: '2010-12-25'
-    },
-    { 
-      label: '申请时间:',
-      value: '2010-12-15 09:00'
-    },
-    { 
-      label: '申请说明:',
-      value: '由于个人及家庭原因，不得不离开工作了7年的工作岗位，望领导批准'
-    },
-    { 
-      label: '备注:',
-      value: ''
-    }
-  ];
+  fieldsList: any = [];
 
   flowOpinions: any = [
     {

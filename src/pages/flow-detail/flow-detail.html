@@ -19,14 +19,16 @@
 
 <ion-content class="content">
   <div class="flow-head">
-    <h2 class="name">人事离职申请 - V2 (4 items)</h2>
-    <p class="flow-no">编号:HRSZLQ201700013</p>
+    <h2 class="name">{{item.Model?.FormName}}</h2>
+    <p class="flow-no">编号:{{item.Model?.FormInstanceID}}</p>
   </div>
   <h2>{{showCharts ? '流程信息' : '详细信息'}}</h2>
   <div class="flow-body" *ngIf="!showCharts">
-    
-    <table>
-      <tr *ngFor="let info of empInfos">
+    <div class="empty-error-box" *ngIf="fieldsList.length == 0">
+      <p>暂无流程详细信息</p>
+    </div>
+    <table *ngIf="fieldsList.length > 0">
+      <tr *ngFor="let info of fieldsList">
         <td class="label">{{info.label}}</td>
         <td class="value">{{info.value}}</td>
       </tr>
@@ -37,12 +39,15 @@
   </div>
   <h2 *ngIf="!showCharts">审批信息</h2>
   <div class="flow-opinions" *ngIf="!showCharts">
+    <div class="empty-error-box" *ngIf="flowOpinions.length == 0">
+      <p>暂无审批信息</p>
+    </div>
     <div class="flow-opinion" *ngFor="let opinion of flowOpinions">
-      <p class="agree">{{opinion.agree === 1 ? '同意' : '不同意'}}</p>
-      <p class="opinion" *ngIf="!!opinion.opinion">{{opinion.opinion}}</p>
+      <p class="agree sign-{{opinion.SignType}}">{{formatSignState(opinion)}}</p>
+      <p class="opinion" *ngIf="!!opinion.SignAdvice">{{opinion.SignAdvice}}</p>
       <p class="user">
-        <span class="name">{{opinion.user}}({{opinion.job}})</span>
-        <span class="time">{{opinion.time}}</span>
+        <span class="name">{{opinion.SignBy}}({{opinion.PositionName}})</span>
+        <span class="time">{{opinion.SignTime}}</span>
       </p>
     </div>
   </div>

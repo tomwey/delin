@@ -15,7 +15,7 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    this.oa.getOAFormInstanceList(1, (data, error) => {
+    this.oa.getOAFormInstanceDetail('20171221234214000001', (data, error) => {
       console.log(data);
     });
   }

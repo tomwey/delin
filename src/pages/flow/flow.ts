@@ -35,7 +35,8 @@ export class FlowPage {
   }
 
   gotoFlowDetail(item) {
-    this.app.getRootNavs()[0].push('FlowDetailPage', item);
+    // console.log(item);
+    this.app.getRootNavs()[0].push('FlowDetailPage', {item: item});
   }
 
   segmentChanged(ev) {

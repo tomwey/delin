@@ -79,6 +79,28 @@ page-flow-detail {
             position: relative;
             margin-bottom: 5px;
         }
+
+        .sign-0 {
+            // 待签核
+            color: rgb(100,100,100);
+        }
+        .sign-1 {
+            // 签核通过
+            color: rgb(87,187,64);
+        }
+        .sign-2 {
+            // 签核驳回
+            color: rgb(189,84,80);
+        }
+        .sign-3 {
+            // 处理
+            color: rgb(130,191,220);
+        }
+        .sign-4 {
+            // 知会
+            color: rgb(80,122,179);
+        }
+
         .agree:before {
             content: '';
             width: 30px;
