@@ -18,6 +18,8 @@ import { OAService } from '../../services/oa.service';
 export class FlowPage {
 
   flowType: string = '0';
+  emptyErrorMessage: string = '';
+
   needShowEmptyErrorBox: boolean = false;
 
   constructor(
@@ -55,6 +57,15 @@ export class FlowPage {
       }
 
       this.needShowEmptyErrorBox = this.dataList.length == 0;
+
+      console.log(error);
+      if (this.flowType == '0') {
+        this.emptyErrorMessage = '暂无待办事项';
+      } else if (this.flowType == '1') {
+        this.emptyErrorMessage = '暂无流程中单据';
+      } else if ( this.flowType == '3' ) {
+        this.emptyErrorMessage = '暂无被退回单据';
+      }
     });
   }
 

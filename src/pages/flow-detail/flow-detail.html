@@ -25,7 +25,7 @@
   <h2>{{showCharts ? '流程信息' : '详细信息'}}</h2>
   <div class="flow-body" *ngIf="!showCharts">
     <div class="empty-error-box" *ngIf="fieldsList.length == 0">
-      <p>暂无流程详细信息</p>
+      <p>暂无详细信息</p>
     </div>
     <table *ngIf="fieldsList.length > 0">
       <tr *ngFor="let info of fieldsList">
