@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { OAService } from '../../services/oa.service';
 
 /**
  * Generated class for the FlowFormPage page.
@@ -15,19 +16,31 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FlowFormPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  item: any = null;
+  constructor(public navCtrl: NavController, 
+    private oa: OAService,
+    public navParams: NavParams) {
+    this.item = this.navParams.data;
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FlowFormPage');
+    // console.log('ionViewDidLoad FlowFormPage');
+
+    this.oa.getFormFields(this.item.FormID, (data, error) => {
+      if (data) {
+        this.dataList = data.DataList;
+        console.log(this.dataList);
+      } else {
+        this.dataList = [];
+      }
+    });
   }
 
-  formControls: any = [
-    {
-      label: '申请人',
-      type: 'custom',
-      
-    }
-  ];
+  gotoSelect(item) {
+    console.log(item);
+    // 跳到选择界面选择
+  }
+
+  dataList: any = [];
 
 }

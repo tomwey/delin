@@ -7,57 +7,47 @@
 <ion-header no-border>
 
   <ion-navbar>
-    <ion-title>请假单</ion-title>
+    <ion-title>{{item?.FormName}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content class="content">
   <div class="form-box">
-  <ion-list>
-    <ion-item>
-      <ion-label>请假人</ion-label>
-      <ion-select placeholder='请选择请假人'></ion-select>
-    </ion-item>
-  </ion-list>
-  <ion-list>
-    <ion-item>
-      <ion-label>请假类型</ion-label>
-      <ion-select placeholder='请选择类型'>
-        <ion-option>事假</ion-option>
-        <ion-option>病假</ion-option>
-        <ion-option>年假</ion-option>
-        <ion-option>产假</ion-option>
-        <ion-option>婚假</ion-option>
-        <ion-option>陪产假</ion-option>
-      </ion-select>
-    </ion-item>
-  </ion-list>
-  <ion-list>
-    <ion-item>
-      <ion-label>开始时间</ion-label>
-      <ion-datetime displayFormat="YYYY-MM-DD hh:mm:ss" placeholder='设置开始时间'></ion-datetime>
-    </ion-item>
-    <ion-item>
-      <ion-label>结束时间</ion-label>
-      <ion-datetime displayFormat="YYYY-MM-DD hh:mm:ss" placeholder='设置结束时间'></ion-datetime>
-    </ion-item>
-  </ion-list>
+    <ion-list>
+      <ion-item *ngFor="let item of dataList">
+        <ion-label text-wrap fixed>{{item.FieldModel.FieldName}}</ion-label>
 
-  <ion-list>
-    <ion-item>
-      <ion-label>请假天数</ion-label>
-      <ion-input type="number" placeholder="请输入请假天数（必填）" pattern="[0-9]*"></ion-input>
-    </ion-item>
-  </ion-list>
+        <!-- 文本输入控件 -->
+        <ion-input *ngIf="item.FieldModel.ControlType == 2 || item.FieldModel.ControlType == 8"
+          type="{{item.FieldModel.ControlType == 8 ? 'number' : 'text'}}"
+          placeholder="输入{{item.FieldModel.FieldName}}"></ion-input>
 
-  <ion-list>
-    <ion-item>
-      <ion-label>请假事由</ion-label>
-      <ion-textarea placeholder="请输入请假事由（必填）" rows="6"></ion-textarea>
-    </ion-item>
-  </ion-list>
-</div>
+        <!-- 多文本输入框 -->
+        <ion-textarea *ngIf="item.FieldModel.ControlType == 3" rows="6" 
+          placeholder="输入{{item.FieldModel.FieldName}}"></ion-textarea>
+        
+        <!-- 选择控件 -->
+        <div class="single-select" tappable (tap)="gotoSelect(item);" 
+          item-content 
+          *ngIf="item.FieldModel.ControlType == 4 || 
+            item.FieldModel.ControlType == 5 || 
+            item.FieldModel.ControlType == 6">
+          请选择（{{item.FieldModel.ControlType == 6 ? '多选' : '单选'}}）
+          <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+        </div>
+        
+        <!-- 日期控件 -->
+        <ion-datetime *ngIf="item.FieldModel.ControlType == 7" 
+          cancelText="取消" 
+          doneText="确定" 
+          displayFormat="YYYY-MM-DD" 
+          placeholder="设置{{item.FieldModel.FieldName}}"></ion-datetime>
+
+      </ion-item>
+
+    </ion-list>
+  </div>
 
 </ion-content>
 

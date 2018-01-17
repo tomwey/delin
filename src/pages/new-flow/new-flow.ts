@@ -47,6 +47,8 @@ export class NewFlowPage {
     this.oa.getForms(catalogID, (data, error) => {
       if (data && data.DataList) {
         this.subcatalogs = data.DataList;
+      } else {
+        this.subcatalogs = [];
       }
     });
   }
@@ -56,8 +58,8 @@ export class NewFlowPage {
     this.loadSubCatalogs(cata.FunctionID);
   }
 
-  gotoNewFlow() {
-    this.app.getRootNavs()[0].push('FlowFormPage');
+  gotoNewFlow(item) {
+    this.app.getRootNavs()[0].push('FlowFormPage', item);
   }
 
   currentCatalog: string = '';

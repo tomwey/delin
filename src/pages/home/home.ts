@@ -16,7 +16,9 @@ export class HomePage {
 
   ionViewDidLoad() {
     // this.testApi.test('GetOAFunctionListResult', {});
-    this.testApi.test('GetOAElecFormListResult', {functionid: 'F02'});
+    // this.testApi.test('GetOAElecFormListResult', {functionid: 'F02'});
+    // "F02001"
+    this.testApi.test('GetOAFormFieldsListResult', { formid: 'F02001' });
   }
 
   openBanner() {
