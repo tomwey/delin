@@ -68,7 +68,7 @@ export class ApiService {
   } // end get 
 
   // 处理POST请求
-  post(uri, params, loadingText: string = ''): Promise<any> {
+  post(uri, params, loadingText: string = '加载中...'): Promise<any> {
     let url = API_HOST + '/' + uri;
 
     // 参数签名
@@ -97,7 +97,7 @@ export class ApiService {
           // resolve(this.handleSuccess(resp));
 
           let body = resp.json();
-          console.log(`result: ${JSON.stringify(body)}`);
+          // console.log(`result: ${JSON.stringify(body)}`);
           if (body.status == 101) {
             // if (body.total) {
             //   resolve({ total: body.total, data: body.Model });

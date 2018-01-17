@@ -19,6 +19,8 @@ import { NativeService } from '../providers/NativeService';
 import { UserService } from '../services/user-service';
 import { GlobalData } from '../providers/GlobalData';
 import { NewsService } from '../services/news.service';
+import { TestService } from '../services/test.service';
+import { OAService } from '../services/oa.service';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { NewsService } from '../services/news.service';
     NativeService,
     UserService,
     NewsService,
+    TestService,
+    OAService,
     GlobalData,
   ]
 })

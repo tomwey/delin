@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { App } from 'ionic-angular/components/app/app';
+import { OAService } from '../../services/oa.service';
 
 /**
  * Generated class for the NewFlowPage page.
@@ -18,71 +19,50 @@ export class NewFlowPage {
 
   constructor(public navCtrl: NavController, 
     private app: App,
+    private oa: OAService,
       public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NewFlowPage');
+    // console.log('ionViewDidLoad NewFlowPage');
+    this.loadData();
+  }
+
+  loadData() {
+    this.oa.getCatalogs((data, error) => {
+      if (data && data.DataList) {
+        this.catalogs = data.DataList;
+
+        if (this.catalogs.length > 0) {
+          this.loadSubCatalogs(this.catalogs[0].FunctionID);
+          this.currentCatalog = this.catalogs[0].FunctionName;
+        }
+      } else {
+
+      }
+    });
+  }
+
+  loadSubCatalogs(catalogID) {
+    this.oa.getForms(catalogID, (data, error) => {
+      if (data && data.DataList) {
+        this.subcatalogs = data.DataList;
+      }
+    });
   }
 
   selectCatalog(cata) {
-    this.currentCatalog = cata.name;
-
-    // if (this.currentCatalog === '全部') {
-    //   this.subcatalogs = [
-
-    //   ];
-    // } else if (this.currentCatalog == '行政类') {
-
-    // } else if (this.currentCatalog == '财务类') {
-
-    // } else if (this.currentCatalog == '产品类') {
-
-    // }
-
+    this.currentCatalog = cata.FunctionName;
+    this.loadSubCatalogs(cata.FunctionID);
   }
 
   gotoNewFlow() {
     this.app.getRootNavs()[0].push('FlowFormPage');
   }
 
-  currentCatalog: string = '全部';
+  currentCatalog: string = '';
   
-  subcatalogs: any = [
-    {
-      name: '请假单',
-      intro: '常用请假单，适用于病假、事假',
-    },
-    {
-      name: '人力资源部干部任免流程',
-      intro: '适用于集团及分公司人力任免',
-    },
-    {
-      name: '项目资金支付流程',
-      intro: '常用请假单，适用于病假、事假',
-    },
-    {
-      name: '中长期审计计划管理',
-      intro: '常用请假单，适用于病假、事假',
-    },
-    {
-      name: '公文收发管理',
-      intro: '常用请假单，适用于病假、事假',
-    },
-  ];
-  catalogs: any = [
-    {
-      name: '全部',
-    },
-    {
-      name: '行政类',
-    },
-    {
-      name: '财务类',
-    },
-    {
-      name: '产品类',
-    },
-  ];
+  subcatalogs: any = [];
+  catalogs: any = [];
 
 }

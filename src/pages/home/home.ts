@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { App } from 'ionic-angular/components/app/app';
+import { NavController, App } from 'ionic-angular';
+import { TestService } from '../../services/test.service';
 
 @Component({
   selector: 'page-home',
@@ -8,7 +8,15 @@ import { App } from 'ionic-angular/components/app/app';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, private app: App) {
+  constructor(
+    public navCtrl: NavController,
+    private testApi: TestService,
+    private app: App) {
+  }
+
+  ionViewDidLoad() {
+    // this.testApi.test('GetOAFunctionListResult', {});
+    this.testApi.test('GetOAElecFormListResult', {functionid: 'F02'});
   }
 
   openBanner() {

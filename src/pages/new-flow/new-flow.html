@@ -21,18 +21,18 @@
       <ion-col col-3>
         <div class="catalogs">
           <p tappable class="catalog" 
-            [class.active]="currentCatalog === cata.name" 
+            [class.active]="currentCatalog === cata.FunctionName" 
             *ngFor="let cata of catalogs" (tap)="selectCatalog(cata)">
-            {{cata.name}}
+            {{cata.FunctionName}}
           </p>
         </div>
       </ion-col>
       <ion-col col-9>
         <div class="subcatalogs">
           <ion-list>
-            <button ion-item *ngFor="let catalog of subcatalogs" (click)="gotoNewFlow();">
-              <h2>{{catalog.name}}</h2>
-              <p>{{catalog.intro}}</p>
+            <button ion-item *ngFor="let catalog of subcatalogs" (click)="gotoNewFlow(catalog);">
+              <h2>{{catalog.FormName}}</h2>
+              <p>{{catalog.Description}}</p>
             </button>
           </ion-list>
         </div>
