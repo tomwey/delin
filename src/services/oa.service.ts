@@ -69,4 +69,48 @@ export class OAService {
                 });
         });
     }
+
+    /**
+     * 获取我的事项
+     * @param status 0 表示待办; 1 表示流程中; 3 表示被退回
+     * @param callback 回调函数
+     */
+    getOAFormInstanceList(status, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetOAFormInstanceListByEmpCode', 
+                { empcode: user.EmpCode, status: status })
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    /**
+     * 获取流程详情
+     * @param instID 流程ID
+     * @param callback 回调函数
+     */
+    getOAFormInstanceDetail(instID, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetFormInstanceDetail', 
+                { empcode: user.EmpCode, forminstanceid: instID })
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
 }

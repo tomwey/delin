@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { App } from 'ionic-angular/components/app/app';
+import { OAService } from '../../services/oa.service';
 
 /**
  * Generated class for the FlowPage page.
@@ -16,20 +17,46 @@ import { App } from 'ionic-angular/components/app/app';
 })
 export class FlowPage {
 
-  flowType: string = 'todo';
+  flowType: string = '0';
+  needShowEmptyErrorBox: boolean = false;
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
+    private oa: OAService,
     private app: App
   ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FlowPage');
+
+    this.loadData();
   }
 
-  gotoFlowDetail() {
-    this.app.getRootNavs()[0].push('FlowDetailPage');
+  gotoFlowDetail(item) {
+    this.app.getRootNavs()[0].push('FlowDetailPage', item);
   }
+
+  segmentChanged(ev) {
+    // console.log(ev);
+    this.loadData();
+  }
+
+  loadData() {
+    this.needShowEmptyErrorBox = false;
+
+    this.oa.getOAFormInstanceList(this.flowType, (data, error) => {
+      if (data) {
+        this.dataList = data.DataList;
+      } else {
+        this.dataList = [];
+      }
+
+      this.needShowEmptyErrorBox = this.dataList.length == 0;
+    });
+  }
+
+  dataList: any = [];
 
 }

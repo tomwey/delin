@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, App } from 'ionic-angular';
-import { TestService } from '../../services/test.service';
+import { OAService } from '../../services/oa.service';
 
 @Component({
   selector: 'page-home',
@@ -10,15 +10,14 @@ export class HomePage {
 
   constructor(
     public navCtrl: NavController,
-    private testApi: TestService,
+    private oa: OAService,
     private app: App) {
   }
 
   ionViewDidLoad() {
-    // this.testApi.test('GetOAFunctionListResult', {});
-    // this.testApi.test('GetOAElecFormListResult', {functionid: 'F02'});
-    // "F02001"
-    this.testApi.test('GetOAFormFieldsListResult', { formid: 'F02001' });
+    this.oa.getOAFormInstanceList(1, (data, error) => {
+      console.log(data);
+    });
   }
 
   openBanner() {

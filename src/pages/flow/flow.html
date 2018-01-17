@@ -10,14 +10,14 @@
     <ion-title>我的事项</ion-title>
   </ion-navbar>
   <div class="segment-box">
-    <ion-segment [(ngModel)]="flowType" color="main-theme">
-      <ion-segment-button value="todo">
+    <ion-segment [(ngModel)]="flowType" color="main-theme" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="0">
         待办事项
       </ion-segment-button>
-      <ion-segment-button value="back">
+      <ion-segment-button value="3">
         被撤回单据
       </ion-segment-button>
-      <ion-segment-button value="progress">
+      <ion-segment-button value="1">
         流程中单据
       </ion-segment-button>
     </ion-segment>
@@ -25,22 +25,25 @@
 </ion-header>
  
 <ion-content>
-  <ion-list>
-    <button ion-item detail-none (click)="gotoFlowDetail();" class="item-custom">
-      <h2>人事合同流程管理 - V1 (4 items)</h2>
-      <p>3人已处理回复</p>
+  <div class="empty-error-box" *ngIf="needShowEmptyErrorBox">
+    <p>暂无数据</p>
+  </div>
+  <ion-list *ngIf="dataList.length > 0">
+    <button ion-item detail-none *ngFor="let item of dataList" (click)="gotoFlowDetail(item);" class="item-custom">
+      <h2>{{item.Model?.FormName}}</h2>
+      <p>{{item.ExecuteStep}}人已处理回复</p>
       <p class="user-time">
-        <img src="assets/imgs/u1.png" class="user-avatar">
-        <span class="other-info">谢莹瑜&emsp;2017-11-01 09:15:24</span>
+        <img [src]="item.ApplyMan?.EmpPicture" class="user-avatar">
+        <span class="other-info">{{item.ApplyMan?.EmpName}}&emsp;{{item.ApplyTime}}</span>
       </p>
     </button>
-    <button ion-item detail-none (click)="gotoFlowDetail();" class="item-custom">
+    <!-- <button ion-item detail-none (click)="gotoFlowDetail();" class="item-custom">
       <h2>客户转移共享 - V2 (12 items)</h2>
       <p>3人已处理回复</p>
       <p class="user-time">
         <img src="assets/imgs/u2.png" class="user-avatar">
         <span class="other-info">张飞&emsp;2017-10-30 09:15:24</span>
       </p>
-    </button>
+    </button> -->
   </ion-list>
 </ion-content>
