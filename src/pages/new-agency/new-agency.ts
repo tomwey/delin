@@ -14,7 +14,7 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
   templateUrl: 'new-agency.html',
 })
 export class NewAgencyPage {
-  tasks: any = ['车辆采购','同行转账','集团办公室车辆采购招标'];
+  tasks: any = [];
   agency: any = { user: null, startDate: new Date(), endDate: new Date(), events: [] }
   constructor(public navCtrl: NavController, 
     private modalCtrl: ModalController,
@@ -32,13 +32,18 @@ export class NewAgencyPage {
     }
   }
 
+  selectMan() {
+    
+  }
+
   openCatalog() {
-    let modal = this.modalCtrl.create('CatalogPage');
+    let modal = this.modalCtrl.create('CatalogPage', this.tasks);
     modal.onDidDismiss((data) => {
       if (data && data.length > 0) {
-        data.forEach(element => {
-          this.tasks.push(element.name);
-        });
+        // data.forEach(element => {
+        //   this.tasks.push(element.name);
+        // });
+        this.tasks = data;
       }
     });
     modal.present();

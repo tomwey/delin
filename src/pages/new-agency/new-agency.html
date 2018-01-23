@@ -17,29 +17,32 @@
   <div class="form-box">
   <ion-list>
     <ion-item>
-      <ion-label>委托人</ion-label>
-      <ion-select placeholder='请选择委托人' [(ngModel)]="agency.user"></ion-select>
+      <ion-label fixed>被委托人</ion-label>
+      <div class="custom-select-control" tappable (tap)="selectMan();" item-content>
+        {{agency.user?.EmpName || '请选择'}}
+        <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+      </div>
     </ion-item>
   </ion-list>
   <ion-list>
     <ion-item>
-      <ion-label>开始时间</ion-label>
-      <ion-datetime displayFormat="YYYY-MM-DD" placeholder='设置开始时间' [(ngModel)]="agency.startDate"></ion-datetime>
+      <ion-label fixed>开始时间</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" doneText="确定" cancelText="取消" placeholder='设置开始时间' [(ngModel)]="agency.startDate"></ion-datetime>
     </ion-item>
     <ion-item>
-      <ion-label>结束时间</ion-label>
-      <ion-datetime displayFormat="YYYY-MM-DD" placeholder='设置结束时间' [(ngModel)]="agency.endDate"></ion-datetime>
+      <ion-label fixed>结束时间</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" doneText="确定" cancelText="取消" placeholder='设置结束时间' [(ngModel)]="agency.endDate"></ion-datetime>
     </ion-item>
   </ion-list>
   <ion-list>
     <ion-item>
-      <ion-label>委托清单</ion-label>
+      <ion-label fixed>委托清单</ion-label>
       <ion-note item-right>
         <img src="assets/imgs/icon_agency_1.png" style="max-width: 30px;" tappable (tap)="openCatalog();">
       </ion-note>
     </ion-item>
     <ion-item *ngFor="let task of tasks" class="custom-item">
-      <h2>{{task}}</h2>
+      <h2>{{task.FormName}}</h2>
       <ion-note item-right tappable (tap)="deleteTask(task);">
         <ion-icon name="ios-close-outline"></ion-icon>
       </ion-note>

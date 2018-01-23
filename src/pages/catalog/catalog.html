@@ -31,9 +31,9 @@
           <ion-col col-3>
             <div class="catalogs">
               <p tappable class="catalog" 
-                [class.active]="currentCatalog === cata.name" 
+                [class.active]="currentCatalog === cata.FunctionName" 
                 *ngFor="let cata of catalogs" (tap)="selectCatalog(cata)">
-                {{cata.name}}
+                {{cata.FunctionName}}
               </p>
             </div>
           </ion-col>
@@ -41,8 +41,8 @@
             <div class="subcatalogs">
               <ion-list>
                 <ion-item *ngFor="let catalog of subcatalogs" (tap)="selectSubcatalog(catalog);" detail-none>
-                  <h2>{{catalog.name}}</h2>
-                  <p>{{catalog.intro}}</p>
+                  <h2>{{catalog.FormName}}</h2>
+                  <p>{{catalog.Description}}</p>
                   <ion-note item-right>
                     <img src="{{catalog.selected ? 'assets/imgs/icon_selected.png' : 'assets/imgs/icon_disabled_select.png'}}" class="select-icon">
                   </ion-note>
