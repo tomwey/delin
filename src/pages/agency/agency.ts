@@ -28,7 +28,7 @@ export class AgencyPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AgencyPage');
+    // console.log('ionViewDidLoad AgencyPage');
   }
 
   selectMenu(index) {
