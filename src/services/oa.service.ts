@@ -113,4 +113,75 @@ export class OAService {
                 });
         });
     }
+
+    /**
+     * 获取委托事项
+     * @param type 0 表示我委托的 1表示委托我的
+     * @param callback 请求回调
+     */
+    getDelegateEvents(type, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('QueryDelegate', { empcode: user.EmpCode, status: type })
+                .then(data => {
+                    console.log(data);
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    /**
+     * 添加日程
+     * @param params 日程数据
+     */
+    addSchedule(params, callback) {
+        this.users.currentUser().then(user => {
+            params.empcode = user.EmpCode;
+            params.time = params.time.replace('+08:00', '').replace('T', ' ');//gsub('+08:00', 'Z');
+            // console.log(params);
+            this.api.post('AddOASchedule', params, '提交中...')
+                .then(data => {
+                    console.log(data);
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    /**
+     * 获取某天的日程列表
+     * @param dateStr 日期，格式为：yyyy-MM-dd，例如：2018-01-01
+     * @param callback 请求回调
+     */
+    getScheduleList(dateStr, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetOAScheduleResult', { empcode: user.EmpCode, date: dateStr })
+                .then(data => {
+                    console.log(data);
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
 }

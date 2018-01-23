@@ -23,17 +23,21 @@
     [format]="'YYYY-MM-DD'">
   </ion-calendar>
 
-  <div class="events">
+  <div class="empty-error-box" *ngIf="needShowEmptyErrorBox">
+    <p>{{emptyErrorMessage}}</p>
+  </div>
+
+  <div class="events" *ngIf="events.length > 0">
     <h2 class="heading">日程安排</h2>
-    <ion-list>
+    <ion-list no-lines>
       <ion-item-sliding *ngFor="let event of events" class="custom-item">
         <ion-item >
-          <h2><ion-icon name="ios-time-outline"></ion-icon>&nbsp;{{event.time}}</h2>
-          <h2 text-wrap>{{event.title}}</h2>
-          <p text-wrap>{{event.body}}</p>
+          <h2><ion-icon name="ios-time-outline"></ion-icon>&nbsp;{{event.Time}}</h2>
+          <h2 text-wrap>{{event.ScheduleTopic}}</h2>
+          <p text-wrap>{{event.ScheduleContent}}</p>
         </ion-item>
         <ion-item-options side="right">
-            <button ion-button color="primary">
+            <button ion-button color="primary" (click)="doEdit(event);">
               <ion-icon name="ios-create-outline"></ion-icon>
               编辑
             </button>

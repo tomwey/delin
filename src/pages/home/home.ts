@@ -15,9 +15,10 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    this.oa.getOAFormInstanceDetail('20171221234214000001', (data, error) => {
-      console.log(data);
-    });
+    // this.oa.getOAFormInstanceDetail('20171221234214000001', (data, error) => {
+    //   console.log(data);
+    // });
+    this.oa.getDelegateEvents(0,(data, error) => {});
   }
 
   openBanner() {

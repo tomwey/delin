@@ -7,30 +7,35 @@
 <ion-header no-border>
 
   <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="close();">
+        <ion-icon name="ios-close-outline"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>新增日程</ion-title>
   </ion-navbar>
 
 </ion-header>
-
 
 <ion-content>
   <div class="form-box">
   <ion-list>
     <ion-item>
       <ion-label stacked>日程主题</ion-label>
-      <ion-input type="text" placeholder="输入日程主题（必填）"></ion-input>
+      <ion-input type="text" [(ngModel)]="formData.topic" placeholder="输入日程主题（必填）"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>时间</ion-label>
-      <ion-datetime displayFormat="YYYY年MM月DD日 HH:mm:ss" placeholder="请选择时间"></ion-datetime>
+      <ion-datetime displayFormat="YYYY年MM月DD日 HH:mm" doneText="确定" cancelText="取消" pickerFormat="YYYY-MM-DD HH mm ss" 
+      [(ngModel)]="formData.time" placeholder="请选择时间"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label stacked>日程备注</ion-label>
-      <ion-textarea placeholder="请输入详细日程备注（120字以内）" rows="6"></ion-textarea>
+      <ion-textarea placeholder="请输入详细日程备注（120字以内）" [(ngModel)]="formData.content" rows="6"></ion-textarea>
     </ion-item>
 
     <div padding>
-    <button ion-button block color="main-theme">
+    <button ion-button block color="main-theme" (click)="commit();">
         确定
       </button>
     </div>
