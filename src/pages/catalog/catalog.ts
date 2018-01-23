@@ -55,13 +55,6 @@ export class CatalogPage {
       }
 
       // 设置选中状态
-      // this.selectedData.forEach(item => {
-      //   this.subcatalogs.forEach(element => {
-      //     if (item.FormID == element.FormID) {
-      //       element.selected = true;
-      //     }
-      //   });
-      // });
       this.subcatalogs.map((listItem) => {
         this.selectedData.forEach(element => {
           if (listItem.FormID == element.FormID) {
@@ -70,8 +63,7 @@ export class CatalogPage {
         });
 
         return listItem;
-
-    });
+      });
 
 
     });
