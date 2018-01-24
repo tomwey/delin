@@ -37,7 +37,7 @@ export class AgencyPage {
   ionViewDidLoad() {
     // console.log('ionViewDidLoad AgencyPage');
     this.events.subscribe('agency:sent', () => {
-      this.selectedIndex = 1;
+      this.selectedIndex = 0;
       this.loadData();
     });
 
