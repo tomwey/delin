@@ -19,7 +19,7 @@
     <ion-item>
       <ion-label fixed>被委托人</ion-label>
       <div class="custom-select-control" tappable (tap)="selectMan();" item-content>
-        {{agency.user?.EmpName || '请选择'}}
+        {{agency.user?.EmpNames || '请选择'}}
         <ion-icon name="ios-arrow-forward-outline"></ion-icon>
       </div>
     </ion-item>
@@ -53,7 +53,7 @@
 
 <ion-footer>
   <!-- <div padding> -->
-    <button ion-button full color="main-theme">
+    <button ion-button full color="main-theme" (click)="commit();">
       确认委托
     </button>
   <!-- </div> -->

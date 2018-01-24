@@ -121,7 +121,38 @@ export class OAService {
      */
     getDelegateEvents(type, callback) {
         this.users.currentUser().then(user => {
+            console.log(user);
             this.api.post('QueryDelegate', { empcode: user.EmpCode, status: type })
+                .then(data => {
+                    console.log(data);
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    /**
+     * 添加委托
+     * @param params 委托数据
+     * @param callback 
+     */
+    addDelegate(params, callback) {
+        this.users.currentUser().then(user => {
+            // console.log(user);
+            this.api.post('AddDelegate', { 
+                delegateby: user.EmpCode, 
+                delegateto: params.EmpCode,
+                begintime: params.startDate,
+                endtime: params.endDate,
+                formlist: params.formlist,
+             }, '提交中...')
                 .then(data => {
                     console.log(data);
                     if (callback) {
@@ -170,6 +201,52 @@ export class OAService {
     getScheduleList(dateStr, callback) {
         this.users.currentUser().then(user => {
             this.api.post('GetOAScheduleResult', { empcode: user.EmpCode, date: dateStr })
+                .then(data => {
+                    console.log(data);
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    /**
+     * 获取某个部门下面的子部门或者人员
+     * @param dept 部门ID或者部门名称，如果为null则查询本人所在部门下的所有子部门或人员
+     * @param callback 请求回调
+     */
+    getDepartmentList(dept = null, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetDepartmentSubList', { empcode: user.EmpCode, depmsg: dept || user.DepartmentID })
+                .then(data => {
+                    console.log(data);
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    /**
+     * 查询某个员工的详细信息
+     * @param empID 员工ID
+     * @param callback 
+     */
+    getEmpDetail(empID, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetOAEmployeeResult', { empcode: user.EmpCode, queryempcode: empID })
                 .then(data => {
                     console.log(data);
                     if (callback) {

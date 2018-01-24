@@ -13,6 +13,11 @@
       </button>
     </ion-buttons>
     <ion-title>{{title}}</ion-title>
+    <ion-buttons end>
+        <button ion-button (click)="done();">
+          确定
+        </button>
+      </ion-buttons>
   </ion-navbar>
   <!-- <ion-toolbar color="white-color">
       <ion-searchbar placeholder="搜索"></ion-searchbar>
@@ -21,9 +26,20 @@
 </ion-header>
 
 <ion-content>
-    <ion-list>
-      <button ion-item detail-none *ngFor="let item of dataList" class="custom-item" (click)="selectMan(item);">
-        <h2>{{item.name}}</h2>
+    <ion-list *ngIf="deptList.length > 0">
+      <button ion-item *ngFor="let item of deptList" class="custom-item" (click)="clickDept(item);">
+        <h2>{{item.ObjName}}</h2>
       </button>  
     </ion-list>
+    <ion-list *ngIf="employeeList.length > 0">
+        <button ion-item detail-none *ngFor="let item of employeeList" class="custom-item" (click)="selectMan(item);">
+          <ion-avatar item-left>
+            <img [src]="item.ObjHeadImg">
+          </ion-avatar>
+          <h2>{{item.ObjName}}</h2>
+          <ion-note item-right *ngIf="item.selected">
+            <ion-icon name="ios-checkmark-outline"></ion-icon>
+          </ion-note>
+        </button>  
+      </ion-list>
 </ion-content>

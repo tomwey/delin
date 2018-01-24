@@ -19,6 +19,9 @@ export class HomePage {
     //   console.log(data);
     // });
     this.oa.getDelegateEvents(0,(data, error) => {});
+    // this.oa.getDepartmentList(null, (data, error) => {
+      
+    // });
   }
 
   openBanner() {

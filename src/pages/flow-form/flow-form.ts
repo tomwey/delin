@@ -29,11 +29,20 @@ export class FlowFormPage {
     this.oa.getFormFields(this.item.FormID, (data, error) => {
       if (data) {
         this.dataList = data.DataList;
+
+        this.dataList.sort((o1, o2) => {
+          return o1.FieldModel.OrderNo - o2.FieldModel.OrderNo;
+        });
+
         console.log(this.dataList);
       } else {
         this.dataList = [];
       }
     });
+  }
+
+  commit() {
+
   }
 
   gotoSelect(item) {
