@@ -446,4 +446,27 @@ export class OAService {
         });
     }
 
+    /**
+     * 删除日志
+     * @param logCode 日志code
+     * @param callback 
+     */
+    deleteWorkLog(logCode, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('DeleteDailyLog', { empcode: user.EmpCode, dailylogcode: logCode })
+                .then(data => {
+                    console.log(data);
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
 }

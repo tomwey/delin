@@ -173,7 +173,15 @@ export class WorkLogPage {
   }
 
   deleteLog(item) {
+    this.oa.deleteWorkLog(item.DailyLogCode, (data, error) => {
+      if (error) {
+        this.nativeService.showToast(error.message || error);
+      } else {
+        this.nativeService.showToast('日志删除成功');
 
+        this.loadData();
+      }
+    });
   }
 
   logStateDesc(state) {
