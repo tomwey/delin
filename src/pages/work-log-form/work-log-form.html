@@ -7,12 +7,17 @@
 <ion-header no-border>
 
   <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="close();">
+        <ion-icon name="ios-close-outline"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>{{title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-<ion-content>
+<ion-content style="background:rgb(247,247,247);">
   <div class="form-box">
   <ion-list>
     <ion-item>
@@ -20,21 +25,25 @@
       <ion-input [(ngModel)]="log.ID" disabled></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label fixed>创建日期</ion-label>
-      <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="log.create_time" disabled></ion-datetime>
+      <ion-label fixed>创建人</ion-label>
+      <ion-input [(ngModel)]="log.author" disabled></ion-input>
     </ion-item>
     <ion-item>
+      <ion-label fixed>创建日期</ion-label>
+      <!-- <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="log.create_time" disabled></ion-datetime> -->
+      <ion-input [(ngModel)]="log.create_time" disabled></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
       <ion-label fixed>日志日期</ion-label>
-      <ion-datetime [(ngModel)]="log.time" displayFormat="YYYY-MM-DD" placeholder="设置日期"></ion-datetime>
+      <ion-datetime [(ngModel)]="log.time" cancelText="取消" doneText="确定" displayFormat="YYYY-MM-DD" placeholder="设置日期"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label fixed>工作内容</ion-label>
       <ion-textarea [(ngModel)]="log.content" placeholder="输入工作内容（必填）" rows="6"></ion-textarea>
     </ion-item>
-    <ion-item>
-      <ion-label fixed>创建人</ion-label>
-      <ion-input [(ngModel)]="log.author" disabled></ion-input>
-    </ion-item>
+
   </ion-list>
 </div>
 </ion-content>

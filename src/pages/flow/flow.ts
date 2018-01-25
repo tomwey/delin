@@ -55,6 +55,8 @@ export class FlowPage {
       } else {
         this.dataList = [];
       }
+      
+      console.log(data);
 
       this.needShowEmptyErrorBox = this.dataList.length == 0;
 

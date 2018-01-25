@@ -36,13 +36,24 @@ page-work-log {
         border-radius: 2px;
     }
 
-    .approving {
+    .state-1 {
+        color: #ccc;
+        border-color: #ccc;
+    }
+
+    .state-2 {
         color: color($colors, main-theme);
         border-color: color($colors, main-theme);
     }
 
-    .approved {
+    .state-3 {
         color: rgb(79,173,131);
         border-color: rgb(79,173,131);
     }
+
+    .state-4 {
+        color: color($colors, danger);
+        border-color: color($colors, danger);
+    }
+    
 }

@@ -115,6 +115,52 @@ export class OAService {
     }
 
     /**
+     * 流程签核
+     * @param params 流程签核数据 { forminstanceid: '', signtype: '', advice: '' }
+     * @param callback 请求回调
+     */
+    signFormInstance(params, callback) {
+        this.users.currentUser().then(user => {
+            params.empcode = user.EmpCode;
+            this.api.post('SignFormInstance', params)
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    /**
+     * 添加流程
+     * @param params 流程签核数据 { formid: '', formfieldsvalue: 'json数组再encode' }
+     * @param callback 请求回调
+     */
+    addFormInstance(params, callback) {
+        this.users.currentUser().then(user => {
+            params.applyby = user.EmpCode;
+            params.orderby = user.EmpCode;
+            
+            this.api.post('AddForminstance', params)
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    /**
      * 获取委托事项
      * @param type 0 表示我委托的 1表示委托我的
      * @param callback 请求回调
@@ -261,4 +307,143 @@ export class OAService {
                 });
         });
     }
+
+    /**
+     * 获取工作日志列表
+     * @param callback 
+     */
+    getWorkLogs(callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetOADailyLogList', { empcode: user.EmpCode })
+                .then(data => {
+                    console.log(data);
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    /**
+     * 创建日志时获取编号
+     * @param callback 
+     */
+    getWorkLogCode(callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetDailyLogCode', { empcode: user.EmpCode })
+                .then(data => {
+                    console.log(data);
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    /**
+     * 创建日志
+     * @param params 日志数据 { dailylogcode: '', dailylogdate: '', dailylogcreatedate: '', dailylogcontent: '' }
+     * @param callback 
+     */
+    createWorkLog(params, callback) {
+        this.users.currentUser().then(user => {
+            params.empcode = user.EmpCode;
+            this.api.post('AddDailyLog', params)
+                .then(data => {
+                    console.log(data);
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    /**
+     * 获取日志详情
+     * @param logCode 日志code
+     * @param callback 
+     */
+    getWorkLogDetail(logCode, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetDailyLogModel', { empcode: user.EmpCode, dailylogcode: logCode })
+                .then(data => {
+                    console.log(data);
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    /**
+     * 编辑工作日志
+     * @param params 日志数据 { dailylogcode: '', dailylogdate: '', dailylogcreatedate: '' }
+     * @param callback 
+     */
+    updateWorkLog(params, callback) {
+        this.users.currentUser().then(user => {
+            params.empcode = user.EmpCode;
+            this.api.post('UpdateDailyLog', params)
+                .then(data => {
+                    console.log(data);
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    /**
+     * 发送日志
+     * @param logCode 日志code
+     * @param callback 
+     */
+    sendWorkLog(logCode, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('SendDailyLog', { empcode: user.EmpCode, dailylogcode: logCode })
+                .then(data => {
+                    console.log(data);
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
 }
