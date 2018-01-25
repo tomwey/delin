@@ -45,7 +45,7 @@ export class WorkLogPage {
       } else {
         this.dataList = [];
       }
-      console.log(this.dataList);
+      // console.log(this.dataList);
 
       this.needShowErrorEmptyBox = this.dataList.length === 0;
       if (error) {
@@ -78,14 +78,14 @@ export class WorkLogPage {
         {
           text: '编辑',
           handler: () => {
-            console.log('Destructive clicked');
+            // console.log('Destructive clicked');
             this.editLog(item);
           }
         },{
           text: '删除',
           role: 'destructive',
           handler: () => {
-            console.log('Archive clicked');
+            // console.log('Archive clicked');
             this.deleteLog(item);
           }
         },
