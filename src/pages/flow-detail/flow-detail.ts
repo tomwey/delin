@@ -22,6 +22,8 @@ import { NativeService } from '../../providers/NativeService';
 export class FlowDetailPage {
   item: any = null;
   showCharts: boolean = false;
+  operType: number = 1;
+
   @ViewChild('flowChart') flowChart;
   constructor(public navCtrl: NavController,
     private modalCtrl: ModalController, 
@@ -65,6 +67,7 @@ export class FlowDetailPage {
         return;
       }
       if (data && data.FieldList) {
+        
         data.FieldList.forEach(element => {
           this.fieldsList.push({ 
             label: element.FieldValue.FieldName, 
@@ -79,13 +82,39 @@ export class FlowDetailPage {
       } else {
         this.flowOpinions = [];
       }
+
+      // 获取操作类型
+      if (data && data.CurrentStep) {
+        if (data.CurrentStep.Model && data.CurrentStep.Model.OptionType) {
+          this.operType = data.CurrentStep.Model.OptionType;
+        }
+      }
     });
   }
 
+  reject() {
+    this.openCommitPage({ signtype: 2 });
+  }
+
   doAgree() {
-    this.modalCtrl.create('FlowCommitPage', {
+    this.openCommitPage({ signtype: 1 });
+  }
+
+  btnClick() {
+    this.openCommitPage({ signtype: (this.operType + 1) });
+  }
+
+  openCommitPage(data) {
+    data.forminstanceid = this.item.Model.FormInstanceID;
+    let modal = this.modalCtrl.create('FlowCommitPage', data, {
       enableBackdropDismiss: false
-    }).present();
+    });
+    modal.onDidDismiss((data) => {
+      if (data) {
+        this.loadData();
+      }
+    });
+    modal.present();
   }
 
   public formatSignState(opinion): string {

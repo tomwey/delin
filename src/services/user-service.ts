@@ -28,6 +28,10 @@ export class UserService {
         });
     }
 
+    logout() {
+        return this.storage.remove('logined.user');
+    }
+
     currentUser(): Promise<any> {
         if (this.user) {
             return new Promise(resolve => {

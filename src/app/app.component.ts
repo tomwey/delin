@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
 import { UserService } from '../services/user-service';
+import { Events } from 'ionic-angular/util/events';
 
 @Component({
   templateUrl: 'app.html'
@@ -15,8 +16,13 @@ export class MyApp {
   constructor(platform: Platform, statusBar: StatusBar, 
     splashScreen: SplashScreen,
     private users: UserService,
+    private events: Events,
   ) {
 
+    this.events.subscribe('user:logout', () => {
+      this.rootPage = LoginPage;
+    });
+    
     this.users.currentUser().then(user => {
       if (!user) {
         this.rootPage = LoginPage;

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { UserService } from '../../services/user-service';
+import { Events } from 'ionic-angular/util/events';
 
 /**
  * Generated class for the SettingPage page.
@@ -15,11 +17,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SettingPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  user: any = {};
+  constructor(public navCtrl: NavController,
+    private users: UserService, 
+    private events: Events,
+    public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingPage');
+    // console.log('ionViewDidLoad SettingPage');
+    this.users.currentUser().then(user => {
+      this.user = user;
+      console.log(user);
+    });
+  }
+
+  logout() {
+    this.users.logout().then(() => {
+      this.events.publish('user:logout');
+    })
+    .catch(errror => {});
   }
 
 }

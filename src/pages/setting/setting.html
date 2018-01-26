@@ -16,7 +16,7 @@
 <ion-content class="content">
   <div class="caption">
     <img src="assets/imgs/default_avatar.png" class="avatar">
-    <h2 class="name">谢莹瑜</h2>
+    <h2 class="name">{{user.EmpName}}</h2>
     <p class="job">总务助理</p>
   </div>
 
@@ -34,6 +34,12 @@
     </button>
     <button ion-item detail-none>
       <h2 class="item-name b4"><img src="assets/imgs/icon_b4.png"> 关于</h2>
+    </button>
+  </ion-list>
+
+  <ion-list>
+    <button ion-item detail-none style="text-align:center; font-size: 14px; color: #f53d3d;" (click)="logout();">
+      退出登录
     </button>
   </ion-list>
 

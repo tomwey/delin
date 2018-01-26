@@ -54,10 +54,10 @@
 </ion-content>
 
 <ion-footer>
-  <div class="flow-buttons">
+  <div class="flow-buttons" *ngIf="operType === 1">
     <ion-row>
       <ion-col col-6>
-        <button ion-button clear>
+        <button ion-button clear (click)="reject();">
           <img src="assets/imgs/btn_reject.png">&nbsp;驳回
         </button>
       </ion-col>
@@ -68,4 +68,5 @@
       </ion-col>
     </ion-row>
   </div>
+  <button ion-button full color="main-theme" (click)="btnClick();" *ngIf="operType && operType !== 1">{{ operType === 3 ? '知会' : '确定' }}</button>
 </ion-footer>
