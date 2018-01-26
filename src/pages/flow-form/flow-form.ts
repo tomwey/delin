@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { OAService } from '../../services/oa.service';
+import { NativeService } from '../../providers/NativeService';
+import { App } from 'ionic-angular/components/app/app';
 
 /**
  * Generated class for the FlowFormPage page.
@@ -19,6 +21,8 @@ export class FlowFormPage {
   item: any = null;
   constructor(public navCtrl: NavController, 
     private oa: OAService,
+    private nativeServ: NativeService,
+    private app: App,
     public navParams: NavParams) {
     this.item = this.navParams.data;
   }
@@ -38,11 +42,32 @@ export class FlowFormPage {
       } else {
         this.dataList = [];
       }
+
     });
   }
 
   commit() {
+    let formFieldsValue = [];
+    this.dataList.forEach(element => {
+        // console.log(element.formValue);
+        formFieldsValue.push({
+          fieldid: element.FieldModel.FieldID,
+          fieldvalue: element.formValue
+        });
+    });
 
+    this.oa.addFormInstance({ formid: this.item.FormID, 
+      formfieldsvalue: JSON.stringify(formFieldsValue) 
+    }, (data, error) => {
+      console.log(data);
+      console.log(error);
+      if (error) {
+        this.nativeServ.showToast(error.message || error);
+      } else {
+        this.nativeServ.showToast('发起流程成功！');
+        this.app.getRootNavs()[0].pop();
+      }
+    });
   }
 
   gotoSelect(item) {

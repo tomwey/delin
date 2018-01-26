@@ -111,6 +111,7 @@ export class ApiService {
 
         })
         .catch(error => {
+          console.log(error);
           this.hideLoading();
           let errorMsg = this.handleError(error);
           this.nativeService.showToast(errorMsg);

@@ -21,11 +21,14 @@
         <!-- 文本输入控件 -->
         <ion-input *ngIf="item.FieldModel.ControlType == 2 || item.FieldModel.ControlType == 8"
           type="{{item.FieldModel.ControlType == 8 ? 'number' : 'text'}}"
-          placeholder="输入{{item.FieldModel.FieldName}}"></ion-input>
+          placeholder="输入{{item.FieldModel.FieldName}}" 
+          [(ngModel)]="item.formValue"></ion-input>
 
         <!-- 多文本输入框 -->
         <ion-textarea *ngIf="item.FieldModel.ControlType == 3" rows="6" 
-          placeholder="输入{{item.FieldModel.FieldName}}"></ion-textarea>
+          placeholder="输入{{item.FieldModel.FieldName}}"
+          [(ngModel)]="item.formValue"
+          ></ion-textarea>
         
         <!-- 选择控件 -->
         <div class="single-select" tappable (tap)="gotoSelect(item);" 
@@ -42,7 +45,9 @@
           cancelText="取消" 
           doneText="确定" 
           displayFormat="YYYY-MM-DD" 
-          placeholder="设置{{item.FieldModel.FieldName}}"></ion-datetime>
+          placeholder="设置{{item.FieldModel.FieldName}}" 
+          [(ngModel)]="item.formValue"
+          ></ion-datetime>
 
       </ion-item>
 

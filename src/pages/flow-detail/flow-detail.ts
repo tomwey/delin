@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ModalController } from 'ionic-angular/components/modal/modal-controller';
 import { App } from 'ionic-angular/components/app/app';
 import { OAService } from '../../services/oa.service';
+import { NativeService } from '../../providers/NativeService';
 
 // declare var flowchart;
 
@@ -26,6 +27,7 @@ export class FlowDetailPage {
     private modalCtrl: ModalController, 
     private app: App,
     private oa: OAService,
+    private navtiveServ: NativeService,
     public navParams: NavParams) {
       if (this.navParams.data)
         this.showCharts = this.navParams.data.showCharts;
@@ -58,6 +60,10 @@ export class FlowDetailPage {
     this.oa.getOAFormInstanceDetail(this.item.Model.FormInstanceID, (data, error) => {
       console.log(data);
 
+      if (error) {
+        this.navtiveServ.showToast(error.message || error);
+        return;
+      }
       if (data && data.FieldList) {
         data.FieldList.forEach(element => {
           this.fieldsList.push({ 
