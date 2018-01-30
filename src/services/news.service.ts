@@ -49,4 +49,25 @@ export class NewsService {
             });
         });
     }
+
+    /**
+     * 获取首页Banner
+     * @param productID 产品ID
+     * @param callback 
+     */
+    getBanners(productID = 'OA', callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetCPRecommendListResult', { empcode: user.EmpCode, productid: productID })
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
 }

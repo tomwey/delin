@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, App } from 'ionic-angular';
 import { OAService } from '../../services/oa.service';
+import { NewsService } from '../../services/news.service';
+import { Slides } from 'ionic-angular/components/slides/slides';
 
 @Component({
   selector: 'page-home',
@@ -8,9 +10,12 @@ import { OAService } from '../../services/oa.service';
 })
 export class HomePage {
 
+  @ViewChild(Slides) slides: Slides;
+
   constructor(
     public navCtrl: NavController,
     private oa: OAService,
+    private news: NewsService,
     private app: App) {
   }
 
@@ -18,14 +23,50 @@ export class HomePage {
     // this.oa.getOAFormInstanceDetail('20171221234214000001', (data, error) => {
     //   console.log(data);
     // });
-    this.oa.getDelegateEvents(0,(data, error) => {});
+    // this.oa.getDelegateEvents(0,(data, error) => {});
     // this.oa.getDepartmentList(null, (data, error) => {
       
     // });
+    this.news.getBanners('OA', (data, error) => {
+      // console.log(data);
+      // console.log(error);
+      if (data && data.DataList) {
+        this.bannersData = data.DataList;
+
+        if (this.slides) {
+          this.slides.autoplayDisableOnInteraction = false;
+
+          this.slides.ngOnDestroy();
+          this.slides.initialSlide = 0;
+          this.slides.update();
+          this.slides.ngAfterContentInit();
+        }
+
+      }
+    });
+  }
+
+  ionViewDidEnter() {
+    if (this.slides) {
+      this.slides.startAutoplay();
+    }
+  }
+
+  ionViewDidLeave() {   
+    if (this.slides) {
+      this.slides.stopAutoplay();  
+    }
+  }
+
+  autoPlay() {
+    if (this.bannersData.length > 1 && this.slides) {
+      this.slides.startAutoplay();
+    }
+    
   }
 
   openBanner() {
-    this.app.getRootNavs()[0].push('ArticlePage');
+    // this.app.getRootNavs()[0].push('ArticlePage');
   }
 
   openModule(sec) {
@@ -40,11 +81,14 @@ export class HomePage {
     }
   }
 
-  bannersData: any = [{
-    image: 'assets/imgs/banner1.png',
-  },{
-    image: 'assets/imgs/banner2.png'
-  }];
+  bannersData: any = [
+    // {
+    // CoverImg: 'assets/imgs/banner1.png',
+    // },
+    // {
+    //   CoverImg: 'assets/imgs/banner2.png'
+    // }
+  ];
   
   mainSections: any = [
     {
