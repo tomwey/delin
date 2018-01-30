@@ -21,6 +21,7 @@ import { GlobalData } from '../providers/GlobalData';
 import { NewsService } from '../services/news.service';
 import { TestService } from '../services/test.service';
 import { OAService } from '../services/oa.service';
+import { CRMService } from '../services/crm.service';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { OAService } from '../services/oa.service';
     NewsService,
     TestService,
     OAService,
+    CRMService,
     GlobalData,
   ]
 })
