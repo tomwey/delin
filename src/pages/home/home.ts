@@ -3,6 +3,7 @@ import { NavController, App } from 'ionic-angular';
 import { OAService } from '../../services/oa.service';
 import { NewsService } from '../../services/news.service';
 import { Slides } from 'ionic-angular/components/slides/slides';
+import { CRMService } from '../../services/crm.service';
 
 @Component({
   selector: 'page-home',
@@ -16,6 +17,7 @@ export class HomePage {
     public navCtrl: NavController,
     private oa: OAService,
     private news: NewsService,
+    private crm: CRMService,
     private app: App) {
   }
 
@@ -27,6 +29,11 @@ export class HomePage {
     // this.oa.getDepartmentList(null, (data, error) => {
       
     // });
+    this.crm.getCustomerUserBaseOptions((data, error) => {
+      console.log(data);
+      console.log(error);
+    });
+
     this.news.getBanners('OA', (data, error) => {
       // console.log(data);
       // console.log(error);

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Utils } from '../../providers/Utils';
 
 /**
  * Generated class for the MyCustomerFormPage page.
@@ -17,46 +18,7 @@ export class MyCustomerFormPage {
 
   title: string = null;
   customer: any = {
-    ID: 'KHBM2017007034',
-    author: '周朝',
-    create_time: '2017-12-26',
-    area: '',
-    _type: '1',
-    times: '',
-    name: '',
-    type: '',
-    hospital: '',
-    mz: '',
-    jz_time: '',
-    sb_company: '',
-    sex: '',
-    reason: '',
-    sybx: '',
-    birth: '',
-    jz1: '',
-    jz2: '',
-    jz3: '',
-    jz4: '',
-    company: '',
-    phone: '',
-    comp_memo: '',
-    mobile: '',
-    invitee: '',
-    fax: '',
-    jdq_man: '',
-    province: '',
-    city: '',
-    jtpm: '',
-    jtqk: '',
-    jdq_man_mobile: '',
-    id_card: '',
-    zip: '',
-    next_face_time: '',
-    old_sys_id: '',
-    old_sys_no: '',
-    address: '',
-    hj_address: '',
-    note: '',
+    createtime: Utils.dateFormat(new Date()),
   };
   constructor(public navCtrl: NavController, 
     public navParams: NavParams) {
@@ -69,6 +31,14 @@ export class MyCustomerFormPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyCustomerFormPage');
+  }
+
+  save() {
+    console.log(this.customer);
+  }
+
+  selectItem(id) {
+    
   }
 
 }
