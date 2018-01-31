@@ -21,6 +21,11 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="AutoHideSplashScreen" value="false" />
+
+    <!-- Android用于解决软键盘遮挡输入框问题 -->
+    <preference name="Fullscreen" value="false" />
+    <preference name="android-windowSoftInputMode" value="adjustPan" />
+    
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />

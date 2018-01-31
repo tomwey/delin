@@ -17,8 +17,8 @@ export class CommFormComponent {
   /**
    * controls是一个控件对象数组，定义控件对象格式为：{ type: 1, name: '', value: '', defaultValue: '', required: true, placeholder: '', pattern: '' }
    */
-  @Input('controls') controls: any = [];
-  @Output('onControlSelect') onControlSelect = new EventEmitter();
+  @Input() controls: any = [];
+  @Output() onControlSelect: EventEmitter<any> = new EventEmitter();
   constructor() {
 
   }
