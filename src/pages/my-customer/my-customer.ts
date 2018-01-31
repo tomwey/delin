@@ -40,6 +40,10 @@ export class MyCustomerPage {
     });
   }
 
+  openItem(item) {
+    // let data = [];
+  }
+
   newItem() {
     let modal = this.modalCtrl.create('MyCustomerFormPage');
     modal.onDidDismiss((data) => {
