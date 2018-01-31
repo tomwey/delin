@@ -31,15 +31,15 @@
     <ion-item>
       <ion-label fixed>所属区域</ion-label>
       <!-- <div class="custom-select-control" tappable (tap)="selectItem('KHSF');" item-content>
-        {{customer.area?.ConfigText || '请选择'}}
+        {{customer.area?.label || '请选择'}}
         <ion-icon name="ios-arrow-forward-outline"></ion-icon>
       </div> -->
       <ion-input [(ngModel)]="customer.area" placeholder="必填"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label fixed>客户性质</ion-label>
-      <div class="custom-select-control" tappable (tap)="selectItem('KHXZ');" item-content>
-        {{customer.customernature?.ConfigText || '请选择'}}
+      <div class="custom-select-control" tappable (tap)="selectItem('customernature','KHXZ');" item-content>
+        {{customer.customernature?.label || '请选择'}}
         <ion-icon name="ios-arrow-forward-outline"></ion-icon>
       </div>
     </ion-item>
@@ -53,8 +53,8 @@
     </ion-item>
     <ion-item>
       <ion-label fixed>客户类别</ion-label>
-      <div class="custom-select-control" tappable (tap)="selectItem('KHLB');" item-content>
-        {{customer.customertype?.ConfigText || '请选择'}}
+      <div class="custom-select-control" tappable (tap)="selectItem('customertype','KHLB');" item-content>
+        {{customer.customertype?.label || '请选择'}}
         <ion-icon name="ios-arrow-forward-outline"></ion-icon>
       </div>
     </ion-item>
@@ -64,8 +64,8 @@
     </ion-item>
     <ion-item>
       <ion-label fixed>民族</ion-label>
-      <div class="custom-select-control" tappable (tap)="selectItem('MZ');" item-content>
-        {{customer.nation?.ConfigText || '请选择'}}
+      <div class="custom-select-control" tappable (tap)="selectItem('nation','MZ');" item-content>
+        {{customer.nation?.label || '请选择'}}
         <ion-icon name="ios-arrow-forward-outline"></ion-icon>
       </div>
     </ion-item>
@@ -79,15 +79,15 @@
     </ion-item>
     <ion-item>
       <ion-label fixed>性别</ion-label>
-      <div class="custom-select-control" tappable (tap)="selectItem('XB');" item-content>
-        {{customer.sex?.ConfigText || '请选择'}}
+      <div class="custom-select-control" tappable (tap)="selectItem('sex','XB');" item-content>
+        {{customer.sex?.label || '请选择'}}
         <ion-icon name="ios-arrow-forward-outline"></ion-icon>
       </div>
     </ion-item>
     <ion-item>
       <ion-label fixed>手术原因</ion-label>
-      <div class="custom-select-control" tappable (tap)="selectItem('SSYY');" item-content>
-        {{customer.reason?.ConfigText || '请选择'}}
+      <div class="custom-select-control" tappable (tap)="selectItem('reason','SSYY');" item-content>
+        {{customer.reason?.label || '请选择'}}
         <ion-icon name="ios-arrow-forward-outline"></ion-icon>
       </div>
     </ion-item>
@@ -101,43 +101,43 @@
     </ion-item>
     <ion-item>
       <ion-label fixed>截肢部位1</ion-label>
-      <div class="custom-select-control" tappable (tap)="selectItem('JZBW1');" item-content>
-        {{customer.amputationpart1?.ConfigText || '请选择'}}
+      <div class="custom-select-control" tappable (tap)="selectItem('amputationpart1','JZBW1');" item-content>
+        {{customer.amputationpart1?.label || '请选择'}}
         <ion-icon name="ios-arrow-forward-outline"></ion-icon>
       </div>
     </ion-item>
     <ion-item>
       <ion-label fixed>截肢部位2</ion-label>
-      <div class="custom-select-control" tappable (tap)="selectItem('JZBW2');" item-content>
-        {{customer.amputationpart2?.ConfigText || '请选择'}}
+      <div class="custom-select-control" tappable (tap)="selectItem('amputationpart2','JZBW2');" item-content>
+        {{customer.amputationpart2?.label || '请选择'}}
         <ion-icon name="ios-arrow-forward-outline"></ion-icon>
       </div>
     </ion-item>
     <ion-item>
       <ion-label fixed>截肢部位3</ion-label>
-      <div class="custom-select-control" tappable (tap)="selectItem('JZBW3');" item-content>
-        {{customer.amputationpart3?.ConfigText || '请选择'}}
+      <div class="custom-select-control" tappable (tap)="selectItem('amputationpart3','JZBW3');" item-content>
+        {{customer.amputationpart3?.label || '请选择'}}
         <ion-icon name="ios-arrow-forward-outline"></ion-icon>
       </div>
     </ion-item>
     <ion-item>
       <ion-label fixed>截肢部位4</ion-label>
-      <div class="custom-select-control" tappable (tap)="selectItem('JZBW4');" item-content>
-        {{customer.amputationpart4?.ConfigText || '请选择'}}
+      <div class="custom-select-control" tappable (tap)="selectItem('amputationpart4','JZBW4');" item-content>
+        {{customer.amputationpart4?.label || '请选择'}}
         <ion-icon name="ios-arrow-forward-outline"></ion-icon>
       </div>
     </ion-item>
     <ion-item>
       <ion-label fixed>截瘫平面</ion-label>
-      <div class="custom-select-control" tappable (tap)="selectItem('JTPM');" item-content>
-        {{customer.paraplegicplane?.ConfigText || '请选择'}}
+      <div class="custom-select-control" tappable (tap)="selectItem('paraplegicplane','JTPM');" item-content>
+        {{customer.paraplegicplane?.label || '请选择'}}
         <ion-icon name="ios-arrow-forward-outline"></ion-icon>
       </div>
     </ion-item>
     <ion-item>
       <ion-label fixed>截瘫情况</ion-label>
-      <div class="custom-select-control" tappable (tap)="selectItem('JTQK');" item-content>
-        {{customer.paraplegicsituation?.ConfigText || '请选择'}}
+      <div class="custom-select-control" tappable (tap)="selectItem('paraplegicsituation','JTQK');" item-content>
+        {{customer.paraplegicsituation?.label || '请选择'}}
         <ion-icon name="ios-arrow-forward-outline"></ion-icon>
       </div>
     </ion-item>
@@ -181,15 +181,15 @@
     </ion-item>
     <ion-item>
       <ion-label fixed>所在省份</ion-label>
-      <div class="custom-select-control" tappable (tap)="selectItem('KHSF');" item-content>
-        {{customer.provice?.ConfigText || '请选择'}}
+      <div class="custom-select-control" tappable (tap)="selectItem('province','KHSF');" item-content>
+        {{customer.province?.label || '请选择'}}
         <ion-icon name="ios-arrow-forward-outline"></ion-icon>
       </div>
     </ion-item>
     <ion-item>
       <ion-label fixed>所在城市</ion-label>
-      <div class="custom-select-control" tappable (tap)="selectItem('KHSF');" item-content>
-        {{customer.city?.ConfigText || '请选择'}}
+      <div class="custom-select-control" tappable (tap)="selectItem('city','city');" item-content>
+        {{customer.city?.label || '请选择'}}
         <ion-icon name="ios-arrow-forward-outline"></ion-icon>
       </div>
     </ion-item>

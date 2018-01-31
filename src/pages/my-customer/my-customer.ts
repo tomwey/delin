@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
+import { CRMService } from '../../services/crm.service';
 
 /**
  * Generated class for the MyCustomerPage page.
@@ -17,11 +18,24 @@ export class MyCustomerPage {
 
   constructor(public navCtrl: NavController, 
     private app: App,
+    private crm: CRMService,
     public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MyCustomerPage');
+    // console.log('ionViewDidLoad MyCustomerPage');
+    this.loadData();
+  }
+
+  loadData() {
+    this.crm.getCustomersList((data, error) => {
+      console.log(data);
+      // if (data && data.DataList) {
+      //   this.dataList = data.DataList;
+      // } else {
+      //   this.dataList = [];
+      // }
+    });
   }
 
   newItem() {

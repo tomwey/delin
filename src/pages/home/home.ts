@@ -29,10 +29,6 @@ export class HomePage {
     // this.oa.getDepartmentList(null, (data, error) => {
       
     // });
-    this.crm.getCustomerUserBaseOptions((data, error) => {
-      console.log(data);
-      console.log(error);
-    });
 
     this.news.getBanners('OA', (data, error) => {
       // console.log(data);
