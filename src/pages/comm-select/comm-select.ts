@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ViewController } from 'ionic-angular/navigation/view-controller';
+import { Events } from 'ionic-angular/util/events';
 
 /**
  * Generated class for the CommSelectPage page.
@@ -18,11 +18,13 @@ export class CommSelectPage {
 
   dataList: any = [];
   selectedItem: any = null;
+  field: any = null;
   constructor(public navCtrl: NavController, 
-    private viewCtrl: ViewController,
+    private events: Events,
     public navParams: NavParams) {
     this.dataList = this.navParams.data.data;
     this.selectedItem = this.navParams.data.selected;
+    this.field = this.navParams.data.field;
 
     this.resetSelect();
   }
@@ -43,13 +45,12 @@ export class CommSelectPage {
     return item.label + item.value.toString();
   }
 
-  close() {
-    this.viewCtrl.dismiss();
-  }
-
   select(item) {
     if (item.selected) return;
-    this.viewCtrl.dismiss(item);
+
+    this.events.publish('item:selected', { field: this.field, selectedItem: item });
+
+    this.navCtrl.pop();
   }
 
   ionViewDidLoad() {
