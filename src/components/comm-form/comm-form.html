@@ -29,7 +29,7 @@
             *ngIf="item.type == 4 || 
                    item.type == 5 || 
                    item.type == 6" >
-            请选择（{{item.type == 6 ? '多选' : '单选'}}）
+            {{selectValueFromItem(item)}}
             <ion-icon name="ios-arrow-forward-outline"></ion-icon>
           </div>
           

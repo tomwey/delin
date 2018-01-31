@@ -27,6 +27,14 @@ export class CommFormComponent {
     return item.placeholder || `输入${item.name}`;
   }
 
+  selectValueFromItem(item) {
+    if (!item.value) {
+      return `请选择 (${item.type == 6 ? '多选' : '单选'})`;
+    } else {
+      return item.value.label;
+    }
+  }
+
   selectItem(item) {
     this.onControlSelect.emit(item);
   }
