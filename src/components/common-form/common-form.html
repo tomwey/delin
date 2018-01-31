@@ -1,0 +1,62 @@
+<!-- Generated template for the CommonFormComponent component -->
+<div class="common-form-box">
+  <ion-list>
+    <ion-item *ngFor="let item of controls">
+      <ion-label text-wrap fixed>
+        <span class="required-input" *ngIf="item.required">*</span>
+        {{item.name}}
+      </ion-label>
+
+      <!-- 纯文本 -->
+      <div item-content *ngIf="item.type == 1">
+        {{item.value || item.defaultValue}}
+      </div>
+
+      <!-- 文本输入控件 -->
+      <ion-input *ngIf="item.type == 2" type="text" pattern="{{item.pattern}}"
+        placeholder="{{placeholderFromItem(item)}}" 
+        [(ngModel)]="item.value"></ion-input>
+
+      <!-- 多文本输入框 -->
+      <ion-textarea *ngIf="item.type == 3" rows="6" 
+        placeholder="{{placeholderFromItem(item)}}"
+        [(ngModel)]="item.value"></ion-textarea>
+      
+      <!-- 选择控件 -->
+      <div class="custom-select-control" 
+        tappable 
+        (tap)="selectItem(item);" 
+        item-content 
+        *ngIf="item.type == 4 || item.type == 5 || item.type == 6">
+        {{selectValueFromItem(item)}}
+        <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+      </div>
+
+      <!-- 日期控件 -->
+      <ion-datetime *ngIf="item.type == 7" 
+      cancelText="取消" 
+      doneText="确定" 
+      displayFormat="YYYY-MM-DD" 
+      placeholder="{{placeholderFromItem(item)}}" 
+      [(ngModel)]="item.value"></ion-datetime>
+    
+    <!-- 日期时间控件 -->
+    <ion-datetime *ngIf="item.type == 71" 
+    cancelText="取消" 
+    doneText="确定" 
+    displayFormat="YYYY-MM-DD hh:mm:ss" 
+    placeholder="{{placeholderFromItem(item)}}" 
+    [(ngModel)]="item.value"></ion-datetime>
+
+    <!-- 时间控件 -->
+    <ion-datetime *ngIf="item.type == 72" 
+    cancelText="取消" 
+    doneText="确定" 
+    displayFormat="hh:mm:ss" 
+    placeholder="{{placeholderFromItem(item)}}" 
+    [(ngModel)]="item.value"></ion-datetime>
+
+
+    </ion-item>
+  </ion-list>
+</div>

@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { AccordionListComponent } from './accordion-list/accordion-list';
 import { IonicPageModule } from 'ionic-angular/module';
-// import { CommFormComponent } from './comm-form/comm-form';
+import { CommonFormComponent } from './common-form/common-form';
+
 @NgModule({
-	declarations: [AccordionListComponent],
+	declarations: [AccordionListComponent,
+    CommonFormComponent],
 	imports: [IonicPageModule.forChild([AccordionListComponent])],
-	exports: [AccordionListComponent]
+	exports: [AccordionListComponent,
+    CommonFormComponent]
 })
 export class ComponentsModule {}
