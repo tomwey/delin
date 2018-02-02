@@ -23,6 +23,8 @@ export class FlowDetailPage {
   item: any = null;
   showCharts: boolean = false;
   operType: number = 1;
+  
+  flowType: string = null;
 
   @ViewChild('flowChart') flowChart;
   constructor(public navCtrl: NavController,
@@ -35,6 +37,8 @@ export class FlowDetailPage {
         this.showCharts = this.navParams.data.showCharts;
       
       this.item = this.navParams.data.item;
+
+      this.flowType = this.navParams.data.flowType;
   }
 
   ionViewDidLoad() {
