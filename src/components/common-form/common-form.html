@@ -13,7 +13,9 @@
       </div>
 
       <!-- 文本输入控件 -->
-      <ion-input *ngIf="item.type == 2" type="text" pattern="{{item.pattern}}"
+      <ion-input *ngIf="item.type == 2 || item.type == 8"
+        type="{{item.type == 8 ? 'number' : 'text'}}"
+        pattern="{{item.pattern}}"
         placeholder="{{placeholderFromItem(item)}}" 
         [(ngModel)]="item.value"></ion-input>
 

@@ -1,3 +1,43 @@
 common-form {
-
+    .common-form-box {
+        .custom-select-control {
+            // background: red;
+            width: 100%;
+            // padding: 10px;
+            padding-left: 15px;
+            padding-right: 5px;
+            font-size: 14px;
+            color: #999;
+            ion-icon {
+                float: right;
+                margin-top: 3px;
+            }
+        }
+        
+        h2 {
+            font-size: 12px;
+            color: color($colors, main-theme);
+            padding-left: 16px;
+        }
+    
+        .label {
+            color: #666;
+            font-size: 14px;
+            .required-input {
+                color: color($colors, danger);
+                // display: inline-block;
+            }
+        }
+    
+        ion-input, ion-select, ion-datetime, ion-textarea {
+            font-size: 14px;
+        }
+    
+        .add-button {
+            text-align: center;
+            button {
+                font-size: 14px;
+            }
+        }
+    }
 }

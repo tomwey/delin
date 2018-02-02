@@ -201,4 +201,70 @@ export class CRMService {
         });
     }
 
+    AddIntentCustomer(params, callback) {
+        this.users.currentUser().then(user => {
+            params.empcode = user.EmpCode;
+            this.api.post('AddIntentCustomer', params)
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    UpdateIntentCustomer(params, callback) {
+        this.users.currentUser().then(user => {
+            params.empcode = user.EmpCode;
+            this.api.post('UpdateIntentCustomer', params)
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    DeleteIntentCustomer(code, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('DeleteIntentCustomer', { empcode : user.EmpCode, intentcustomercode: code })
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    GetCRMIntentCustomerList(callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetCRMIntentCustomerList', { empcode : user.EmpCode })
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
 }

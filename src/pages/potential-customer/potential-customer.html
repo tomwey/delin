@@ -18,16 +18,16 @@
 <ion-content>
   <ion-list>
     <button detail-none ion-item *ngFor="let item of dataList" class="custom-item" (click)="openItem(item);">
-      <h2 class="name">{{item.name}}
-        <span class="sex">({{item.sex}})</span>
-        <span class="mobile">{{item.mobile}}</span>
+      <h2 class="name">{{item.IntentCustomerName}}
+        <span class="sex">({{item.Sex == 0 ? '女' : '男'}})</span>
+        <span class="mobile">{{item.MobilePhone}}</span>
       </h2>
       <ion-row>
-        <ion-col col-8>
-          <p class="info">{{item.area}}&emsp;&emsp;{{item.area2}}</p>
-          <p class="time">{{item.time}}</p>
+        <ion-col col-7>
+          <p class="info">{{item.Area}}&emsp;&emsp;{{item.Unit}}</p>
+          <p class="time">{{item.CreateDateStr}}</p>
         </ion-col>
-        <ion-col col-4 style="text-align:right;">
+        <ion-col col-5 style="text-align:right;">
           <p style="padding-top: 15px;" *ngIf="item.stars && item.stars.length > 0">
             <span class="stars">
               <img src="assets/imgs/icon-star.png" *ngFor="let star of item.stars">

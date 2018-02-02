@@ -19,12 +19,15 @@ export class CommSelectPage {
   dataList: any = [];
   selectedItem: any = null;
   field: any = null;
+  target: any = null;
   constructor(public navCtrl: NavController, 
     private events: Events,
     public navParams: NavParams) {
     this.dataList = this.navParams.data.data;
     this.selectedItem = this.navParams.data.selected;
     this.field = this.navParams.data.field;
+
+    this.target = this.navParams.data.target;
 
     this.resetSelect();
   }
@@ -47,6 +50,8 @@ export class CommSelectPage {
 
   select(item) {
     if (item.selected) return;
+
+    this.target.value = item;
 
     this.events.publish('item:selected', { field: this.field, selectedItem: item });
 
