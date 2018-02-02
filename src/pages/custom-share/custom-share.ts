@@ -177,6 +177,18 @@ export class CustomSharePage {
     
   }
 
+  stateNameFor(item) {
+    if (item.Status == 0) {
+      return "未审核";
+    }
+
+    if (item.Status == 1) {
+      return "已审核"
+    }
+
+    return "未通过"
+  }
+
   newItem() {
     let modal = this.modalCtrl.create('SelectCustomerPage');
     modal.onDidDismiss((data) => {

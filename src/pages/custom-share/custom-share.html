@@ -26,9 +26,10 @@
           <ion-col col-9>
             <p text-wrap>客户病况:{{item.CustomerSituation}}</p>
           </ion-col>
-          <!-- <ion-col col-3 style="text-align:right;">
-            <span class="state state-{{item.state}}">{{item.state_name}}</span>
-          </ion-col> -->
+          <ion-col col-3 style="text-align:right;">
+              <!-- 0未审核 1审核通过 2审核未通过 -->
+            <span class="state state-{{item.Status}}">{{stateNameFor(item)}}</span>
+          </ion-col>
         </ion-row>
       </button>
     </ion-list>
