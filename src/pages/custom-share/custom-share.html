@@ -17,18 +17,18 @@
   <ion-content>
     <ion-list>
       <button ion-item detail-none *ngFor="let item of dataList" class="custom-item" (click)="openItem(item);">
-        <h2 class="name">{{item.name}}
-          <span class="sex">({{item.sex}})</span>
-          <span class="mobile">{{item.mobile}}</span>
+        <h2 class="name">{{item.CustomerName}}
+          <span class="sex">({{item.CustomerSex == 0 ? '女' : '男'}})</span>
+          <span class="mobile">{{item.CustomerPhone}}</span>
         </h2>
-        <p class="info">转移原因:{{item.reason}}</p>
+        <p class="info">转移原因:{{item.ChangeReason}}</p>
         <ion-row>
           <ion-col col-9>
-            <p text-wrap>客户病况:{{item.reason2}}</p>
+            <p text-wrap>客户病况:{{item.CustomerSituation}}</p>
           </ion-col>
-          <ion-col col-3 style="text-align:right;">
+          <!-- <ion-col col-3 style="text-align:right;">
             <span class="state state-{{item.state}}">{{item.state_name}}</span>
-          </ion-col>
+          </ion-col> -->
         </ion-row>
       </button>
     </ion-list>

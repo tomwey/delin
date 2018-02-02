@@ -7,7 +7,7 @@
 <ion-header no-border>
 
   <ion-navbar>
-    <ion-title>客户转移共享</ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -18,42 +18,31 @@
     <ion-list>
       <ion-item>
         <ion-label fixed>客户编码</ion-label>
-        <ion-input [(ngModel)]="formData.ID"></ion-input>
+        <ion-input [(ngModel)]="formData.customercode" disabled></ion-input>
       </ion-item>
       <ion-item>
         <ion-label fixed>客户姓名</ion-label>
-        <ion-input [(ngModel)]="formData.name" disabled></ion-input>
+        <ion-input [(ngModel)]="formData.customername" disabled></ion-input>
       </ion-item>
       <ion-item>
         <ion-label fixed>联系电话</ion-label>
-        <ion-input [(ngModel)]="formData.mobile"></ion-input>
+        <ion-input [(ngModel)]="formData.customerphone" disabled></ion-input>
       </ion-item>
       <ion-item>
         <ion-label fixed>性别</ion-label>
-        <ion-select [(ngModel)]="formData.sex">
-          <ion-option value="0">男</ion-option>
-          <ion-option value="1">女</ion-option>
-        </ion-select>
+        <ion-input [(ngModel)]="formData.customersex" disabled></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label fixed>制单人员</ion-label>
-        <ion-input [(ngModel)]="formData.create_man"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label fixed>制单时间</ion-label>
-        <ion-datetime displayFormat="YYYY-MM-DD hh:mm:ss" [(ngModel)]="formData.create_time"></ion-datetime>
-      </ion-item>
-      <ion-item>
-        <ion-label fixed><span class="required">*</span>分配区域</ion-label>
+        <ion-label fixed>分配区域</ion-label>
         <ion-input [(ngModel)]="formData.area" disabled></ion-input>
       </ion-item>
       <ion-item>
         <ion-label fixed>客户病况</ion-label>
-        <ion-input [(ngModel)]="formData.customer_bk"></ion-input>
+        <ion-input [(ngModel)]="formData.customersituation" disabled></ion-input>
       </ion-item>
       <ion-item>
         <ion-label fixed>常住地址</ion-label>
-        <ion-input [(ngModel)]="formData.address"></ion-input>
+        <ion-input [(ngModel)]="formData.customeraddress" disabled></ion-input>
       </ion-item>
     </ion-list>
 
@@ -61,19 +50,19 @@
     <ion-list>
       <ion-item>
         <ion-label fixed><span class="required">*</span>转移原因</ion-label>
-        <ion-textarea rows="6" [(ngModel)]="formData.move_reason"></ion-textarea>
+        <ion-textarea rows="6" [(ngModel)]="formData.changereason" placeholder="输入原因"></ion-textarea>
       </ion-item>
       <ion-item>
         <ion-label fixed>详细地址</ion-label>
-        <ion-input [(ngModel)]="formData.address2"></ion-input>
+        <ion-input [(ngModel)]="formData.address" placeholder="输入详细地址"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label fixed>联系方式</ion-label>
-        <ion-input [(ngModel)]="formData.mobile2"></ion-input>
+        <ion-input [(ngModel)]="formData.tel" placeholder="输入联系方式"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label fixed>业绩分配</ion-label>
-        <ion-textarea rows="6" [(ngModel)]="formData.yjfp"></ion-textarea>
+        <ion-textarea rows="6" [(ngModel)]="formData.performancedistribution" placeholder="输入业绩分配"></ion-textarea>
       </ion-item>
     </ion-list>
   </div>
@@ -81,8 +70,8 @@
 
 <ion-footer>
     <!-- <div padding> -->
-    <button ion-button color="main-theme" full>
-      确认转移
+    <button ion-button color="main-theme" full (click)="commit();">
+      确定
     </button>
   <!-- </div> -->
   </ion-footer>

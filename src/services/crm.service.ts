@@ -89,4 +89,116 @@ export class CRMService {
         });
     }
 
+    /**
+     * 获取需要转移的客户的基本信息
+     * @param customerCode 客户编号
+     * @param callback 
+     */
+    getCRMCustomerChangeMessage(customerCode, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetCRMCustomerChangeMessage', { customercode: customerCode, empcode: user.EmpCode })
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    /**
+     * 添加客户转移信息
+     * @param params 客户转移信息
+     * @param callback 
+     */
+    addCRMCustomerChange(params, callback) {
+        this.users.currentUser().then(user => {
+            params.empcode = user.EmpCode;
+            this.api.post('AddCRMCustomerChange', params)
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    updateCRMCustomerChange(params, callback) {
+        this.users.currentUser().then(user => {
+            params.empcode = user.EmpCode;
+            this.api.post('UpdateCRMCustomerChangeModel', params)
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    deleteCRMCustomerChange(crmcustomerchangeid, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('DeleteCRMCustomerChange', { empcode: user.EmpCode, crmcustomerchangeid:crmcustomerchangeid })
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    getCRMCustomerChangeModel(crmcustomerchangeid, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetCRMCustomerChangeModel', { empcode: user.EmpCode, crmcustomerchangeid:crmcustomerchangeid })
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    /**
+     * 获取客户转移列表
+     * @param callback 
+     */
+    getCRMCustomerChangeListResult(callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetCRMCustomerChangeListResult', { empcode: user.EmpCode })
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
 }
