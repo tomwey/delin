@@ -22,6 +22,7 @@ import { NewsService } from '../services/news.service';
 import { TestService } from '../services/test.service';
 import { OAService } from '../services/oa.service';
 import { CRMService } from '../services/crm.service';
+import { ERPService } from '../services/erp.service';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { CRMService } from '../services/crm.service';
     TestService,
     OAService,
     CRMService,
+    ERPService,
     GlobalData,
   ]
 })

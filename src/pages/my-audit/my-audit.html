@@ -13,6 +13,10 @@
 </ion-header>
 
 <ion-content>
+  <error-empty-message-box [needShow]="!loading" 
+    [data]="dataList" 
+    [error]="error"></error-empty-message-box>
+    
   <div class="box-container">
     <div class="box" *ngFor="let item of dataList" tappable (tap)="gotoDetail(item);">
       <div class="info-1">业绩分配单: {{item.ID}}</div>

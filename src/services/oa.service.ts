@@ -469,4 +469,40 @@ export class OAService {
         });
     }
 
+    AddCarRecord(lng,lat, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('AddCarRecord', { empcode: user.EmpCode, lng: lng, lat: lat })
+                .then(data => {
+                    console.log(data);
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    GetOACardRecordListResult(date, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetOACardRecordListResult', { empcode: user.EmpCode, date: date })
+                .then(data => {
+                    console.log(data);
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
 }
