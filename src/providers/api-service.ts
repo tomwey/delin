@@ -68,7 +68,7 @@ export class ApiService {
   } // end get 
 
   // 处理POST请求
-  post(uri, params, loadingText: string = '加载中...'): Promise<any> {
+  post(uri, params, loadingText: string = '加载中...', showLoading: boolean = true): Promise<any> {
     let url = API_HOST + '/' + uri;
 
     // 参数签名
@@ -83,7 +83,9 @@ export class ApiService {
 
     // params.av = this.nativeService.getAppVersion2();
     // params.is_ios = this.nativeService.isIos() === true ? '1' : '0';
-    this.showLoading(loadingText);
+    if (showLoading) {
+      this.showLoading(loadingText);
+    }
 
     // 封装请求
     let headers = new Headers({ 'Content-Type': 'application/text' });

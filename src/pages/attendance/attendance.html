@@ -22,5 +22,19 @@
 </ion-header>
 
 <ion-content class="content">
-  <img src="assets/imgs/img-attend-{{dataType}}.png" />
+  <div class="dk-container" [hidden]="dataType !== 'dk'">
+    <div class="dk-status">
+      <div class="state-img" *ngFor="let time of times">
+        <img src="assets/imgs/icon_dk_{{time.state}}.png">
+      </div>
+    </div>
+    <div class="dk-button" tappable (tap)="addCard();">
+      <p class="time">{{time}}</p>
+      <p class="date">{{date}}</p>
+    </div>
+  </div>
+  <div class="his-container" [hidden]="dataType !== 'his'">
+
+  </div>
+  <!-- <img src="assets/imgs/img-attend-{{dataType}}.png" /> -->
 </ion-content>

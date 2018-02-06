@@ -487,9 +487,11 @@ export class OAService {
         });
     }
 
-    GetSystemTime(callback) {
+    GetSystemTime(showLoading: boolean, callback) {
         this.users.currentUser().then(user => {
-            this.api.post('GetSystemTime', { empcode: user.EmpCode })
+            this.api.post('GetSystemTime', { empcode: user.EmpCode }, 
+            '加载中...', 
+            showLoading)
                 .then(data => {
                     console.log(data);
                     if (callback) {
