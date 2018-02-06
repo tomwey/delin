@@ -13,7 +13,8 @@
 </ion-header>
 
 <ion-content>
-  <div class="form-box">
+  <common-form [controls]="controls"></common-form>
+  <!-- <div class="form-box">
   <ion-list>
     <ion-item>
       <ion-label fixed>姓名</ion-label>
@@ -63,12 +64,12 @@
       <ion-textarea [(ngModel)]="contact.note" placeholder="输入备注" rows="6"></ion-textarea>
     </ion-item>
   </ion-list>
-</div>
+</div> -->
 </ion-content>
 
 <ion-footer>
   <!-- <div padding> -->
-    <button ion-button color="main-theme" full (click)="saveContact();">
+    <button ion-button color="main-theme" full (click)="commit();">
       保存
     </button>
   <!-- </div> -->

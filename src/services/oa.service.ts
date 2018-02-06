@@ -487,6 +487,24 @@ export class OAService {
         });
     }
 
+    GetSystemTime(callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetSystemTime', { empcode: user.EmpCode })
+                .then(data => {
+                    console.log(data);
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
     GetOACardRecordListResult(date, callback) {
         this.users.currentUser().then(user => {
             this.api.post('GetOACardRecordListResult', { empcode: user.EmpCode, date: date })

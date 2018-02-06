@@ -16,9 +16,10 @@
 
 
 <ion-content>
+  <error-empty-message-box [data]="dataList" [error]="error" [needShow]="!loading"></error-empty-message-box>
   <ion-list>
     <button ion-item detail-none *ngFor="let item of dataList" class="custom-item" (click)="openContact(item);">
-      <h2>{{item.name}}</h2>
+      <h2>{{item.Name}}</h2>
     </button>  
   </ion-list>
 </ion-content>

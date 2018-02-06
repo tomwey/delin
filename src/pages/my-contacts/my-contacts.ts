@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController, App } from 'ionic-angular';
+import { Events } from 'ionic-angular/util/events';
+import { ERPService } from '../../services/erp.service';
+import { NativeService } from '../../providers/NativeService';
 
 /**
  * Generated class for the MyContactsPage page.
@@ -15,15 +18,43 @@ import { IonicPage, NavController, NavParams, ActionSheetController, App } from 
 })
 export class MyContactsPage {
 
+  loading: boolean = false;
+  error: any;
+
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               private app: App,
+              private events: Events,
+              private erp: ERPService,
+              private nativeServ: NativeService,
               private actionSheetCtrl: ActionSheetController,
             ) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MyContactsPage');
+    // console.log('ionViewDidLoad MyContactsPage');
+    this.loadData();
+    this.events.subscribe("reload:data", () => {
+      this.loadData();
+    });
+  }
+
+  loadData() {
+    this.loading = true;
+
+    this.erp.GetAddressListResult((data, error) => {
+      this.error = error;
+      this.loading = false;
+
+      if (data && data.DataList) {
+        this.dataList = data.DataList;
+      } else {
+        this.dataList = [];
+      }
+
+      console.log(data);
+
+    });
   }
 
   openContact(item) {
@@ -68,7 +99,13 @@ export class MyContactsPage {
   }
 
   deleteContact(item) {
-
+    this.erp.DeleteAddressList(item.AddressListID, (data, error) => {
+      if (error) {
+        this.nativeServ.showToast(error.message || error);
+      } else {
+        this.loadData();
+      }
+    });
   }
 
   editContact(item) {
@@ -76,106 +113,21 @@ export class MyContactsPage {
   }
 
   viewContact(item) {
-    this.app.getRootNavs()[0].push('MyContactDetailPage', { contact: item });
+    let data = [];
+    data.push({ label: '姓名',value: item.Name});
+    data.push({ label: '联系电话',value: item.Tel});
+    data.push({ label: '办公电话',value: item.OfficeTel});
+    data.push({ label: '住宅电话',value: item.FamilyTel});
+    data.push({ label: '区域',value: item.Area});
+    data.push({ label: '住址',value: item.Address});
+    data.push({ label: '邮箱',value: item.Email});
+    data.push({ label: '公司',value: item.Company});
+    data.push({ label: '邮编',value: item.Postcode});
+    data.push({ label: '备注',value: item.Remark});
+    
+    this.app.getRootNavs()[0].push('ItemDetailPage', { title: '详情', data: data });
   }
 
-  dataList: any = [
-    {
-      name: '孙静怡',
-      sex: '女',
-      mobile: '13012345678',
-      phone1: '85320987',
-      phone2: '85320987',
-      address: '四川成都西大街1号',
-      zip: '610000',
-      city: '成都',
-      company: '成都合能房地产开发有限公司',
-      note: '',
-    },
-    {
-      name: '刘语熙',
-      sex: '女',
-      mobile: '13012345678',
-      phone1: '85320987',
-      phone2: '85320987',
-      address: '四川成都西大街1号',
-      zip: '610000',
-      city: '成都',
-      company: '成都合能房地产开发有限公司',
-      note: '',
-    },
-    {
-      name: '刘浩',
-      sex: '女',
-      mobile: '13012345678',
-      phone1: '85320987',
-      phone2: '85320987',
-      address: '四川成都西大街1号',
-      zip: '610000',
-      city: '成都',
-      company: '成都合能房地产开发有限公司',
-      note: '',
-    },
-    {
-      name: '孙殿岑',
-      sex: '女',
-      mobile: '13012345678',
-      phone1: '85320987',
-      phone2: '85320987',
-      address: '四川成都西大街1号',
-      zip: '610000',
-      city: '成都',
-      company: '成都合能房地产开发有限公司',
-      note: '',
-    },
-    {
-      name: '吴美珠',
-      sex: '女',
-      mobile: '13012345678',
-      phone1: '85320987',
-      phone2: '85320987',
-      address: '四川成都西大街1号',
-      zip: '610000',
-      city: '成都',
-      company: '成都合能房地产开发有限公司',
-      note: '',
-    },
-    {
-      name: '王江淋',
-      sex: '女',
-      mobile: '13012345678',
-      phone1: '85320987',
-      phone2: '85320987',
-      address: '四川成都西大街1号',
-      zip: '610000',
-      city: '成都',
-      company: '成都合能房地产开发有限公司',
-      note: '',
-    },
-    {
-      name: '刘霞',
-      sex: '女',
-      mobile: '13012345678',
-      phone1: '85320987',
-      phone2: '85320987',
-      address: '四川成都西大街1号',
-      zip: '610000',
-      city: '成都',
-      company: '成都合能房地产开发有限公司',
-      note: '',
-    },
-    {
-      name: '蒋文',
-      sex: '女',
-      mobile: '13012345678',
-      phone1: '85320987',
-      phone2: '85320987',
-      address: '四川成都西大街1号',
-      zip: '610000',
-      city: '成都',
-      company: '成都合能房地产开发有限公司',
-      note: '',
-    },
-  ];
+  dataList: any = [];
 
 }
