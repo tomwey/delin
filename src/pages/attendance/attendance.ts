@@ -21,7 +21,6 @@ export class AttendancePage {
 
   date: string;
   time: string;
-
   timer: any;
 
   timestamp: number;
@@ -37,6 +36,20 @@ export class AttendancePage {
       state: 'no',
     },
   ];
+
+  currentDate: any = new Date();
+  dateOptions: any = {
+    monthFormat: 'YYYY 年 MM 月 ',
+    weekdays: ['日', '一', '二', '三', '四', '五', '六'],
+    weekStart: 0,
+    color: 'primary',
+    defaultDate: new Date()
+  };
+
+  dataList: any = [];
+  loading: boolean = false;
+  error: any = null;
+
   constructor(public navCtrl: NavController, 
     private oa: OAService,
     private nativeServ: NativeService,
@@ -56,6 +69,11 @@ export class AttendancePage {
     }
   }
 
+  onChange(ev) {
+    // console.log(ev);
+    this.loadHisData(ev);
+  }
+
   loadData() {
     // setInterval(() => {
       this.oa.GetSystemTime(true, (data, error) => {
@@ -65,10 +83,7 @@ export class AttendancePage {
 
         this.timestamp = new Date(data.DateTimeStr).getTime();
 
-        let date = data.DateTimeStr.split(' ')[0];
-        this.oa.GetOACardRecordListResult(date, (data1, error) => {
-          console.log(data1);
-        });
+        this.loadHisData(this.date);
       });
 
       // setTimeout(() => {
@@ -77,6 +92,14 @@ export class AttendancePage {
       this.timer = setInterval(() => {
         this.getSystemTime();
       }, 1000);
+  }
+
+  loadHisData(date) {
+    this.loading = true;
+    this.oa.GetOACardRecordListResult(date, (data, error) => {
+      this.loading = false;
+      
+    });
   }
 
   getSystemTime() {

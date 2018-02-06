@@ -32,9 +32,25 @@
       <p class="time">{{time}}</p>
       <p class="date">{{date}}</p>
     </div>
+
+    <error-empty-message-box [data]="dataList" [error]="error" [needShow]="!loading"></error-empty-message-box>
+    
+    <ion-list>
+
+    </ion-list>
+    
   </div>
   <div class="his-container" [hidden]="dataType !== 'his'">
+    <ion-calendar [(ngModel)]="currentDate"
+      [options]="dateOptions"
+      (onChange)="onChange($event)"
+      [format]="'YYYY-MM-DD'">
+    </ion-calendar>
+    <error-empty-message-box [data]="dataList" [error]="error" [needShow]="!loading"></error-empty-message-box>
+    
+    <ion-list>
 
+    </ion-list>
   </div>
   <!-- <img src="assets/imgs/img-attend-{{dataType}}.png" /> -->
 </ion-content>
