@@ -21,9 +21,10 @@ export class AttendancePage {
 
   date: string;
   time: string;
-  timer: any;
 
-  timestamp: number;
+  hisDate: string;
+
+  timer: any;
 
   times: any = [
     {
@@ -47,8 +48,16 @@ export class AttendancePage {
   };
 
   dataList: any = [];
+
+  todayDataList: any = [];
+  hisDataList: any   = [];
+
   loading: boolean = false;
+
   error: any = null;
+  
+  todayError: any = null;
+  hisError: any   = null;
 
   constructor(public navCtrl: NavController, 
     private oa: OAService,
@@ -71,6 +80,7 @@ export class AttendancePage {
 
   onChange(ev) {
     // console.log(ev);
+    this.hisDate = ev;
     this.loadHisData(ev);
   }
 
@@ -81,25 +91,106 @@ export class AttendancePage {
         this.date = arr[0];
         this.time = arr[1];
 
-        this.timestamp = new Date(data.DateTimeStr).getTime();
+        this.hisDate = this.date;
 
         this.loadHisData(this.date);
       });
 
-      // setTimeout(() => {
-      //   this.getSystemTime();
-      // }, 1000);
-      this.timer = setInterval(() => {
-        this.getSystemTime();
-      }, 1000);
+      // if (!this.timer) {
+      //   this.timer = setInterval(() => {
+      //     this.getSystemTime();
+      //   }, 1000);
+      // }
+      
   }
 
   loadHisData(date) {
     this.loading = true;
     this.oa.GetOACardRecordListResult(date, (data, error) => {
       this.loading = false;
-      
+      // this.error = error;
+      // if (data) {
+      //   // 标记打开状态
+      //   this.markCardStatus(data);
+
+      //   this.dataList = data.DataList;
+      // } else {
+      //   this.dataList = [];
+      // }
+      this.handleResult(data, error, date);
     });
+  }
+
+  handleResult(data, error, date) {
+    console.log(this.hisDate);
+    
+    let now = Utils.dateFormat(new Date());
+    if (now === date && this.dataType === 'dk') {
+      // 打卡
+      // this.todayDataList = data && data.DataList;
+      if (data && data.DataList) {
+        this.todayDataList = data.DataList;
+      } else {
+        this.todayDataList = [];
+      }
+
+      this.todayError = error;
+
+      this.markCardStatus(data);
+    } else {
+      // 历史
+      if (data && data.DataList) {
+        this.hisDataList = data.DataList;
+      } else {
+        this.hisDataList = [];
+      }
+      
+      // console.log(this.hisDataList);
+
+      this.hisError    = error;
+    }
+
+    this.segmentChanged();
+  }
+
+  segmentChanged() {
+    if (this.dataType === 'dk') {
+      this.dataList = this.todayDataList;
+      this.error    = this.todayError;  
+    } else {
+      if (this.hisDate === this.date) {
+        this.dataList = this.todayDataList;
+        this.error    = this.todayError;  
+      } else {
+        this.dataList = this.hisDataList;
+        this.error    = this.hisError;
+
+        console.log(this.dataList);
+      }
+    }
+  }
+
+  markCardStatus(data) {
+    let cardType = data.CardRecordType;
+      if (cardType === '111') {
+        this.times.map(ele => {
+          ele.state = 'yes';
+          return ele;
+        });
+      } else if (cardType === '110') {
+        for (let i=0; i<this.times.length - 2; i++) {
+          let ele = this.times[i];
+          ele.state = 'yes';
+        }
+      } else if (cardType === '100') {
+        let ele = this.times[0];
+        ele.state = 'yes';
+      } else {
+        this.times.map(ele => {
+          ele.state = 'no';
+          return ele;
+        });
+      }
   }
 
   getSystemTime() {
@@ -121,7 +212,7 @@ export class AttendancePage {
       } else {
         this.nativeServ.showToast('打卡成功!');
 
-        this.loadData();
+        this.loadHisData(this.date);
       }
     });
   }

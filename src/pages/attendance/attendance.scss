@@ -84,4 +84,52 @@ page-attendance {
             font-size: 18px;
         }
     }
+
+    .card-records {
+        .card-record {
+            padding: 0 15px;
+
+            p {
+                margin: 0;
+                font-size: 14px;
+            }
+
+            .card-record-inner {
+                border-left: 0.55px solid #ccc;
+                padding: 0 10px;
+                padding-bottom: 15px;
+            }
+
+            .time-box {
+                font-size: 13px;
+                color: #999;
+
+                .t {
+                    font-size: 15px;
+                    color: #333;
+                }
+
+                position: relative;
+            }
+            .time-box:before {
+                content: '';
+                display: block;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: #ccc;
+                position: absolute;
+
+                top: 50%;
+                left: -14px;
+                margin-top: -2px;
+
+            }
+
+            .address {
+                color: #666;
+                font-size: 12px;
+            }
+        }
+    }
 }

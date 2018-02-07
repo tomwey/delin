@@ -10,7 +10,8 @@
     <ion-title>移动考勤</ion-title>
   </ion-navbar>
   <div class="segment-box">
-    <ion-segment [(ngModel)]="dataType" color="main-theme">
+    <ion-segment [(ngModel)]="dataType" color="main-theme"
+    (ionChange)="segmentChanged();">
       <ion-segment-button value="dk">
         打卡
       </ion-segment-button>
@@ -32,12 +33,6 @@
       <p class="time">{{time}}</p>
       <p class="date">{{date}}</p>
     </div>
-
-    <error-empty-message-box [data]="dataList" [error]="error" [needShow]="!loading"></error-empty-message-box>
-    
-    <ion-list>
-
-    </ion-list>
     
   </div>
   <div class="his-container" [hidden]="dataType !== 'his'">
@@ -46,11 +41,17 @@
       (onChange)="onChange($event)"
       [format]="'YYYY-MM-DD'">
     </ion-calendar>
-    <error-empty-message-box [data]="dataList" [error]="error" [needShow]="!loading"></error-empty-message-box>
-    
-    <ion-list>
+  </div>
 
-    </ion-list>
+  <error-empty-message-box [data]="dataList" [error]="error" [needShow]="!loading"></error-empty-message-box>
+    
+  <div class="card-records">
+    <div class="card-record" *ngFor="let card of dataList">
+      <div class="card-record-inner">
+        <p class="time-box">打卡时间 <span class="t">{{card.CardRecordTimeStr}}</span></p>
+        <p class="address">{{card.Address}}</p>
+      </div>
+    </div>
   </div>
   <!-- <img src="assets/imgs/img-attend-{{dataType}}.png" /> -->
 </ion-content>
