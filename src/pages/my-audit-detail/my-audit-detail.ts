@@ -14,8 +14,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'my-audit-detail.html',
 })
 export class MyAuditDetailPage {
-
+  item: any = null;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.item = this.navParams.data;
   }
 
   ionViewDidLoad() {

@@ -19,32 +19,32 @@
     
   <div class="box-container">
     <div class="box" *ngFor="let item of dataList" tappable (tap)="gotoDetail(item);">
-      <div class="info-1">业绩分配单: {{item.ID}}</div>
+      <div class="info-1">业绩分配单: {{item.AchievementCode}}</div>
       <div class="info-2">
         <div class="pull-left">
-          <p class="label">奖金:&nbsp;<span class="money">{{item.money}}</span></p>
-          <p class="label">比例:&nbsp;{{item.factor}}</p>
+          <p class="label">奖金:&nbsp;<span class="money">{{item.AchievementCurrentBonus}}</span></p>
+          <p class="label">比例:&nbsp;{{item.AllotScale}}</p>
         </div>
         <div class="pull-right">
           <table>
             <tr>
               <td class="name">业绩奖金:</td>
-              <td class="value">{{item.yj_money}}</td>
+              <td class="value">{{item.AchievementBonus}}</td>
             </tr>
             <tr>
               <td class="name">订单收款额:</td>
-              <td class="value">{{item.order_money}}</td>
+              <td class="value">{{item.OrderPrice}}</td>
             </tr>
             <tr>
               <td class="name">收款总额:</td>
-              <td class="value">{{item.total_money}}</td>
+              <td class="value">{{item.OrderGetPrice}}</td>
             </tr>
           </table>
         </div>
       </div>
       <div class="info-3">
-        <p>定单号:{{item._no}}&emsp;{{item.man}}&emsp;{{item.group}}<span class="time">{{item.time}}</span></p>
-        <p>产品信息:{{item.product}}</p>
+        <p>定单号:{{item.OrderNo}}&emsp;{{item.CustomerName}}&emsp;{{item.AllotDepartmentName}}&emsp;<span class="time">{{item.AllotTimeStr}}</span></p>
+        <p>产品信息:{{item.ProductName}}</p>
       </div>
     </div>
   </div>

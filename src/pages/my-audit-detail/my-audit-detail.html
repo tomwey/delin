@@ -13,11 +13,11 @@
   <div class="total-stat">
     <ion-row>
       <ion-col col-6>
-        <div class="money">190.31</div>
+        <div class="money">{{item.AchievementBonus}}</div>
         <div class="name">业绩奖金</div>
       </ion-col>
       <ion-col col-6 class="no-right-border">
-        <div class="money">90.31</div>
+        <div class="money">{{item.AchievementCurrentBonus}}</div>
         <div class="name">奖金金额</div>
       </ion-col>
     </ion-row>
@@ -30,23 +30,23 @@
     <table>
       <tr>
         <td class="name">业绩分配单</td>
-        <td class="value">1316588</td>
+        <td class="value">{{item.AchievementCode}}</td>
       </tr>
       <tr>
         <td class="name">定单号</td>
-        <td class="value">DD20110041</td>
+        <td class="value">{{item.OrderNo}}</td>
       </tr>
       <tr>
         <td class="name">分配时间</td>
-        <td class="value">2011-09-28 16:58:24</td>
+        <td class="value">{{item.AllotTimeStr}}</td>
       </tr>
       <tr>
         <td class="name">客户</td>
-        <td class="value">徐建强</td>
+        <td class="value">{{item.CustomerName}}</td>
       </tr>
       <tr>
         <td class="name">分配部门</td>
-        <td class="value">成都川南组</td>
+        <td class="value">{{item.AllotDepartmentName}}</td>
       </tr>
     </table>
     </div>
@@ -54,23 +54,23 @@
     <table>
       <tr>
         <td class="name">订单收款额</td>
-        <td class="value">230000</td>
+        <td class="value">{{item.OrderPrice}}</td>
       </tr>
       <tr>
         <td class="name">收款总额</td>
-        <td class="value">17369</td>
+        <td class="value">{{item.OrderGetPrice}}</td>
       </tr>
       <tr>
         <td class="name">分配比例</td>
-        <td class="value">.58921739</td>
+        <td class="value">{{item.AllotScale}}</td>
       </tr>
       <tr>
         <td class="name">往期发放</td>
-        <td class="value">10043.81</td>
+        <td class="value">{{item.PriorIssuance}}</td>
       </tr>
       <tr>
         <td class="name">产品信息</td>
-        <td class="value">1.B.BKTQ0018 碳素合成钢机械臂智能前轴驱动臂</td>
+        <td class="value">{{item.ProductName}}</td>
       </tr>
     </table>
   </div>
