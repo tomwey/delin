@@ -17,7 +17,7 @@ import { OAService } from '../../services/oa.service';
 })
 export class ContactsPage {
 
-  deptID: string = '';
+  dept: any = {};
   dataList: any  = [];
   error: any = null;
 
@@ -26,12 +26,23 @@ export class ContactsPage {
   deptData: any = [];
   manData: any  = [];
 
+  breadcrumbs: any = [];
+  activeBreadcrumb: string = '全部';
+
   constructor(public navCtrl: NavController, 
       private app: App,
       private oa: OAService,
       public navParams: NavParams) {
-        if (this.navParams.data.deptID) {
-          this.deptID = this.navParams.data.deptID;
+        if (this.navParams.data.item) {
+          this.dept = this.navParams.data.item;
+          this.activeBreadcrumb = this.dept.ObjName;
+        } else {
+        }
+
+        if (this.navParams.data.breadcrumbs) {
+          this.breadcrumbs = this.navParams.data.breadcrumbs;
+        } else {
+
         }
   }
 
@@ -42,7 +53,7 @@ export class ContactsPage {
 
   loadData() {
     this.loading = true;
-    this.oa.getDepartmentList(this.deptID, (data, error) => {
+    this.oa.getDepartmentList(this.dept.ObjID || '', (data, error) => {
       this.loading = false;
       this.error = error;
 
@@ -67,8 +78,17 @@ export class ContactsPage {
     this.app.getRootNavs()[0].push('ManInfoPage', item);
   }
 
+  forwardTo(b) {
+    this.app.getRootNavs()[0].popTo(b.page);
+  }
+
   gotoContacts(item) {
-    this.app.getRootNavs()[0].push('ContactsPage', { deptID: item.ObjID});
+    let b = {};
+    b['name'] = item.ObjName;
+    b['page'] = this;
+    this.breadcrumbs.push(b);
+
+    this.app.getRootNavs()[0].push('ContactsPage', { item: item, breadcrumbs: this.breadcrumbs });
   }
 
 }
