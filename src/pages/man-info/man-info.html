@@ -14,19 +14,19 @@
 
 <ion-content class="content">
   <div class="capition">
-    <img class="avatar" [src]="person.avatar">
-    <h2>{{person.name}}</h2>
-    <p>{{person.job}}</p>
+    <img class="avatar" [src]="person.EmpPicture">
+    <h2>{{person.EmpName}}</h2>
+    <p>{{person.PositionName}}</p>
   </div>
 
   <ion-list>
     <ion-item>
       <h2>
         <span class="label-name">手机</span>
-        <span class="label-value">13261933490</span>
+        <span class="label-value">{{person.Mobile}}</span>
       </h2>
       <ion-note item-right class="phone-btn">
-        <button>
+        <button (click)="callPhone();">
           <img src="assets/imgs/btn_phone.png">
         </button>
       </ion-note>
@@ -34,14 +34,14 @@
     <ion-item>
       <h2>
         <span class="label-name">邮箱</span>
-        <span class="label-value">739113490@qq.com</span>
+        <span class="label-value">{{person.EmpEmail}}</span>
       </h2>
       
     </ion-item>
     <ion-item>
       <h2>
         <span class="label-name">部门</span>
-        <span class="label-value">产品事业部</span>
+        <span class="label-value">{{person.DepartmentName}}</span>
       </h2>
     </ion-item>
   </ion-list>

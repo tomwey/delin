@@ -29,31 +29,20 @@
 </ion-header>
 
 <ion-content class="content">
+  <error-empty-message-box [data]="dataList" [error]="error" [needShow]="!loading"></error-empty-message-box>
   <ion-list></ion-list>
   <ion-list>
-    <button ion-item>
-      <h2>成都公司</h2>
-      <ion-note item-right>412</ion-note>
-    </button>
-    <button ion-item>
-      <h2>太原公司</h2>
-      <ion-note item-right>86</ion-note>
-    </button>
-    <button ion-item>
-      <h2>重庆公司</h2>
-      <ion-note item-right>122</ion-note>
-    </button>
-    <button ion-item>
-      <h2>昆明公司</h2>
-      <ion-note item-right>47</ion-note>
+    <button ion-item *ngFor="let item of deptData" (click)="gotoContacts(item);">
+      <h2>{{item.ObjName}}</h2>
+      <!-- <ion-note item-right>412</ion-note> -->
     </button>
   </ion-list>
   <ion-list>
-    <button ion-item *ngFor="let person of people" (click)="gotoManInfo(person);">
+    <button ion-item *ngFor="let person of manData" (click)="gotoManInfo(person);">
       <ion-avatar item-left>
-        <img [src]="person.avatar">
+        <img [src]="person.ObjHeadImg">
       </ion-avatar>
-      <h2>{{person.name}}</h2>
+      <h2>{{person.ObjName}}</h2>
     </button>
   </ion-list>
 </ion-content>

@@ -17,10 +17,22 @@ import { OAService } from '../../services/oa.service';
 })
 export class ContactsPage {
 
+  deptID: string = '';
+  dataList: any  = [];
+  error: any = null;
+
+  loading: boolean = false;
+
+  deptData: any = [];
+  manData: any  = [];
+
   constructor(public navCtrl: NavController, 
       private app: App,
       private oa: OAService,
       public navParams: NavParams) {
+        if (this.navParams.data.deptID) {
+          this.deptID = this.navParams.data.deptID;
+        }
   }
 
   ionViewDidLoad() {
@@ -29,9 +41,25 @@ export class ContactsPage {
   }
 
   loadData() {
-    this.oa.getDepartmentList('', (data, error) => {
-      console.log(data);
-      console.log(error);
+    this.loading = true;
+    this.oa.getDepartmentList(this.deptID, (data, error) => {
+      this.loading = false;
+      this.error = error;
+
+      if (data && data.DataList) {
+        this.dataList = data.DataList;
+      } else {
+        this.dataList = [];
+      }
+
+      this.dataList.forEach(element => {
+        if (element.ObjType == '2') {
+          this.manData.push(element);
+        } else {
+          this.deptData.push(element);
+        }
+      });
+
     });
   }
 
@@ -39,17 +67,8 @@ export class ContactsPage {
     this.app.getRootNavs()[0].push('ManInfoPage', item);
   }
 
-  people: any = [
-    {
-      name: '康康妮妮',
-      avatar: 'assets/imgs/u1.png',
-      job: '产品经理',
-    },
-    {
-      name: '康雪',
-      avatar: 'assets/imgs/u2.png',
-      job: '职员'
-    },
-  ];
+  gotoContacts(item) {
+    this.app.getRootNavs()[0].push('ContactsPage', { deptID: item.ObjID});
+  }
 
 }
