@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { App } from 'ionic-angular/components/app/app';
+import { OAService } from '../../services/oa.service';
 
 /**
  * Generated class for the ContactsPage page.
@@ -18,11 +19,20 @@ export class ContactsPage {
 
   constructor(public navCtrl: NavController, 
       private app: App,
+      private oa: OAService,
       public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ContactsPage');
+    // console.log('ionViewDidLoad ContactsPage');
+    this.loadData();
+  }
+
+  loadData() {
+    this.oa.getDepartmentList('', (data, error) => {
+      console.log(data);
+      console.log(error);
+    });
   }
 
   gotoManInfo(item) {

@@ -96,11 +96,11 @@ export class AttendancePage {
         this.loadHisData(this.date);
       });
 
-      // if (!this.timer) {
-      //   this.timer = setInterval(() => {
-      //     this.getSystemTime();
-      //   }, 1000);
-      // }
+      if (!this.timer) {
+        this.timer = setInterval(() => {
+          this.getSystemTime();
+        }, 1000);
+      }
       
   }
 
@@ -171,7 +171,7 @@ export class AttendancePage {
   }
 
   markCardStatus(data) {
-    let cardType = data.CardRecordType;
+    let cardType = data && data.CardRecordType;
       if (cardType === '111') {
         this.times.map(ele => {
           ele.state = 'yes';

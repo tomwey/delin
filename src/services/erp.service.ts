@@ -120,4 +120,20 @@ export class ERPService {
         });
     }
 
+    GetMaterielListResult(callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetMaterielListResult', { empcode : user.EmpCode })
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
 }

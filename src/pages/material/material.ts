@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ERPService } from '../../services/erp.service';
 
 /**
  * Generated class for the MaterialPage page.
@@ -15,11 +16,32 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MaterialPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, 
+    private erp: ERPService,
+    public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MaterialPage');
+    // console.log('ionViewDidLoad MaterialPage');
+    this.loadData();
   }
 
+  loadData() {
+    this.loading = true;
+
+    this.erp.GetMaterielListResult((data, error) => {
+      this.loading = false;
+      this.error = error;
+
+      if (data && data.DataList) {
+        this.dataList = data.DataList;
+      } else {
+        this.dataList = [];
+      }
+    });
+  }
+
+  dataList: any = [];
+  loading: boolean = false;
+  error: any = null;
 }
