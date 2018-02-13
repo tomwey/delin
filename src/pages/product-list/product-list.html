@@ -15,15 +15,16 @@
 </ion-header>
 
 <ion-content>
+  <error-empty-message-box [data]="dataList" [error]="error" [needShow]="!loading"></error-empty-message-box>
   <ion-list>
     <button class="product" ion-item *ngFor="let item of dataList" detail-none (click)="openItem(item);">
       
-      <h2 text-wrap>{{item.name}}</h2>
-      <p>编号:{{item.ID}}</p>
-      <p>分类:{{item.cata_name}}</p>
+      <h2 text-wrap>{{item.ProductName}}</h2>
+      <p>编号:{{item.ProductCode}}</p>
+      <p>分类:{{item.ProductTypeName}}</p>
       <ion-note item-right>
-        <p class="money">{{item.money}}</p>
-        <p class="quantity">x{{item.quantity}}</p>
+        <p class="money">{{item.CurrentPrice}}</p>
+        <p class="quantity">x{{item.Count}}</p>
       </ion-note>
     </button>
   </ion-list>

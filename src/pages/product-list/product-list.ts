@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ActionSheetController, App } from 'ionic-angular';
+import { ERPService } from '../../services/erp.service';
 
 /**
  * Generated class for the ProductListPage page.
@@ -20,12 +21,31 @@ export class ProductListPage {
     public navCtrl: NavController,
     public actionSheetCtrl: ActionSheetController,
     public navParams: NavParams,
+    private erp: ERPService,
     private app: App,
   ) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProductListPage');
+    // console.log('ionViewDidLoad ProductListPage');
+    setTimeout(() => {
+      // this.loadData();
+    }, 100);
+  }
+
+  loadData() {
+    this.loading = true;
+    this.erp.GetERPProductList('', (data, error) => {
+      this.loading = false;
+      this.error = error;
+
+      if (data && data.DataList) {
+        this.dataList = data.DataList;
+      } else {
+        this.dataList = [];
+      }
+      
+    });
   }
 
   openItem(item) {
@@ -63,35 +83,8 @@ export class ProductListPage {
     this.app.getRootNavs()[0].push('ProductBomListPage', item);
   }
 
-  dataList: any = [
-    {
-      ID: '1.AK.AKTQ1344',
-      name: '碳纤五连杆压膝耐低温莱邦弹性脚多功能踝',
-      cata_name: '13碳纤五连杆气压膝关节',
-      money: 102460,
-      quantity: 1,
-    },
-    {
-      ID: '1.AK.AKTQ1344',
-      name: '碳纤五连杆压膝耐低温莱邦弹性脚多功能踝',
-      cata_name: '13碳纤五连杆气压膝关节',
-      money: 39640,
-      quantity: 1,
-    },
-    {
-      ID: '1.AK.AKTQ1344',
-      name: '碳纤五连杆压膝耐低温莱邦弹性脚多功能踝',
-      cata_name: '13碳纤五连杆气压膝关节',
-      money: 3460,
-      quantity: 1,
-    },
-    {
-      ID: '1.AK.AKTQ1344',
-      name: '碳纤五连杆压膝耐低温莱邦弹性脚多功能踝',
-      cata_name: '13碳纤五连杆气压膝关节',
-      money: 1580,
-      quantity: 1,
-    },
-  ];
+  dataList: any = [];
+  error: any = null;
+  loading: boolean = false;
 
 }

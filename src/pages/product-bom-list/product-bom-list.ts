@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ERPService } from '../../services/erp.service';
 
 /**
  * Generated class for the ProductBomListPage page.
@@ -15,28 +16,30 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ProductBomListPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, 
+    private erp: ERPService,
+    public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProductBomListPage');
+    // console.log('ionViewDidLoad ProductBomListPage');
+    setTimeout(() => {
+      this.loading = true;
+      this.erp.GetProductBOM(this.navParams.data.ProductCode, (data, error) => {
+        this.loading = false;
+        this.error = error;
+
+        if (data && data.DataList) {
+          this.dataList = data.DataList;
+        } else {
+          this.dataList = [];
+        }
+      });
+    }, 100);
   }
 
-  dataList: any = [
-    {
-      name: '自动气阀',
-      code: '6.E.E-TSV-A',
-      mode: 'A',
-      quantity: 1,
-      flag: true,
-    },
-    {
-      name: '合金接管式可调接头',
-      code: '6.E.E-TSV-A',
-      mode: 'L2',
-      quantity: 3,
-      flag: false,
-    },
-  ];
+  dataList: any = [];
+  error: any = null;
+  loading: boolean = false;
 
 }

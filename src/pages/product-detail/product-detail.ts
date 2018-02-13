@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ERPService } from '../../services/erp.service';
 
 /**
  * Generated class for the ProductDetailPage page.
@@ -15,83 +16,87 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ProductDetailPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    private erp: ERPService,
+    public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProductDetailPage');
+    // console.log('ionViewDidLoad ProductDetailPage');
+    this.loadData();
   }
 
-  dataList: any = [
-    {
-      label: '产品编号',
-      value: '1.AK.AKAE1164',
-    },
-    {
-      label: '产品名称',
-      value: '合金五连杆气压膝奥索万力飞毛腿LP大腿',
-    },
-    {
-      label: 'BOM代码',
-      value: 'AKHJ1164',
-    },
-    {
-      label: '规格型号',
-      value: '自制',
-    },
-    {
-      label: '物料代码',
-      value: '1.A.AKHJ1164',
-    },
-    {
-      label: '物料名称',
-      value: '合金五连杆气压膝碳纤仿生储能脚',
-    },
-    {
-      label: '单位',
-      value: '具',
-    },
-    {
-      label: '数量',
-      value: '1',
-    },
-    {
-      label: '产品性质',
-      value: '半外购',
-    },
-    {
-      label: '所属类别',
-      value: '11合金五连杆气压膝关节',
-    },
-    {
-      label: '成品率',
-      value: '100',
-    },
-    {
-      label: '使用状态',
-      value: 'true',
-    },
-    {
-      label: '工艺路线',
-      value: '',
-    },
-    {
-      label: '产品材质',
-      value: '',
-    },
-  ];
+  loadData() {
+    this.erp.GetERPProductModel(this.navParams.data.ProductCode, (data, error) => {
+      if (data && data.Model) {
+        let item = data.Model || {};
+        this.dataList = [
+          {
+            label: '产品编号',
+            value: item.ProductCode,
+          },
+          {
+            label: '产品名称',
+            value: item.ProductName,
+          },
+          {
+            label: 'BOM代码',
+            value: item.BOMCode,
+          },
+          {
+            label: '规格型号',
+            value: item.ProductSpecifications,
+          },
+          {
+            label: '物料代码',
+            value: item.MaterielID,
+          },
+          {
+            label: '物料名称',
+            value: item.MaterielName,
+          },
+          {
+            label: '单位',
+            value: item.Unit,
+          },
+          {
+            label: '数量',
+            value: item.Count,
+          },
+          {
+            label: '产品性质',
+            value: item.ProductProperty,
+          },
+          {
+            label: '所属类别',
+            value: item.ProductTypeName,
+          },
+          {
+            label: '成品率',
+            value: item.FinishedRate,
+          },
+          {
+            label: '使用状态',
+            value: item.State,
+          },
+          {
+            label: '工艺路线',
+            value: item.Technics,
+          },
+          {
+            label: '产品材质',
+            value: item.ProductMaterialQuality,
+          },
+        ];
 
-  baoxiuList: any = [
-    {
-      name: '膝关节',
-      duration: 36,
-      note: '',
-    },
-    {
-      name: '承筒',
-      duration: 12,
-      note: '保修期内免费更换一个',
-    },
-  ];
+        this.baoxiuList = item.WarrantyList;
+      }
+    });
+  }
+
+  dataList: any = [];
+
+  baoxiuList: any = [];
 
 }

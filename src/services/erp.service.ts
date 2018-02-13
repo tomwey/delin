@@ -136,4 +136,52 @@ export class ERPService {
         });
     }
 
+    GetERPProductList(productname, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetERPProductList', { empcode : user.EmpCode, productname: productname })
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    GetERPProductModel(productcode, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetERPProductModel', { empcode : user.EmpCode, productcode: productcode })
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    GetProductBOM(productcode, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetProductBOM', { empcode : user.EmpCode, productcode: productcode })
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
 }
