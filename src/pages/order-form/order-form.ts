@@ -144,6 +144,51 @@ export class OrderFormPage {
     modal.present();
   }
 
+  controlSelect(ev) {
+    let data: any = [];
+
+    if (ev.ID === 'CustomerSex') {
+      data = [{label: '男', value: 1}, {label: '女', value: 0}];
+    } else if (ev.ID === 'SalesMan') {
+      let arr = this.orderBaseData.SalesMans || [];
+      arr.forEach(element => {
+        data.push({label: element.EmpName, value: element.EmpCode});
+      });
+    } else if (ev.ID === 'DeskClerk') {
+      let arr = this.orderBaseData.DeskClerks || [];
+      arr.forEach(element => {
+        data.push({label: element.EmpName, value: element.EmpCode});
+      });
+    } else if (ev.ID === 'OrderType') {
+      let arr = this.orderBaseData.OrderTypes || [];
+      arr.forEach(element => {
+        data.push({label: element.ConfigText, value: element.ConfigValue});
+      });
+    } else if (ev.ID === 'CustomerNation') { // 民族
+      let arr = this.orderBaseData.Nations || [];
+      arr.forEach(element => {
+        data.push({label: element.ConfigText, value: element.ConfigValue});
+      });
+    } else if (ev.ID === 'ProductUnit') { // 生产单位
+      let arr = this.orderBaseData.ProductUnits || [];
+      arr.forEach(element => {
+        data.push({label: element.DepartmentName, value: element.DepartmentID});
+      });
+    } else if (ev.ID === 'IsExpenses') {
+      data = [{label: '是', value: 1}, {label: '否', value: 0}];
+    } /*else if (ev.ID === '') { // 业务员所属部门
+      let arr = this.orderBaseData.SSBM || [];
+      arr.forEach(element => {
+        data.push({label: element.DepartmentName, value: element.DepartmentID});
+      });
+    } else if (ev.ID === '') {
+
+    }*/
+
+    this.navCtrl.push('CommSelectPage', { field: ev.ID, 
+      selected: ev.value, data: data, target: ev });
+  }
+
   baseControls: any = [
     // {
     //   ID: 'OrderNo',
@@ -182,7 +227,7 @@ export class OrderFormPage {
     {
       ID: 'CustomerNation',
       type: 4,
-      name: '客户名族'
+      name: '客户民族'
     },
     {
       ID: 'CustomerIdCard',
@@ -244,7 +289,7 @@ export class OrderFormPage {
     },
     {
       ID: 'CustomerType',
-      type: 4,
+      type: 2,
       name: '客户类型'
     },
     {
