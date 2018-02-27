@@ -15,20 +15,24 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 })
 export class OrderPayItemFormPage {
 
-  formData: any = {
-    pay_name: '',
-    pay_type: '',
-    pay_money: '',
-    fp_name: '',
-    note: '',
-  };
+  // formData: any = {
+  //   pay_name: '',
+  //   pay_type: '',
+  //   pay_money: '',
+  //   fp_name: '',
+  //   note: '',
+  // };
+
+  payTypes: any = null;
 
   constructor(public navCtrl: NavController, 
     private viewCtrl: ViewController,
     public navParams: NavParams) {
       if (this.navParams.data.item) {
-        this.formData = this.navParams.data.item;
+        this.controls = this.navParams.data.item.controls;
       }
+
+    this.payTypes = this.navParams.data.payTypes || [];
   }
 
   ionViewDidLoad() {
@@ -39,8 +43,56 @@ export class OrderPayItemFormPage {
     this.viewCtrl.dismiss();
   }
 
-  save() {
-    this.viewCtrl.dismiss(this.formData);
+  controlSelect(ev) {
+    if (ev.ID === 'PayDetailType') {
+      let arr = [];
+      this.payTypes.forEach(element => {
+        arr.push({label: element.ConfigText, value: element.ConfigValue});
+      });
+      this.navCtrl.push('CommSelectPage', { field: ev.ID, 
+        selected: ev.value, data: arr, target: ev });
+      // this.navCtrl.push('SelectSearchPage', { uri: '', item: this.currentProduct });
+    }
   }
 
+  save() {
+
+    let formData = {};
+    this.controls.forEach(element => {
+      let val = element.value || {};
+      formData[element.ID] = val;
+    });
+
+    formData['controls'] = this.controls;
+
+    this.viewCtrl.dismiss(formData);
+  }
+
+  controls: any = [
+    {
+      ID: 'PayDetailName',
+      type: 2,
+      name: '付款方',
+    },
+    {
+      ID: 'PayDetailType',
+      type: 4,
+      name: '付款方式',
+    },
+    {
+      ID: 'PayDetailPrice',
+      type: 8,
+      name: '付款金额',
+      pattern: '[0-9]*'
+    },
+    {
+      ID: 'PayDetailInvoiceTitle',
+      type: 2,
+      name: '抬头',
+    },
+    {
+      ID: 'PayDetailRemark',
+      type: 3,
+      name: '备注',
+    }];
 }

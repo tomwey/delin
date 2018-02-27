@@ -81,7 +81,7 @@ export class OrderFormPage {
   }
 
   openPayItem(item) {
-    let modal = this.modalCtrl.create('OrderPayItemFormPage', { item: item });
+    let modal = this.modalCtrl.create('OrderPayItemFormPage', { item: item, payTypes: this.orderBaseData.PayTypes });
     modal.onDidDismiss((data) => {
       if (data) {
         let index = this.payItems.indexOf(item);
@@ -103,7 +103,7 @@ export class OrderFormPage {
   }
 
   addPayItem() {
-    let modal = this.modalCtrl.create('OrderPayItemFormPage');
+    let modal = this.modalCtrl.create('OrderPayItemFormPage', {payTypes: this.orderBaseData.PayTypes});
     modal.onDidDismiss((data) => {
       if (data) {
         this.payItems.push(data);
@@ -113,7 +113,7 @@ export class OrderFormPage {
   }
 
   openAuditItem(item) {
-    let modal = this.modalCtrl.create('OrderAuditItemFormPage', { item: item });
+    let modal = this.modalCtrl.create('OrderAuditItemFormPage', { item: item, salesman: this.orderBaseData.SalesMans, ssbm: this.orderBaseData.SSBM });
     modal.onDidDismiss((data) => {
       if (data) {
         let index = this.auditItems.indexOf(item);
@@ -135,7 +135,7 @@ export class OrderFormPage {
   }
 
   addAuditItem() {
-    let modal = this.modalCtrl.create('OrderAuditItemFormPage');
+    let modal = this.modalCtrl.create('OrderAuditItemFormPage', {salesman: this.orderBaseData.SalesMans, ssbm: this.orderBaseData.SSBM});
     modal.onDidDismiss((data) => {
       if (data) {
         this.auditItems.push(data);
@@ -187,6 +187,10 @@ export class OrderFormPage {
 
     this.navCtrl.push('CommSelectPage', { field: ev.ID, 
       selected: ev.value, data: data, target: ev });
+  }
+
+  save() {
+    
   }
 
   baseControls: any = [

@@ -25,7 +25,7 @@
         <div class="item-list" *ngIf="products.length > 0">
           <ion-list>
             <button ion-item *ngFor="let item of products" (click)="openItem(item);">
-              {{item.product_name}}
+              {{item.ProductCode && item.ProductCode.label}}
               <button ion-button small clear item-right color="danger" (click)="removeItem($event,item);">
                 <ion-icon name="ios-trash-outline"></ion-icon>
               </button>
@@ -49,7 +49,7 @@
         <div class="item-list" *ngIf="payItems.length > 0">
           <ion-list>
             <button ion-item *ngFor="let item of payItems" (click)="openPayItem(item);">
-              {{item.pay_name}}
+              {{item.PayDetailName}}
               <button ion-button small clear item-right color="danger" (click)="removePayItem($event,item);">
                 <ion-icon name="ios-trash-outline"></ion-icon>
               </button>
@@ -412,6 +412,6 @@
 
 <ion-footer>
     <!-- <div padding> -->
-      <button ion-button full color="main-theme">保存</button>
+      <button ion-button full color="main-theme" (click)="save();">保存</button>
     <!-- </div> -->
   </ion-footer>

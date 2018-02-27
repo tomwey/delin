@@ -19,7 +19,8 @@
 
 
 <ion-content>
-    <div class="form-box">
+    <common-form [controls]="controls" (onControlSelect)="controlSelect($event);"></common-form>
+    <!-- <div class="form-box">
         <ion-list>
           <ion-item>
             <ion-label fixed>负责业务员</ion-label>
@@ -61,7 +62,7 @@
             </ion-item>
       
           </ion-list>
-        </div>
+        </div> -->
 </ion-content>
 
 <ion-footer>
