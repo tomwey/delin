@@ -15,7 +15,89 @@
 
 <ion-content>
     <div class="form-box">
-        <h2>基本资料</h2>
+      <h2>基本资料</h2>
+    </div>
+    <common-form [controls]="baseControls" (onControlSelect)="controlSelect($event);"></common-form>
+    
+    <div class="form-box">
+      <h2>商品明细</h2>
+      <div class="overtime-items">
+        <div class="item-list" *ngIf="products.length > 0">
+          <ion-list>
+            <button ion-item *ngFor="let item of products" (click)="openItem(item);">
+              {{item.product_name}}
+              <button ion-button small clear item-right color="danger" (click)="removeItem($event,item);">
+                <ion-icon name="ios-trash-outline"></ion-icon>
+              </button>
+            </button>
+          </ion-list>
+        </div>
+        <div class="add-button">
+          <button ion-button round outline (click)="addItem();">添加商品</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-box">
+      <h2>交付事项</h2>
+    </div>
+    <common-form [controls]="jfControls" (onControlSelect)="controlSelect($event);"></common-form>
+
+    <div class="form-box">
+      <h2>付款方及开具发票明细</h2>
+      <div class="overtime-items">
+        <div class="item-list" *ngIf="payItems.length > 0">
+          <ion-list>
+            <button ion-item *ngFor="let item of payItems" (click)="openPayItem(item);">
+              {{item.pay_name}}
+              <button ion-button small clear item-right color="danger" (click)="removePayItem($event,item);">
+                <ion-icon name="ios-trash-outline"></ion-icon>
+              </button>
+            </button>
+          </ion-list>
+        </div>
+        <div class="add-button">
+          <button ion-button round outline (click)="addPayItem();">添加付款方明细</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-box">
+      <h2>业绩分配基本资料</h2>
+    </div>
+    <common-form [controls]="yjfpBaseControls" (onControlSelect)="controlSelect($event);"></common-form>
+
+    <div class="form-box">
+      <h2>奖金基本资料</h2>
+    </div>
+    <common-form [controls]="jjBaseControls" (onControlSelect)="controlSelect($event);"></common-form>
+
+    <div class="form-box">
+      <h2>业绩分配</h2>
+    </div>
+    <common-form [controls]="yjfpControls" (onControlSelect)="controlSelect($event);"></common-form>
+
+    <div class="form-box">
+      <h2>业绩分配明细</h2>
+      <div class="overtime-items">
+        <div class="item-list" *ngIf="auditItems.length > 0">
+          <ion-list>
+            <button ion-item *ngFor="let item of auditItems;let i = index;" (click)="openAuditItem(item);">
+              业绩分配明细{{i+1}}
+              <button ion-button small clear item-right color="danger" (click)="removeAuditItem($event,item);">
+                <ion-icon name="ios-trash-outline"></ion-icon>
+              </button>
+            </button>
+          </ion-list>
+        </div>
+        <div class="add-button">
+          <button ion-button round outline (click)="addAuditItem();">添加业绩分配明细</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="form-box"> -->
+        <!-- <h2>基本资料</h2>
         <ion-list>
           <ion-item>
             <ion-label fixed><span class="required">*</span>定单编号</ion-label>
@@ -161,24 +243,9 @@
 
         </ion-list>
     
-        <h2>商品明细</h2>
-        <div class="overtime-items">
-          <div class="item-list" *ngIf="formData.products.length > 0">
-            <ion-list>
-              <button ion-item *ngFor="let item of formData.products" (click)="openItem(item);">
-                {{item.product_name}}
-                <button ion-button small clear item-right color="danger" (click)="removeItem($event,item);">
-                  <ion-icon name="ios-trash-outline"></ion-icon>
-                </button>
-              </button>
-            </ion-list>
-          </div>
-          <div class="add-button">
-            <button ion-button round outline (click)="addItem();">添加商品</button>
-          </div>
-        </div>
+        
 
-        <h2>交付事项</h2>
+        
         <ion-list>
             <ion-item>
               <ion-label fixed><span class="required">*</span>协议总价</ion-label>
@@ -215,26 +282,11 @@
               <ion-textarea [(ngModel)]="formData.note2" rows="6" placeholder="不需打印的请说明"></ion-textarea>
             </ion-item>
   
-          </ion-list>
+          </ion-list> -->
 
-          <h2>付款方及开具发票明细</h2>
-          <div class="overtime-items">
-              <div class="item-list" *ngIf="formData.pay_items.length > 0">
-                <ion-list>
-                  <button ion-item *ngFor="let item of formData.pay_items" (click)="openPayItem(item);">
-                    {{item.pay_name}}
-                    <button ion-button small clear item-right color="danger" (click)="removePayItem($event,item);">
-                      <ion-icon name="ios-trash-outline"></ion-icon>
-                    </button>
-                  </button>
-                </ion-list>
-              </div>
-              <div class="add-button">
-                <button ion-button round outline (click)="addPayItem();">添加付款方明细</button>
-              </div>
-            </div>
+
           
-          <h2>业绩分配基本资料</h2>
+          <!-- <h2>业绩分配基本资料</h2>
           <ion-list>
               <ion-item>
                 <ion-label fixed>定单收款额</ion-label>
@@ -270,9 +322,9 @@
                   <ion-textarea [(ngModel)]="formData.note3" rows="6" placeholder="请说明"></ion-textarea>
                 </ion-item>
 
-          </ion-list>
+          </ion-list> -->
 
-          <h2>奖金基本资料</h2>
+          <!-- <h2>奖金基本资料</h2>
           <ion-list>
               <ion-item>
                   <ion-label fixed>奖金综合比例</ion-label>
@@ -286,9 +338,9 @@
                   <ion-label fixed>奖金总额</ion-label>
                   <ion-input [(ngModel)]="formData.jj_total_money" type="number"></ion-input>
                 </ion-item>
-          </ion-list>
+          </ion-list> -->
 
-          <h2>业绩分配</h2>
+          <!-- <h2>业绩分配</h2>
           <ion-list>
               <ion-item>
                   <ion-label fixed>业绩调整</ion-label>
@@ -303,10 +355,11 @@
                   <ion-input [(ngModel)]="formData.yj_total2" type="number"></ion-input>
                 </ion-item>
           </ion-list>
+          <h2>业绩分配明细</h2>
           <div class="overtime-items">
-              <div class="item-list" *ngIf="formData.audit_items.length > 0">
+              <div class="item-list" *ngIf="auditItems.length > 0">
                 <ion-list>
-                  <button ion-item *ngFor="let item of formData.audit_items;let i = index;" (click)="openAuditItem(item);">
+                  <button ion-item *ngFor="let item of auditItems;let i = index;" (click)="openAuditItem(item);">
                     业绩分配明细{{i+1}}
                     <button ion-button small clear item-right color="danger" (click)="removeAuditItem($event,item);">
                       <ion-icon name="ios-trash-outline"></ion-icon>
@@ -317,9 +370,9 @@
               <div class="add-button">
                 <button ion-button round outline (click)="addAuditItem();">添加业绩分配明细</button>
               </div>
-            </div>
+            </div> -->
 
-        <h2>定单修改记录</h2>
+        <!-- <h2>定单修改记录</h2>
         <div class="overtime-items">
           <div class="item-list" *ngIf="formData.order_change_items.length > 0">
             <ion-list>
@@ -350,10 +403,10 @@
               </ion-item>
             </ion-list>
           </div>
-        </div>
+        </div>-->
 
 
-      </div>
+      <!-- </div>  -->
 
 </ion-content>
 

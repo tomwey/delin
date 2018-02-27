@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App, ActionSheetController } from 'ionic-angular';
+import { ERPService } from '../../services/erp.service';
 
 /**
  * Generated class for the OrderPage page.
@@ -18,11 +19,12 @@ export class OrderPage {
   constructor(public navCtrl: NavController, 
     private actionSheetCtrl: ActionSheetController,
     private app: App,
+    private erp: ERPService,
     public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad OrderPage');
+    // console.log('ionViewDidLoad OrderPage');
   }
 
   openItem(item) {

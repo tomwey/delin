@@ -17,7 +17,7 @@
         type="{{item.type == 8 ? 'number' : 'text'}}"
         pattern="{{item.pattern}}"
         placeholder="{{placeholderFromItem(item)}}" 
-        [(ngModel)]="item.value"></ion-input>
+        [(ngModel)]="item.value" [disabled]="item.disabled"></ion-input>
 
       <!-- 多文本输入框 -->
       <ion-textarea *ngIf="item.type == 3" rows="6" 

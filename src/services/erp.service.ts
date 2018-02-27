@@ -184,4 +184,102 @@ export class ERPService {
         });
     }
 
+    GetCreateOrderResult(callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetCreateOrderResult', { empcode : user.EmpCode })
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    AddOrder(params, callback) {
+        this.users.currentUser().then(user => {
+            params.empcode = user.EmpCode;
+            this.api.post('AddOrder', params)
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    UpdateOrder(params, callback) {
+        this.users.currentUser().then(user => {
+            params.empcode = user.EmpCode;
+            this.api.post('UpdateOrder', params)
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    GetOrderList(callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetOrderList', { empcode : user.EmpCode })
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    GetOrderModel(orderNo, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetOrderModel', { empcode : user.EmpCode, orderno: orderNo })
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    DeleteOrder(orderNo, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('DeleteOrder', { empcode : user.EmpCode, orderno: orderNo })
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
 }

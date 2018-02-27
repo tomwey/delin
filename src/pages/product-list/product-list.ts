@@ -29,7 +29,7 @@ export class ProductListPage {
   ionViewDidLoad() {
     // console.log('ionViewDidLoad ProductListPage');
     setTimeout(() => {
-      // this.loadData();
+      this.loadData();
     }, 100);
   }
 
