@@ -189,8 +189,61 @@ export class OrderFormPage {
       selected: ev.value, data: data, target: ev });
   }
 
+  populateParams1(array, params) {
+    array.forEach(element => {
+      let val = element.value || {};
+      // console.log(val);
+
+      if (val.label) {
+        params[element.ID.toLowerCase()] = val.value;
+      } else {
+        params[element.ID.toLowerCase()] = val;
+      }
+      
+    });
+  }
+
+  populateParams2(array, params, key) {
+    let tempProducts = [];
+    array.forEach(element => {
+      let obj = {};
+      for (const key in element) {
+        if (key !== 'controls' && element.hasOwnProperty(key)) {
+          const val = element[key];
+          obj[key.toLowerCase()] = val.value || val;
+        }
+      }
+      if (obj) {
+        tempProducts.push(obj);
+      }
+      
+    });
+
+    params[key] = JSON.stringify(tempProducts);
+  }
+
   save() {
-    
+    let params = {};
+
+    this.populateParams1(this.baseControls, params);
+
+    this.populateParams1(this.jfControls, params);
+
+    this.populateParams1(this.jjBaseControls, params);
+
+    this.populateParams1(this.yjfpBaseControls, params);
+
+    this.populateParams1(this.yjfpControls, params);
+
+    this.populateParams2(this.products, params, 'products');
+    this.populateParams2(this.payItems, params, 'paydetails');
+    this.populateParams2(this.auditItems, params, 'yjfp');
+
+    console.log(params);
+    this.erp.AddOrder(params, (data, error) => {
+      console.log(data);
+      console.log(error);
+    });
   }
 
   baseControls: any = [
@@ -318,7 +371,7 @@ export class OrderFormPage {
     },
     {
       ID: 'NextVisitTime',
-      type: 2,
+      type: 7,
       name: '下次机会时间'
     },
     {
