@@ -25,6 +25,22 @@ export class OrderPage {
 
   ionViewDidLoad() {
     // console.log('ionViewDidLoad OrderPage');
+    this.loadData();
+  }
+
+  loadData() {
+    this.loading = true;
+    this.erp.GetOrderList((data, error) => {
+      // console.log(data);
+      this.loading = false;
+      this.error = error;
+      if (data && data.DataList) {
+        this.dataList = data.DataList;
+      } else {
+        this.dataList = [];
+      }
+      // console.log(error);
+    });
   }
 
   openItem(item) {
@@ -69,39 +85,42 @@ export class OrderPage {
     this.app.getRootNavs()[0].push('OrderFormPage');
   }
 
+  error: any = null;
+  loading: boolean = false;
+
   dataList: any = [
-    {
-      ID: 'DD20170127',
-      type: '新增',
-      man_name: '赵亚斌',
-      dept: '贵阳管理',
-      time: '2017-06-03',
-      money: '53800',
-      discount: '0.3283',
-      state: 'approving',
-      state_desc: '审核中',
-    },
-    {
-      ID: 'DD20170127',
-      type: '提升档次',
-      man_name: '赵亚斌',
-      dept: '贵阳管理',
-      time: '2017-06-03',
-      money: '53800',
-      discount: '1',
-      state: '',
-      state_desc: '未发送',
-    },
-    {
-      ID: 'DD20170127',
-      type: '配件兑换+提升档次',
-      man_name: '赵亚斌',
-      dept: '贵阳管理',
-      time: '2017-06-03',
-      money: '53800',
-      discount: '0.3283',
-      state: 'approved',
-      state_desc: '已审核',
-    },
+    // {
+    //   ID: 'DD20170127',
+    //   type: '新增',
+    //   man_name: '赵亚斌',
+    //   dept: '贵阳管理',
+    //   time: '2017-06-03',
+    //   money: '53800',
+    //   discount: '0.3283',
+    //   state: 'approving',
+    //   state_desc: '审核中',
+    // },
+    // {
+    //   ID: 'DD20170127',
+    //   type: '提升档次',
+    //   man_name: '赵亚斌',
+    //   dept: '贵阳管理',
+    //   time: '2017-06-03',
+    //   money: '53800',
+    //   discount: '1',
+    //   state: '',
+    //   state_desc: '未发送',
+    // },
+    // {
+    //   ID: 'DD20170127',
+    //   type: '配件兑换+提升档次',
+    //   man_name: '赵亚斌',
+    //   dept: '贵阳管理',
+    //   time: '2017-06-03',
+    //   money: '53800',
+    //   discount: '0.3283',
+    //   state: 'approved',
+    //   state_desc: '已审核',
+    // },
   ];
 }
