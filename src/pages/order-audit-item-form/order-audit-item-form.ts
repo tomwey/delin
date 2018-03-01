@@ -22,7 +22,14 @@ export class OrderAuditItemFormPage {
     private viewCtrl: ViewController,
     public navParams: NavParams) {
       if (this.navParams.data.item) {
-        this.controls = this.navParams.data.item.controls;
+        if (this.navParams.data.item.controls) {
+          this.controls = this.navParams.data.item.controls;
+        } else {
+          this.controls.forEach(element => {
+            element.value = this.navParams.data.item[element.ID + 'Str'] || this.navParams.data.item[element.ID];
+          });
+        }
+        
       }
 
       this.salesman = this.navParams.data.salesman || [];
@@ -41,19 +48,18 @@ export class OrderAuditItemFormPage {
     let data = [];
 
     if (ev.ID === 'IsCalculatingPerformance') {
-      data = [{label: '是', value: 1},{label: '否', value: 0}];
+      data = [{label: '是', value: '是|1'},{label: '否', value: '否|0'}];
     } else if (ev.ID === 'SalesManName') {
       this.salesman.forEach(element => {
-        data.push({label: element.EmpName, value: element.EmpCode});
+        data.push({label: element.EmpName, value: `${element.EmpName}|${element.EmpCode}`});
       });
     } else if (ev.ID === 'SalesDepartment') {
       this.ssbm.forEach(element => {
-        data.push({label: element.DepartmentName, value: element.DepartmentID});
+        data.push({label: element.DepartmentName, value: `${element.DepartmentName}|${element.DepartmentID}`});
       });
     }
 
-    this.navCtrl.push('CommSelectPage', { field: ev.ID, 
-      selected: ev.value, data: data, target: ev });
+    this.navCtrl.push('CommonSelectPage', { data: data, control: ev });
   }
 
   save() {

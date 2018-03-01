@@ -7,7 +7,7 @@
 <ion-header no-border>
 
   <ion-navbar>
-    <ion-title>填写信息</ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -25,7 +25,7 @@
         <div class="item-list" *ngIf="products.length > 0">
           <ion-list>
             <button ion-item *ngFor="let item of products" (click)="openItem(item);">
-              {{item.ProductCode && item.ProductCode.label}}
+              {{item.ProductCode && item.ProductCode.value.split('|')[0]}}
               <button ion-button small clear item-right color="danger" (click)="removeItem($event,item);">
                 <ion-icon name="ios-trash-outline"></ion-icon>
               </button>

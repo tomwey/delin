@@ -35,7 +35,14 @@ export class OrderProductItemFormPage {
     private erp: ERPService,
     public navParams: NavParams) {
       if (this.navParams.data.item) {
-        this.controls = this.navParams.data.item.controls;
+        // this.controls = this.navParams.data.item.controls;
+        if (this.navParams.data.item.controls) {
+          this.controls = this.navParams.data.item.controls;
+        } else {
+          this.controls.forEach(element => {
+            element.value = this.navParams.data.item[element.ID + 'Str'] || this.navParams.data.item[element.ID];
+          });
+        }
       }
       
       // this.events.subscribe('item:selected', (data) => {
@@ -68,10 +75,10 @@ export class OrderProductItemFormPage {
     if (ev.ID === 'ProductCode') {
       let arr = [];
       this.products.forEach(element => {
-        arr.push({label: element.ProductName, value: element.ProductCode});
+        arr.push({label: element.ProductName, 
+          value: `${element.ProductName}|${element.ProductCode}`});
       });
-      this.navCtrl.push('CommSelectPage', { field: ev.ID, 
-        selected: ev.value, data: arr, target: ev });
+      this.navCtrl.push('CommonSelectPage', { data: arr, control: ev });
       // this.navCtrl.push('SelectSearchPage', { uri: '', item: this.currentProduct });
     }
   }

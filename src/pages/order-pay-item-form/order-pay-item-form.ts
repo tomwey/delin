@@ -29,7 +29,14 @@ export class OrderPayItemFormPage {
     private viewCtrl: ViewController,
     public navParams: NavParams) {
       if (this.navParams.data.item) {
-        this.controls = this.navParams.data.item.controls;
+        // this.controls = this.navParams.data.item.controls;
+        if (this.navParams.data.item.controls) {
+          this.controls = this.navParams.data.item.controls;
+        } else {
+          this.controls.forEach(element => {
+            element.value = this.navParams.data.item[element.ID + 'Str'] || this.navParams.data.item[element.ID];
+          });
+        }
       }
 
     this.payTypes = this.navParams.data.payTypes || [];
@@ -47,10 +54,9 @@ export class OrderPayItemFormPage {
     if (ev.ID === 'PayDetailType') {
       let arr = [];
       this.payTypes.forEach(element => {
-        arr.push({label: element.ConfigText, value: element.ConfigValue});
+        arr.push({label: element.ConfigText, value: `${element.ConfigText}|${element.ConfigValue}`});
       });
-      this.navCtrl.push('CommSelectPage', { field: ev.ID, 
-        selected: ev.value, data: arr, target: ev });
+      this.navCtrl.push('CommonSelectPage', { data: arr, control: ev });
       // this.navCtrl.push('SelectSearchPage', { uri: '', item: this.currentProduct });
     }
   }

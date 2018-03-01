@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { ERPService } from '../../services/erp.service';
+import { NativeService } from '../../providers/NativeService';
 
 /**
  * Generated class for the OrderFormPage page.
@@ -19,15 +20,58 @@ export class OrderFormPage {
 
   orderBaseData: any = {};
 
+  item: any = null;
+  title: any = null;
+
   constructor(public navCtrl: NavController, 
     private modalCtrl: ModalController,
     private erp: ERPService,
+    private events: Events,
+    private nativeService: NativeService,
     public navParams: NavParams) {
+      if (this.navParams.data.item) {
+        this.item = this.navParams.data.item;
+
+        this.products = this.item.ProductList;
+        this.payItems = this.item.PayDetailList;
+        this.auditItems = this.item.YJFP;
+
+        this.populateControlsData(this.baseControls);
+        this.populateControlsData(this.yjfpControls);
+        this.populateControlsData(this.yjfpBaseControls);
+        this.populateControlsData(this.jjBaseControls);
+        this.populateControlsData(this.jfControls);
+
+        this.title = "编辑定单";
+      } else {
+        this.title = "新增定单";
+      }
   }
 
   ionViewDidLoad() {
     // console.log('ionViewDidLoad OrderFormPage');
     this.loadBaseData();
+  }
+
+  // getCurrentOption(arr, val) {
+  //   // console.log(arr);
+  //   arr.forEach(element => {
+  //     console.log(element);
+  //     console.log(val);
+  //     console.log('-------------');
+  //     let label = element.ConfigText || element.DepartmentName || element.EmpName;
+  //     let value = element.ConfigValue || element.DepartmentID || element.EmpCode;
+  //     if (value === val) {
+  //       return { label: label, value: value };
+  //     }
+  //   });
+  //   return null;
+  // }
+
+  populateControlsData(controls) {
+    controls.forEach(element => {
+      element.value = this.item[element.ID + 'Str'] || this.item[element.ID];
+    });
   }
 
   loadBaseData() {
@@ -148,34 +192,39 @@ export class OrderFormPage {
     let data: any = [];
 
     if (ev.ID === 'CustomerSex') {
-      data = [{label: '男', value: 1}, {label: '女', value: 0}];
+      data = [{label: '男', value: '男|1'}, {label: '女', value: '女|0'}];
     } else if (ev.ID === 'SalesMan') {
       let arr = this.orderBaseData.SalesMans || [];
       arr.forEach(element => {
-        data.push({label: element.EmpName, value: element.EmpCode});
+        data.push({label: element.EmpName, 
+          value: `${element.EmpName}|${element.EmpCode}`});
       });
     } else if (ev.ID === 'DeskClerk') {
       let arr = this.orderBaseData.DeskClerks || [];
       arr.forEach(element => {
-        data.push({label: element.EmpName, value: element.EmpCode});
+        data.push({label: element.EmpName, 
+          value: `${element.EmpName}|${element.EmpCode}`});
       });
     } else if (ev.ID === 'OrderType') {
       let arr = this.orderBaseData.OrderTypes || [];
       arr.forEach(element => {
-        data.push({label: element.ConfigText, value: element.ConfigValue});
+        data.push({label: element.ConfigText, 
+          value: `${element.ConfigText}|${element.ConfigValue}`});
       });
     } else if (ev.ID === 'CustomerNation') { // 民族
       let arr = this.orderBaseData.Nations || [];
       arr.forEach(element => {
-        data.push({label: element.ConfigText, value: element.ConfigValue});
+        data.push({label: element.ConfigText, 
+          value: `${element.ConfigText}|${element.ConfigValue}`});
       });
     } else if (ev.ID === 'ProductUnit') { // 生产单位
       let arr = this.orderBaseData.ProductUnits || [];
       arr.forEach(element => {
-        data.push({label: element.DepartmentName, value: element.DepartmentID});
+        data.push({label: element.DepartmentName, 
+          value: `${element.DepartmentName}|${element.DepartmentID}`});
       });
     } else if (ev.ID === 'IsExpenses') {
-      data = [{label: '是', value: 1}, {label: '否', value: 0}];
+      data = [{label: '是', value: '是|1'}, {label: '否', value: '否|0'}];
     } /*else if (ev.ID === '') { // 业务员所属部门
       let arr = this.orderBaseData.SSBM || [];
       arr.forEach(element => {
@@ -185,8 +234,7 @@ export class OrderFormPage {
 
     }*/
 
-    this.navCtrl.push('CommSelectPage', { field: ev.ID, 
-      selected: ev.value, data: data, target: ev });
+    this.navCtrl.push('CommonSelectPage', { data: data, control: ev });
   }
 
   populateParams1(array, params) {
@@ -239,11 +287,29 @@ export class OrderFormPage {
     this.populateParams2(this.payItems, params, 'paydetails');
     this.populateParams2(this.auditItems, params, 'yjfp');
 
-    console.log(params);
-    this.erp.AddOrder(params, (data, error) => {
-      console.log(data);
-      console.log(error);
-    });
+    // console.log(params);
+    if (this.item) {
+      params['orderno'] = this.item.OrderNo;
+      this.erp.UpdateOrder(params, (data, error) => {
+        this.handleSaveResult(2,error);
+      });
+    } else {
+      this.erp.AddOrder(params, (data, error) => {
+        this.handleSaveResult(1,error);
+      });
+    }
+    
+  }
+
+  handleSaveResult(type, error) {
+    if (!error) {
+      this.events.publish('event:reload');
+      
+      this.navCtrl.pop();
+
+    } else {
+      this.nativeService.showToast(error.message || error);
+    }
   }
 
   baseControls: any = [
@@ -287,12 +353,12 @@ export class OrderFormPage {
       name: '客户民族'
     },
     {
-      ID: 'CustomerIdCard',
+      ID: 'CustomerIDCard',
       type: 2,
       name: '身份证号'
     },
     {
-      ID: 'Customeraddress',
+      ID: 'CustomerAddress',
       type: 2,
       name: '身份证地址'
     },
@@ -487,13 +553,13 @@ export class OrderFormPage {
       name: '是否报销'
     },
     {
-      ID: 'PretaxPrice',
+      ID: 'PreTaxPrice',
       type: 8,
       name: '税前金额',
       pattern: '[0-9]*'
     },
     {
-      ID: 'AftertaxPrice',
+      ID: 'AfterTaxPrice',
       type: 8,
       name: '税后金额',
       pattern: '[0-9]*'

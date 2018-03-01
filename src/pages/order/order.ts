@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, ActionSheetController, Events } from 'ionic-angular';
 import { ERPService } from '../../services/erp.service';
+import { NativeService } from '../../providers/NativeService';
 
 /**
  * Generated class for the OrderPage page.
@@ -20,7 +21,12 @@ export class OrderPage {
     private actionSheetCtrl: ActionSheetController,
     private app: App,
     private erp: ERPService,
+    private events: Events,
+    private nativeService: NativeService,
     public navParams: NavParams) {
+      this.events.subscribe('event:reload', () => {
+        this.loadData();
+      });
   }
 
   ionViewDidLoad() {
@@ -47,27 +53,30 @@ export class OrderPage {
     let actionSheet = this.actionSheetCtrl.create({
       title: '',
       buttons: [
-        {
+        /*{
           text: '发送',
           handler: () => {
             console.log('Destructive clicked');
           }
-        },{
+        },*/{
           text: '查看',
           handler: () => {
-            console.log('Archive clicked');
+            // console.log('Archive clicked');
+            this.viewItem(item);
           }
         },
         {
           text: '编辑',
           handler: () => {
-            console.log('Destructive clicked');
+            // console.log('Destructive clicked');
+            this.editItem(item);
           }
         },{
           text: '删除',
           role: 'destructive',
           handler: () => {
-            console.log('Archive clicked');
+            // console.log('Archive clicked');
+            this.deleteItem(item);
           }
         },
         {
@@ -81,6 +90,25 @@ export class OrderPage {
     }).present();
   }
 
+  viewItem(item) {
+    // this.app.getRootNavs()[0].push('OrderFormPage');
+  }
+
+  editItem(item) {
+    this.app.getRootNavs()[0].push('OrderFormPage', {item: item});
+  }
+
+  deleteItem(item) {
+    this.erp.DeleteOrder(item.OrderNo, (data, error) => {
+      if (!error) {
+        this.nativeService.showToast('删除成功!');
+        this.loadData();
+      } else {
+        this.nativeService.showToast(error.message || error);
+      }
+    });
+  }
+
   newItem() {
     this.app.getRootNavs()[0].push('OrderFormPage');
   }
@@ -89,38 +117,5 @@ export class OrderPage {
   loading: boolean = false;
 
   dataList: any = [
-    // {
-    //   ID: 'DD20170127',
-    //   type: '新增',
-    //   man_name: '赵亚斌',
-    //   dept: '贵阳管理',
-    //   time: '2017-06-03',
-    //   money: '53800',
-    //   discount: '0.3283',
-    //   state: 'approving',
-    //   state_desc: '审核中',
-    // },
-    // {
-    //   ID: 'DD20170127',
-    //   type: '提升档次',
-    //   man_name: '赵亚斌',
-    //   dept: '贵阳管理',
-    //   time: '2017-06-03',
-    //   money: '53800',
-    //   discount: '1',
-    //   state: '',
-    //   state_desc: '未发送',
-    // },
-    // {
-    //   ID: 'DD20170127',
-    //   type: '配件兑换+提升档次',
-    //   man_name: '赵亚斌',
-    //   dept: '贵阳管理',
-    //   time: '2017-06-03',
-    //   money: '53800',
-    //   discount: '0.3283',
-    //   state: 'approved',
-    //   state_desc: '已审核',
-    // },
   ];
 }
