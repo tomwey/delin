@@ -239,26 +239,24 @@ export class OrderFormPage {
 
   populateParams1(array, params) {
     array.forEach(element => {
-      let val = element.value || {};
-      // console.log(val);
-
-      if (val.label) {
-        params[element.ID.toLowerCase()] = val.value;
-      } else {
-        params[element.ID.toLowerCase()] = val;
-      }
+        params[element.ID.toLowerCase()] = element.value || '';
+      // }
       
     });
   }
 
   populateParams2(array, params, key) {
+    // console.log(array);
+
     let tempProducts = [];
     array.forEach(element => {
       let obj = {};
       for (const key in element) {
         if (key !== 'controls' && element.hasOwnProperty(key)) {
-          const val = element[key];
-          obj[key.toLowerCase()] = val.value || val;
+          // const val = element[key];
+          // if (val) {
+            obj[key.toLowerCase()] = element[key];//val.value || val;
+          // }
         }
       }
       if (obj) {
@@ -287,13 +285,16 @@ export class OrderFormPage {
     this.populateParams2(this.payItems, params, 'paydetails');
     this.populateParams2(this.auditItems, params, 'yjfp');
 
-    // console.log(params);
+    // 
     if (this.item) {
       params['orderno'] = this.item.OrderNo;
+      console.log(params);
+
       this.erp.UpdateOrder(params, (data, error) => {
         this.handleSaveResult(2,error);
       });
     } else {
+      console.log(params);
       this.erp.AddOrder(params, (data, error) => {
         this.handleSaveResult(1,error);
       });

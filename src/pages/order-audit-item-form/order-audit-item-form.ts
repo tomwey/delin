@@ -48,7 +48,7 @@ export class OrderAuditItemFormPage {
     let data = [];
 
     if (ev.ID === 'IsCalculatingPerformance') {
-      data = [{label: '是', value: '是|1'},{label: '否', value: '否|0'}];
+      data = [{label: '计算', value: '计算|1'},{label: '不计算', value: '不计算|0'}];
     } else if (ev.ID === 'SalesManName') {
       this.salesman.forEach(element => {
         data.push({label: element.EmpName, value: `${element.EmpName}|${element.EmpCode}`});
@@ -65,10 +65,19 @@ export class OrderAuditItemFormPage {
   save() {
     let formData = {};
 
+    let total = 0;
+
     this.controls.forEach(element => {
-      let val = element.value || {};
-      formData[element.ID] = val;
+      // let val = element.value || {};
+      formData[element.ID] = element.value || '';
+      if (!element.value) {
+        total ++;
+      }
     });
+
+    if (total == this.controls.length) {
+      return;
+    }
 
     formData['controls'] = this.controls;
 
@@ -111,7 +120,7 @@ export class OrderAuditItemFormPage {
       pattern: '[0-9]*'
     },
     {
-      ID: 'BonusCalculated',
+      ID: 'BonuScalculated',
       type: 8,
       name: '已算奖金',
       pattern: '[0-9]*'

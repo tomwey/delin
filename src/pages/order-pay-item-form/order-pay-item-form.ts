@@ -64,10 +64,20 @@ export class OrderPayItemFormPage {
   save() {
 
     let formData = {};
+
+    let total = 0;
     this.controls.forEach(element => {
-      let val = element.value || {};
-      formData[element.ID] = val;
+      // let val = element.value || {};
+      formData[element.ID] = element.value || '';//val;
+
+      if (!element.value) {
+        total ++;
+      }
     });
+
+    if (total == this.controls.length) {
+      return;
+    }
 
     formData['controls'] = this.controls;
 
