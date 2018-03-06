@@ -13,6 +13,7 @@
   </ion-header>
   
   <ion-content>
+    <error-empty-message-box [data]="dataList"></error-empty-message-box>
     <ion-list>
       <button ion-item class="custom-item" detail-none *ngFor="let item of dataList" (click)="select(item);">
         {{item.label}}
