@@ -21,4 +21,14 @@
       </tr>
     </table>
   </div>
+  <div class="extraData" *ngIf="extraDataList.length > 0">
+    <ion-list *ngFor="let item of extraDataList">
+      <ion-list-header>
+        {{item.title}}
+      </ion-list-header>
+      <button ion-item *ngFor="let obj of item.data" (click)="openExtraItem(obj);">
+        {{obj[item.labelKey]}}
+      </button>
+    </ion-list>
+  </div>
 </ion-content>

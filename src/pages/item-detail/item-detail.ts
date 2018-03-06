@@ -17,13 +17,22 @@ export class ItemDetailPage {
 
   title: string = null;
   dataList: any = [];
+  extraDataList: any = [];
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     if (this.navParams.data) {
       this.title = this.navParams.data.title || '详情';
       if (this.navParams.data.data) {
         this.dataList = this.navParams.data.data;
       }
+
+      if (this.navParams.data.extraData) {
+        this.extraDataList = this.navParams.data.extraData;
+      }
     }
+  }
+
+  openExtraItem(item) {
+    
   }
 
   ionViewDidLoad() {

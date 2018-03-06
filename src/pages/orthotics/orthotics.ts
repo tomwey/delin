@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, ActionSheetController, AlertController, Events } from 'ionic-angular';
 import { ERPService } from '../../services/erp.service';
 import { NativeService } from '../../providers/NativeService';
 
@@ -22,7 +22,12 @@ export class OrthoticsPage {
     private app: App,
     private erp: ERPService,
     private nativeService: NativeService,
+    private events: Events,
+    private alertCtrl: AlertController,
     public navParams: NavParams) {
+      this.events.subscribe('event:reload', () => {
+        this.loadData();
+      });
   }
 
   ionViewDidLoad() {
@@ -73,14 +78,14 @@ export class OrthoticsPage {
             this.editItem(item);
           }
         },
-        {
-          text: '改单',
-          handler: () => {
-            // console.log('Archive clicked');
-            // this.editItem(item);
-            this.changeItem(item);
-          }
-        },
+        // {
+        //   text: '改单',
+        //   handler: () => {
+        //     // console.log('Archive clicked');
+        //     // this.editItem(item);
+        //     this.changeItem(item);
+        //   }
+        // },
         {
           text: '退单',
           handler: () => {
@@ -125,8 +130,45 @@ export class OrthoticsPage {
     
   }
 
+  doBackItem(data,item) {
+    // this.erp.BackJXQSalesOrder(item.SalesOrderNo, (data, error) => {
+    //   if (!error) {
+    //     this.nativeService.showToast('退单成功!');
+    //     this.loadData();
+    //   } else {
+    //     this.nativeService.showToast(error.message || error);
+    //   }
+    // });
+  }
+
   backItem(item) {
     
+    this.alertCtrl.create({
+      title: '确认退单',
+      message: '输入退单原因确认退单',
+      inputs: [
+        {
+          name: 'reason',
+          placeholder: '退单原因'
+        },
+      ],
+      buttons: [
+        {
+          text: '取消',
+          handler: data => {
+            // console.log('Cancel clicked');
+          }
+        },
+        {
+          text: '确定',
+          handler: data => {
+            // console.log('Saved clicked');
+            console.log(data);
+            this.doBackItem(data,item);
+          }
+        }
+      ]
+    }).present();
   }
 
   deleteItem(item) {
