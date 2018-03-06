@@ -338,7 +338,7 @@ export class OrderPage {
     }
 
     this.app.getRootNavs()[0].push('ItemDetailPage', {
-      title: '借款单详情',
+      title: '订单详情',
       data: data,
       extraData: extraData,
     })

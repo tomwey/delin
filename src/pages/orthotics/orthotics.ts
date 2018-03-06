@@ -122,8 +122,188 @@ export class OrthoticsPage {
     this.app.getRootNavs()[0].push('OrthoticsFormPage', {item: item});
   }
 
-  viewItem(item) {
+  formatValueForItem(item, key) {
+    if (!item) return '';
 
+    if (!item[key]) return '';
+
+    let val = item[key].toString();
+    return val.split('|')[0] || '';
+  }
+
+  viewItem(item) {
+    let data = [
+      {
+        label: '销售单号',
+        value: this.formatValueForItem(item, 'SalesOrderNo'),
+      },
+      {
+        label: '销售单次数',
+        value: this.formatValueForItem(item, 'SalesOrderTimes'),
+      },
+      {
+        label: '制单时间',
+        value: this.formatValueForItem(item, 'SalesOrderTimeStr'),
+      },
+      {
+        label: '创建人',
+        value: this.formatValueForItem(item, 'CreateEmp'),
+      },
+      {
+        label: '医生',
+        value: this.formatValueForItem(item, 'Doctor'),
+      },
+      {
+        label: '业务员',
+        value: this.formatValueForItem(item, 'SalesEmp'),
+      },
+      {
+        label: '医院（合作单位）',
+        value: this.formatValueForItem(item, 'ContactCorporation'),
+      },
+      {
+        label: '付款方',
+        value: this.formatValueForItem(item, 'Payer'),
+      },
+      {
+        label: '付款方式',
+        value: this.formatValueForItem(item, 'PayType'),
+      },
+      {
+        label: '技术员',
+        value: this.formatValueForItem(item, 'Technician'),
+      },
+      {
+        label: '科室/病区',
+        value: this.formatValueForItem(item, 'Area'),
+      },
+      {
+        label: '床位',
+        value: this.formatValueForItem(item, 'Berth'),
+      },
+      {
+        label: '客户名字',
+        value: this.formatValueForItem(item, 'CustomerName'),
+      },
+      {
+        label: '联系电话',
+        value: this.formatValueForItem(item, 'CustomerTel'),
+      },
+      {
+        label: '联系地址',
+        value: this.formatValueForItem(item, 'CustomerAddress'),
+      },
+      {
+        label: '客户性别',
+        value: this.formatValueForItem(item, 'CustomerSex'),
+      },
+      {
+        label: '医学意见',
+        value: this.formatValueForItem(item, 'MedicalOpinion'),
+      },
+      {
+        label: '业务所属部门',
+        value: this.formatValueForItem(item, 'Salesdepartment'),
+      },
+      {
+        label: '疾病名称',
+        value: this.formatValueForItem(item, 'IllName'),
+      },
+      {
+        label: '已开发票',
+        value: this.formatValueForItem(item, 'Invoiced'),
+      },
+
+      {
+        label: '仓库单据',
+        value: this.formatValueForItem(item, 'WarehouseDocuments'),
+      },
+      {
+        label: '收款总额',
+        value: this.formatValueForItem(item, 'Prices'),
+      },
+      {
+        label: '发票时间',
+        value: this.formatValueForItem(item, 'InvoicedTime'),
+      },
+      {
+        label: '矫形器类型',
+        value: this.formatValueForItem(item, 'JXQType'),
+      },
+      {
+        label: '医院欠款情况',
+        value: this.formatValueForItem(item, 'HospitalArrears'),
+      },
+      {
+        label: '备注',
+        value: this.formatValueForItem(item, 'Remark'),
+      },
+      {
+        label: '退单原因',
+        value: this.formatValueForItem(item, 'BackReason'),
+      },
+      {
+        label: '成交价格',
+        value: this.formatValueForItem(item, 'CurrentPrice'),
+      },
+      {
+        label: '折扣',
+        value: this.formatValueForItem(item, 'Discount'),
+      },
+      {
+        label: '预约试穿时间',
+        value: this.formatValueForItem(item, 'TryOutTime'),
+      },
+      {
+        label: '产品签收',
+        value: this.formatValueForItem(item, 'Receiver'),
+      },
+      {
+        label: '发票邮寄地址',
+        value: this.formatValueForItem(item, 'InvoiceAddress'),
+      },
+      {
+        label: '产品邮寄地址',
+        value: this.formatValueForItem(item, 'ProductAddress'),
+      },
+      {
+        label: '发票签收',
+        value: this.formatValueForItem(item, 'InvoiceReceiver'),
+      },
+      {
+        label: '客户签字',
+        value: this.formatValueForItem(item, 'CustomerSignature'),
+      },
+      {
+        label: '奖金综合比例',
+        value: this.formatValueForItem(item, 'BonusRatio'),
+      },
+      {
+        label: '奖金总额',
+        value: this.formatValueForItem(item, 'BonusMoney'),
+      },
+      {
+        label: '生产单位',
+        value: this.formatValueForItem(item, 'ProductUnit'),
+      },
+      {
+        label: '发票开具要求',
+        value: this.formatValueForItem(item, 'InvoiceRequirements'),
+      },
+      {
+        label: '测量情况',
+        value: this.formatValueForItem(item, 'TestSituation'),
+      },
+      {
+        label: '销售单状态',
+        value: this.formatValueForItem(item, 'SalesOrderStateStr'),
+      },
+    ];
+
+      this.app.getRootNavs()[0].push('ItemDetailPage', {
+        title: '矫形器详情',
+        data: data
+      });
   }
 
   changeItem(item) {
