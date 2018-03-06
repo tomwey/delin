@@ -82,7 +82,7 @@ export class OrthoticsFormPage {
   controlSelect(ev) {
     let data: any = [];
     if (ev.type === 4) {
-      let arr = this.baseData[ev.dsKey];
+      let arr = this.baseData[ev.dsKey] || [];
       arr.forEach(element => {
         data.push({label: element[ev.optionLabel], 
           value: `${element[ev.optionLabel]}|${element[ev.optionValue]}`});

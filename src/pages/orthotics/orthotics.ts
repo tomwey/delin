@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App, ActionSheetController } from 'ionic-angular';
 import { ERPService } from '../../services/erp.service';
+import { NativeService } from '../../providers/NativeService';
 
 /**
  * Generated class for the OrthoticsPage page.
@@ -20,6 +21,7 @@ export class OrthoticsPage {
     private actionSheetCtrl: ActionSheetController,
     private app: App,
     private erp: ERPService,
+    private nativeService: NativeService,
     public navParams: NavParams) {
   }
 
@@ -60,6 +62,7 @@ export class OrthoticsPage {
           handler: () => {
             // console.log('Archive clicked');
             // this.editItem(item);
+            this.viewItem(item);
           }
         },
         {
@@ -67,6 +70,7 @@ export class OrthoticsPage {
           handler: () => {
             // console.log('Archive clicked');
             // this.viewItem(item);
+            this.editItem(item);
           }
         },
         {
@@ -74,6 +78,7 @@ export class OrthoticsPage {
           handler: () => {
             // console.log('Archive clicked');
             // this.editItem(item);
+            this.changeItem(item);
           }
         },
         {
@@ -81,6 +86,7 @@ export class OrthoticsPage {
           handler: () => {
             // console.log('Archive clicked');
             // this.editItem(item);
+            this.backItem(item);
           }
         },
         {
@@ -89,12 +95,13 @@ export class OrthoticsPage {
           handler: () => {
             // console.log('Destructive clicked');
             // this.deleteItem(item);
+            this.deleteItem(item);
           }
         },{
           text: '取消',
           role: 'cancel',
           handler: () => {
-            console.log('Cancel clicked');
+            // console.log('Cancel clicked');
           }
         }
       ]
@@ -104,6 +111,33 @@ export class OrthoticsPage {
 
   newItem() {
     this.app.getRootNavs()[0].push('OrthoticsFormPage');
+  }
+
+  editItem(item) {
+    this.app.getRootNavs()[0].push('OrthoticsFormPage', {item: item});
+  }
+
+  viewItem(item) {
+
+  }
+
+  changeItem(item) {
+    
+  }
+
+  backItem(item) {
+    
+  }
+
+  deleteItem(item) {
+    this.erp.DeleteJXQSalesOrder(item.SalesOrderNo, (data, error) => {
+      if (!error) {
+        this.nativeService.showToast('删除成功!');
+        this.loadData();
+      } else {
+        this.nativeService.showToast(error.message || error);
+      }
+    });
   }
 
   dataList: any = [

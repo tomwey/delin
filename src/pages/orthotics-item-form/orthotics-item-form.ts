@@ -48,13 +48,15 @@ export class OrthoticsItemFormPage {
       } else {
         this.products = [];
       }
+
+      this.optionData['Products'] = this.products;
     });
   }
 
   controlSelect(ev) {
     let data: any = [];
     if (ev.type === 4) {
-      let arr = this.optionData[ev.dsKey];
+      let arr = this.optionData[ev.dsKey] || [];
       arr.forEach(element => {
         data.push({label: element[ev.optionLabel], 
           value: `${element[ev.optionLabel]}|${element[ev.optionValue]}`});
@@ -98,6 +100,9 @@ export class OrthoticsItemFormPage {
       ID: 'ProductCode',
       type: 4,
       name: '产品编号',
+      dsKey: 'Products',
+      optionLabel: 'ProductName',
+      optionValue: 'ProductCode',
     },
     {
       ID: 'ProductUnit',
