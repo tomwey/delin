@@ -24,7 +24,7 @@
         <ion-row class="info-1">
           <ion-col col-6>
             <h2>{{item.ProductName}}</h2>
-            <p>型号:{{item.ProductModel}}</p>
+            <p>型号:{{item.ProductModel && item.ProductModel.split('|')[0]}}</p>
           </ion-col>
           <ion-col col-6 class="right">
             <div class="money">{{item.CurrentPrice}}</div>

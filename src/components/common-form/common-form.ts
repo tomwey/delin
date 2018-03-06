@@ -31,6 +31,8 @@ export class CommonFormComponent {
       return `请选择 (${item.type == 6 ? '多选' : '单选'})`;
     } else {
       let val = item.value.label || item.value;
+      if (!val) return null;
+      
       return val.split('|')[0];
     }
   }

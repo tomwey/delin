@@ -131,14 +131,14 @@ export class OrthoticsPage {
   }
 
   doBackItem(data,item) {
-    // this.erp.BackJXQSalesOrder(item.SalesOrderNo, (data, error) => {
-    //   if (!error) {
-    //     this.nativeService.showToast('退单成功!');
-    //     this.loadData();
-    //   } else {
-    //     this.nativeService.showToast(error.message || error);
-    //   }
-    // });
+    this.erp.BackJXQSalesOrder(item.SalesOrderNo, data.reason, (data, error) => {
+      if (!error) {
+        this.nativeService.showToast('退单成功!');
+        this.loadData();
+      } else {
+        this.nativeService.showToast(error.message || error);
+      }
+    });
   }
 
   backItem(item) {
@@ -163,7 +163,7 @@ export class OrthoticsPage {
           text: '确定',
           handler: data => {
             // console.log('Saved clicked');
-            console.log(data);
+            // console.log(data);
             this.doBackItem(data,item);
           }
         }

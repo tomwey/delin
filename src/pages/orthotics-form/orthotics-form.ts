@@ -31,7 +31,7 @@ export class OrthoticsFormPage {
       if (this.navParams.data.item) {
         this.item = this.navParams.data.item;
 
-        this.products = this.item.Products;
+        this.products = this.item.Products || [];
         // this.payItems = this.item.PayDetailList;
         // this.auditItems = this.item.YJFP;
 
@@ -134,15 +134,15 @@ export class OrthoticsFormPage {
     this.populateParams2(this.products, params, 'products');
 
     if (this.item) {
-      params['orderno'] = this.item.OrderNo;
+      params['salesorderno'] = this.item.OrderNo;
       console.log(params);
 
-      this.erp.UpdateOrder(params, (data, error) => {
+      this.erp.UpdateJXQSalesOrder(params, (data, error) => {
         this.handleSaveResult(2,error);
       });
     } else {
       console.log(params);
-      this.erp.AddOrder(params, (data, error) => {
+      this.erp.AddJXQSalesOrder(params, (data, error) => {
         this.handleSaveResult(1,error);
       });
     }
@@ -364,7 +364,7 @@ export class OrthoticsFormPage {
     },
     {
       ID: 'TryOutTime',
-      type: 71,
+      type: 7,
       name: '预约试穿时间'
     },
     {

@@ -364,9 +364,9 @@ export class ERPService {
         });
     }
 
-    BackJXQSalesOrder(salesorderno, callback) {
+    BackJXQSalesOrder(salesorderno, reason, callback) {
         this.users.currentUser().then(user => {
-            this.api.post('BackJXQSalesOrder', {salesorderno: salesorderno, empcode: user.EmpCode})
+            this.api.post('BackJXQSalesOrder', {salesorderno: salesorderno, backreason:reason, empcode: user.EmpCode})
                 .then(data => {
                     if (callback) {
                         callback(data, null);
