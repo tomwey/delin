@@ -45,14 +45,29 @@ page-orthotics {
         border-radius: 2px;
     }
 
-    .approving {
-        color: color($colors, main-theme);
-        border-color: color($colors, main-theme);
+    .state-0 {
+        color: #ccc;
+        border-color: #ccc;
     }
 
-    .approved {
+    .state-1 {
         color: rgb(79,173,131);
         border-color: rgb(79,173,131);
     }
+
+    .state-2 {
+        color: rgb(173, 79, 79);
+        border-color: rgb(173, 79, 79);
+    }
+
+    // .approving {
+    //     color: color($colors, main-theme);
+    //     border-color: color($colors, main-theme);
+    // }
+
+    // .approved {
+    //     color: rgb(79,173,131);
+    //     border-color: rgb(79,173,131);
+    // }
 
 }

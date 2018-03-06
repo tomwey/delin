@@ -7,13 +7,43 @@
 <ion-header no-border>
 
   <ion-navbar>
-    <ion-title>填写信息</ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content>
+
     <div class="form-box">
+      <h2>基本资料</h2>
+    </div>
+    <common-form [controls]="baseControls" (onControlSelect)="controlSelect($event);"></common-form>
+
+    <div class="form-box">
+      <h2>商品明细</h2>
+      <div class="overtime-items">
+        <div class="item-list" *ngIf="products.length > 0">
+          <ion-list>
+            <button ion-item *ngFor="let item of products" (click)="openItem(item);">
+              {{item.ProductCode && item.ProductCode.split('|')[0]}}
+              <button ion-button small clear item-right color="danger" (click)="removeItem($event,item);">
+                <ion-icon name="ios-trash-outline"></ion-icon>
+              </button>
+            </button>
+          </ion-list>
+        </div>
+        <div class="add-button">
+          <button ion-button round outline (click)="addItem();">添加商品</button>
+        </div>
+      </div>
+    </div>
+
+  <div class="form-box">
+    <h2>交付事项</h2>
+  </div>
+  <common-form [controls]="jfControls" (onControlSelect)="controlSelect($event);"></common-form>
+
+    <!-- <div class="form-box">
         <h2>基本资料</h2>
         <ion-list>
           <ion-item>
@@ -265,11 +295,11 @@
             </ion-list>
           </div>
         </div>
-      </div>
+      </div> -->
 </ion-content>
 
 <ion-footer>
     <!-- <div padding> -->
-      <button ion-button full color="main-theme">保存</button>
-    <!-- </div> -->
-  </ion-footer>
+    <button ion-button full color="main-theme" (click)="save();">保存</button>
+  <!-- </div> -->
+</ion-footer>

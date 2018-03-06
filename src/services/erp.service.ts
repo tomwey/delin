@@ -282,4 +282,120 @@ export class ERPService {
         });
     }
 
+    GetJXQSalesList(callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetJXQSalesList', { empcode : user.EmpCode })
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    GetJXQSalesModel(salesno, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetJXQSalesModel', { empcode : user.EmpCode, salesorderno: salesno })
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    AddJXQSalesOrder(params, callback) {
+        this.users.currentUser().then(user => {
+            params.empcode = user.EmpCode;
+            this.api.post('AddJXQSalesOrder', params)
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    UpdateJXQSalesOrder(params, callback) {
+        this.users.currentUser().then(user => {
+            params.empcode = user.EmpCode;
+            this.api.post('UpdateJXQSalesOrder', params)
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    DeleteJXQSalesOrder(salesorderno, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('DeleteJXQSalesOrder', {salesorderno: salesorderno, empcode: user.EmpCode})
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    BackJXQSalesOrder(salesorderno, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('BackJXQSalesOrder', {salesorderno: salesorderno, empcode: user.EmpCode})
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    GetCreateJXQSales(callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetCreateJXQSales', { empcode : user.EmpCode })
+                .then(data => {
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    
+
 }
