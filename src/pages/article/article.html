@@ -19,7 +19,16 @@
 
 
 <ion-content>
-  <div class="body">
-    <img src="assets/imgs/article-img.png">
+  <div class="caption">
+    <img [src]="article.CoverImg">
+    <h2>{{article.Topic}}</h2>
+    <p>{{article.Summary}}</p>
+    <p>{{article.UpdateDateStr}}</p>
+  </div>
+  
+  <div class="body" [innerHTML]="article.body">
+
+    
+
   </div>
 </ion-content>

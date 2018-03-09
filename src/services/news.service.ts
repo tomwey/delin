@@ -39,13 +39,21 @@ export class NewsService {
     /**
      * 获取新闻详情
      */
-    getNewsDetail(newsID) {
+    getNewsDetail(newsID, callback) {
         return new Promise((resolve, reject) => {
             this.users.currentUser().then(user => {
                 let empCode = user.EmpCode;
                 this.api.post('GetContentDetail', { empcode: empCode, contentid: newsID }, '加载中...')
-                    .then(data => resolve(data))
-                    .catch(error => reject(error));
+                    .then(data => {
+                        if (callback) {
+                            callback(data, null)
+                        }
+                    })
+                    .catch(error => {
+                        if (callback) {
+                            callback(null, error);
+                        }
+                    });
             });
         });
     }

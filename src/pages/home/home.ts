@@ -68,8 +68,8 @@ export class HomePage {
     
   }
 
-  openBanner() {
-    // this.app.getRootNavs()[0].push('ArticlePage');
+  openBanner(banner) {
+    this.app.getRootNavs()[0].push('ArticlePage', { id: banner.ContentID });
   }
 
   openModule(sec) {
