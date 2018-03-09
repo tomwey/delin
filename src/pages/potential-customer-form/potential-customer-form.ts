@@ -65,24 +65,15 @@ export class PotentialCustomerFormPage {
 
     this.controls.forEach(element => {
       let fieldID = element.ID.toLowerCase();
-
-      let val = element.value || {};
-
-      console.log(val);
-      // if (element.value) {
-      //   if (element.value.value !== null && element.value.value !== undefined) {
-      params[fieldID] = val.value || val;
-        // } else {
-        //   params[fieldID] = element.value;
-        // }
-      // }
+      params[fieldID] = element.value || '';
     });
-    console.log(params);
+    // console.log(params);
     if (isEdit) {
       // 更新
+      params['intentcustomercode'] = this.navParams.data.item.IntentCustomerCode;
       this.crm.UpdateIntentCustomer(params, (data, error) => {
-        console.log(data);
-        console.log(error);
+        // console.log(data);
+        // console.log(error);
         if (error) {
           this.nativeServ.showToast(error.message || error);
         } else {
@@ -94,8 +85,8 @@ export class PotentialCustomerFormPage {
     } else {
       // 添加
       this.crm.AddIntentCustomer(params, (data, error) => {
-        console.log(data);
-        console.log(error);
+        // console.log(data);
+        // console.log(error);
         if (error) {
           this.nativeServ.showToast(error.message || error);
         } else {
@@ -108,11 +99,11 @@ export class PotentialCustomerFormPage {
   }
 
   controls: any = [
-    {
-      ID: 'IntentCustomerCode',
-      type: 0,
-      value: ''
-    },
+    // {
+    //   ID: 'IntentCustomerCode',
+    //   type: 0,
+    //   value: ''
+    // },
     {
       ID: 'IntentCustomerName',
       type: 2,
@@ -130,8 +121,9 @@ export class PotentialCustomerFormPage {
     },
     {
       ID: 'MobilePhone',
-      type: 2,
+      type: 8,
       name: '移动电话',
+      pattern: '[0-9]*'
     },
     {
       ID: 'Area',

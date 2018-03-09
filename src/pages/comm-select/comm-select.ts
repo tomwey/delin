@@ -45,7 +45,7 @@ export class CommSelectPage {
   valueFromItem(item) {
     if (!item) return null;
 
-    return item.label + item.value.toString();
+    return item.label + `${item.value}`;
   }
 
   select(item) {
