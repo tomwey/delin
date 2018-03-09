@@ -39,7 +39,7 @@ export class CommonSelectPage {
 
     this.control.value = item.value;
 
-    // this.events.publish('item:selected', { field: this.field, selectedItem: item });
+    this.events.publish('item:selected', this.control);
 
     this.navCtrl.pop();
   }

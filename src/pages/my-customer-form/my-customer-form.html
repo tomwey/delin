@@ -19,26 +19,16 @@
 
 
 <ion-content>
-  <div class="form-box">
+  <common-form [controls]="controls" 
+    (onControlSelect)="controlSelect($event);"></common-form>
+  <!-- <div class="form-box">
   <ion-list>
-    <!-- <ion-item>
-      <ion-label fixed>客户编码</ion-label>
-      <ion-input [(ngModel)]="customer.ID"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label fixed>制单人员</ion-label>
-      <ion-input [(ngModel)]="customer.author"></ion-input>
-    </ion-item> -->
     <ion-item>
       <ion-label fixed>制单时间</ion-label>
       <ion-datetime [(ngModel)]="customer.createtime" cancelText="取消" doneText="确定" displayFormat="YYYY-MM-DD"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label fixed>所属区域</ion-label>
-      <!-- <div class="custom-select-control" tappable (tap)="selectItem('KHSF');" item-content>
-        {{customer.area?.label || '请选择'}}
-        <ion-icon name="ios-arrow-forward-outline"></ion-icon>
-      </div> -->
       <ion-input [(ngModel)]="customer.area" placeholder="必填"></ion-input>
     </ion-item>
     <ion-item>
@@ -230,7 +220,7 @@
     </ion-item>
 
   </ion-list>
-</div>
+</div> -->
 </ion-content>
 
 <ion-footer>
