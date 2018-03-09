@@ -126,8 +126,8 @@ export class OrthoticsPage {
     if (!item) return '';
 
     if (!item[key]) return '';
-
-    let val = item[key].toString();
+    let value = item[key + 'Str'] || item[key] || '';
+    let val = value.toString();
     return val.split('|')[0] || '';
   }
 
