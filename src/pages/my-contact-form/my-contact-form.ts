@@ -52,13 +52,14 @@ export class MyContactFormPage {
     this.controls.forEach(element => {
       const key = element.ID.toLowerCase();
 
-      let val = element.value || {};
-      params[key] = val.value || val;
+      // let val = element.value || {};
+      params[key] = element.value || '';
 
     });
-    console.log(params);
+    // console.log(params);
 
     if (this.navParams.data.contact) {
+      params['addresslistid'] = this.navParams.data.contact.AddressListID;
       this.erp.UpdateAddressList(params, (data, error) => {
         if (error) {
           this.nativeServ.showToast(error.message || error);
@@ -84,10 +85,10 @@ export class MyContactFormPage {
   }
 
   controls: any = [
-    {
-      ID: 'AddressListID',
-      type: 0,
-    },
+    // {
+    //   ID: 'AddressListID',
+    //   type: 0,
+    // },
     {
       ID: 'Name',
       type: 2,
