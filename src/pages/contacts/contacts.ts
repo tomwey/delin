@@ -27,23 +27,24 @@ export class ContactsPage {
   manData: any  = [];
 
   breadcrumbs: any = [];
-  activeBreadcrumb: string = '全部';
+  activeBreadcrumb: string = '通讯录';
 
   constructor(public navCtrl: NavController, 
-      private app: App,
-      private oa: OAService,
-      public navParams: NavParams) {
-        if (this.navParams.data.item) {
-          this.dept = this.navParams.data.item;
-          this.activeBreadcrumb = this.dept.ObjName;
-        } else {
-        }
+    private app: App,
+    private oa: OAService,
+    public navParams: NavParams) {
+    if (this.navParams.data.item) {
+      this.dept = JSON.parse(JSON.stringify(this.navParams.data.item));
+      this.activeBreadcrumb = this.dept.ObjName;
+    } else {
+      
+    }
 
-        if (this.navParams.data.breadcrumbs) {
-          this.breadcrumbs = this.navParams.data.breadcrumbs;
-        } else {
+    if (this.navParams.data.breadcrumbs) {
+      this.breadcrumbs = this.navParams.data.breadcrumbs;
+    } else {
 
-        }
+    }
   }
 
   ionViewDidLoad() {
@@ -81,6 +82,8 @@ export class ContactsPage {
   }
 
   forwardTo(b) {
+    this.breadcrumbs.splice(this.breadcrumbs.indexOf(b), 1);
+
     this.app.getRootNavs()[0].popTo(b.page);
   }
 
