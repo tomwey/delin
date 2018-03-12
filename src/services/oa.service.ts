@@ -269,7 +269,7 @@ export class OAService {
      */
     getDepartmentList(dept = null, callback) {
         this.users.currentUser().then(user => {
-            this.api.post('GetDepartmentSubList', { empcode: user.EmpCode, depmsg: dept || user.DepartmentID })
+            this.api.post('GetDepartmentSubList', { empcode: user.EmpCode, depmsg: dept })
                 .then(data => {
                     console.log(data);
                     if (callback) {
@@ -292,7 +292,7 @@ export class OAService {
      */
     getEmpDetail(empID, callback) {
         this.users.currentUser().then(user => {
-            this.api.post('GetOAEmployeeResult', { empcode: user.EmpCode, queryempcode: empID })
+            this.api.post('GetOAEmployeeResult', { empcode: user.EmpCode, queryempcode: empID || user.EmpCode })
                 .then(data => {
                     console.log(data);
                     if (callback) {

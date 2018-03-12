@@ -16,14 +16,19 @@ page-setting {
         
         .avatar {
             max-width: 64px;
+            border-radius: 50%;
         }
 
         .name {
             font-size: 16px;
             font-weight: normal;
+            
+            position: relative;
+            width: 60px;
+            margin: 0 auto;
             margin-top: 10px;
             margin-bottom: 3px;
-            position: relative;
+            text-align: center;
         }
 
         .job {
@@ -40,8 +45,9 @@ page-setting {
             position: absolute;
             width: 22px;
             height: 22px;
-            top: 0px;
-            left: 170px;
+            top: -2px;
+            // left: 170px;
+            right: -20px;
             // right: 0;
         }
     }

@@ -1,0 +1,47 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar>
+    <ion-title></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="caption">
+    <img [src]="user.avatar" class="avatar">
+    <h2 class="name">{{user.EmpName}}</h2>
+  </div>
+  <ion-list>
+    <ion-item class="custom-item">
+      <span class="label">性别</span>{{user.Sex === 1 ? '男' : '女'}}
+    </ion-item>
+    <ion-item class="custom-item">
+      <span class="label">联系电话</span>{{user.Mobile}}
+    </ion-item>
+    <ion-item class="custom-item">
+      <span class="label">办公电话</span>{{user.EmergencyTel}}
+    </ion-item>
+    <ion-item class="custom-item">
+      <span class="label">住宅电话</span>{{user.TelPhone}}
+    </ion-item>
+    <ion-item class="custom-item">
+      <span class="label">电子邮件</span>{{user.EmpEmail}}
+    </ion-item>
+    <ion-item class="custom-item">
+      <span class="label">地区</span>四川 成都
+    </ion-item>
+    <ion-item class="custom-item">
+      <span class="label">地址</span>{{user.Address}}
+    </ion-item>
+    <ion-item class="custom-item">
+      <span class="label">公司</span>女
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -53,6 +53,8 @@ export class ContactsPage {
 
   loadData() {
     this.loading = true;
+    console.log(this.dept);
+    
     this.oa.getDepartmentList(this.dept.ObjID || '', (data, error) => {
       this.loading = false;
       this.error = error;
@@ -75,7 +77,7 @@ export class ContactsPage {
   }
 
   gotoManInfo(item) {
-    this.app.getRootNavs()[0].push('ManInfoPage', item);
+    this.app.getRootNavs()[0].push('ProfilePage', { empcode: item.ObjID });
   }
 
   forwardTo(b) {

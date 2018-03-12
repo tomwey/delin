@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { UserService } from '../../services/user-service';
 import { Events } from 'ionic-angular/util/events';
 
@@ -17,10 +17,11 @@ import { Events } from 'ionic-angular/util/events';
 })
 export class SettingPage {
 
-  user: any = {};
+  user: any = { EmpPicture: 'assets/imgs/default_avatar.png'};
   constructor(public navCtrl: NavController,
     private users: UserService, 
     private events: Events,
+    private app: App,
     public navParams: NavParams) {
   }
 
@@ -37,6 +38,15 @@ export class SettingPage {
       this.events.publish('user:logout');
     })
     .catch(errror => {});
+  }
+
+
+  gotoProfile() {
+    this.app.getRootNavs()[0].push('ProfilePage');
+  }
+
+  gotoPassword() {
+    this.app.getRootNavs()[0].push('PasswordPage');
   }
 
 }

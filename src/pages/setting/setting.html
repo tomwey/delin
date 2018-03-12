@@ -15,16 +15,16 @@
 
 <ion-content class="content">
   <div class="caption">
-    <img src="assets/imgs/default_avatar.png" class="avatar">
+    <img [src]="user.EmpPicture" class="avatar">
     <h2 class="name">{{user.EmpName}}</h2>
     <p class="job">总务助理</p>
   </div>
 
   <ion-list>
-    <button ion-item detail-none>
+    <button ion-item detail-none (click)="gotoProfile();">
       <h2 class="item-name b1"><img src="assets/imgs/icon_b1.png"> 我的名片</h2>
     </button>
-    <button ion-item detail-none>
+    <button ion-item detail-none (click)="gotoPassword();">
       <h2 class="item-name b2"><img src="assets/imgs/icon_b2.png"> 账号安全</h2>
     </button>
   </ion-list>

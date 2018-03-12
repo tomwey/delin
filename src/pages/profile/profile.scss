@@ -1,0 +1,41 @@
+page-profile {
+    .caption {
+        padding: 20px;
+        background-color: color($colors, main-theme);
+        color: white;
+        text-align: center;
+        // margin-bottom: 10px;
+        .name, .job {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .avatar {
+            max-width: 64px;
+            border-radius: 50%;
+
+        }
+
+        .name {
+            font-size: 16px;
+            font-weight: normal;
+            
+            position: relative;
+            width: 60px;
+            margin: 0 auto;
+            margin-top: 10px;
+            margin-bottom: 3px;
+            text-align: center;
+        }
+    }
+
+    .custom-item {
+        font-size: 14px;
+        color: #333;
+        .label {
+            display: inline-block;
+            width: 102px;
+            // color: #999;
+        }
+    }
+}
