@@ -17,11 +17,11 @@
     
     <div class="breadcrumb-container">
       <ion-scroll scrollX="true" class="breadcrumb">
-        <span *ngFor="let b of breadcrumbs">
-          <span class="breadcrumb-item" tappable (tap)="forwardTo(b);">{{b.name}}</span>
-          <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+        <span *ngFor="let b of breadcrumbs; let i = index;">
+          <span class="breadcrumb-item" [class.active]="i === breadcrumbs.length-1" tappable (tap)="forwardTo(b);">{{b.name}}</span>
+          <ion-icon name="ios-arrow-forward-outline" *ngIf="breadcrumbs.length > 1"></ion-icon>
         </span>
-        <span class="active" *ngIf="!!activeBreadcrumb">{{activeBreadcrumb}}</span>
+        <!-- <span class="active" *ngIf="!!activeBreadcrumb">{{activeBreadcrumb}}</span> -->
         <!-- <span><span class="breadcrumb-item">德林义肢组织机构</span><ion-icon name="ios-arrow-forward-outline"></ion-icon></span>
         <span><span class="breadcrumb-item">德林西部大区</span><ion-icon name="ios-arrow-forward-outline"></ion-icon></span>
         <span class="active">德林西南片区</span> -->

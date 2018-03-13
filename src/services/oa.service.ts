@@ -525,4 +525,22 @@ export class OAService {
         });
     }
 
+    ChangePassword(newpwd, oldpwd, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('ChangePassword', { empcode: user.EmpCode, newpwd: newpwd, oldpwd: oldpwd })
+                .then(data => {
+                    // console.log(data);
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    // console.log(error);
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
 }

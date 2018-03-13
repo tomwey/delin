@@ -27,7 +27,7 @@ export class ContactsPage {
   manData: any  = [];
 
   breadcrumbs: any = [];
-  activeBreadcrumb: string = '通讯录';
+  // activeBreadcrumb: string = '通讯录';
 
   constructor(public navCtrl: NavController, 
     private app: App,
@@ -35,16 +35,24 @@ export class ContactsPage {
     public navParams: NavParams) {
     if (this.navParams.data.item) {
       this.dept = JSON.parse(JSON.stringify(this.navParams.data.item));
-      this.activeBreadcrumb = this.dept.ObjName;
+      // this.activeBreadcrumb = this.dept.ObjName;
     } else {
       
     }
 
     if (this.navParams.data.breadcrumbs) {
-      this.breadcrumbs = this.navParams.data.breadcrumbs;
-    } else {
+      let bc = this.navParams.data.breadcrumbs;
+      bc.forEach(element => {
+        let b = JSON.parse(JSON.stringify(element))
+        b.page = element.page;
 
+        this.breadcrumbs.push(b);
+      });
+    } else {
+      this.breadcrumbs = ['全部'];
     }
+
+    console.log(this.breadcrumbs);
   }
 
   ionViewDidLoad() {
@@ -82,16 +90,15 @@ export class ContactsPage {
   }
 
   forwardTo(b) {
-    this.breadcrumbs.splice(this.breadcrumbs.indexOf(b), 1);
+    let index = this.breadcrumbs.indexOf(b);
+
+    this.breadcrumbs.splice(index + 1, this.breadcrumbs.length - index);
 
     this.app.getRootNavs()[0].popTo(b.page);
   }
 
   gotoContacts(item) {
-    let b = {};
-    b['name'] = item.ObjName;
-    b['page'] = this;
-    this.breadcrumbs.push(b);
+    this.breadcrumbs.push(item.ObjName);
 
     this.app.getRootNavs()[0].push('ContactsPage', { item: item, breadcrumbs: this.breadcrumbs });
   }
