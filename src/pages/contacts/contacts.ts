@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { App } from 'ionic-angular/components/app/app';
 import { OAService } from '../../services/oa.service';
+import { BreadcrumbService } from '../../services/breadcrumb.service';
 
 /**
  * Generated class for the ContactsPage page.
@@ -26,12 +27,13 @@ export class ContactsPage {
   deptData: any = [];
   manData: any  = [];
 
-  breadcrumbs: any = [];
+  // breadcrumbs: any = [];
   // activeBreadcrumb: string = '通讯录';
 
   constructor(public navCtrl: NavController, 
     private app: App,
     private oa: OAService,
+    public breadcrumb: BreadcrumbService,
     public navParams: NavParams) {
     if (this.navParams.data.item) {
       this.dept = JSON.parse(JSON.stringify(this.navParams.data.item));
@@ -40,19 +42,19 @@ export class ContactsPage {
       
     }
 
-    if (this.navParams.data.breadcrumbs) {
-      let bc = this.navParams.data.breadcrumbs;
-      bc.forEach(element => {
-        let b = JSON.parse(JSON.stringify(element))
-        b.page = element.page;
+    // if (this.navParams.data.breadcrumbs) {
+    //   let bc = this.navParams.data.breadcrumbs;
+    //   bc.forEach(element => {
+    //     let b = JSON.parse(JSON.stringify(element))
+    //     b.page = element.page;
 
-        this.breadcrumbs.push(b);
-      });
-    } else {
-      this.breadcrumbs = ['全部'];
-    }
+    //     this.breadcrumbs.push(b);
+    //   });
+    // } else {
+    //   this.breadcrumbs = ['全部'];
+    // }
 
-    console.log(this.breadcrumbs);
+    // console.log(this.breadcrumbs);
   }
 
   ionViewDidLoad() {
@@ -62,7 +64,7 @@ export class ContactsPage {
 
   loadData() {
     this.loading = true;
-    console.log(this.dept);
+    // console.log(this.dept);
     
     this.oa.getDepartmentList(this.dept.ObjID || '', (data, error) => {
       this.loading = false;
@@ -79,6 +81,14 @@ export class ContactsPage {
           this.manData.push(element);
         } else {
           this.deptData.push(element);
+          let arr = JSON.parse(JSON.stringify(this.breadcrumb.breadcrumbs));
+
+          arr.push({
+            name: element.ObjName,
+          });
+
+          element.breadcrumbs = arr;
+
         }
       });
 
@@ -90,17 +100,38 @@ export class ContactsPage {
   }
 
   forwardTo(b) {
-    let index = this.breadcrumbs.indexOf(b);
+    if (b.current && b.current === 1) return;
+    
+    let index = this.breadcrumb.breadcrumbs.indexOf(b);
 
-    this.breadcrumbs.splice(index + 1, this.breadcrumbs.length - index);
+    this.breadcrumb.breadcrumbs.splice(index + 1, this.breadcrumb.breadcrumbs.length - index)
 
-    this.app.getRootNavs()[0].popTo(b.page);
+    this.changeBreadcrumbs();
+
+    this.navCtrl.popTo(this.navCtrl.getByIndex(index+1));
   }
 
-  gotoContacts(item) {
-    this.breadcrumbs.push(item.ObjName);
+  changeBreadcrumbs() {
+    const count = this.breadcrumb.breadcrumbs.length;
+    for (let i = 0; i < count; i ++) {
+      let bb = this.breadcrumb.breadcrumbs[i];
+      if (i === count - 1) {
+        bb.current = 1;
+      } else {
+        bb.current = 0;
+      }
+    }
+  }  
 
-    this.app.getRootNavs()[0].push('ContactsPage', { item: item, breadcrumbs: this.breadcrumbs });
+  gotoContacts(item) {
+    // this.breadcrumbs.push(item.ObjName);
+    this.breadcrumb.breadcrumbs = JSON.parse(JSON.stringify(item.breadcrumbs));
+    // console.log(this.breadcrumb.breadcrumbs);
+
+    this.changeBreadcrumbs();
+    
+
+    this.app.getRootNavs()[0].push('ContactsPage', { item: item });
   }
 
 }
