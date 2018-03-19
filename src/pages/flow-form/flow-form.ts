@@ -70,9 +70,27 @@ export class FlowFormPage {
     });
   }
 
+  public selectValueFromItem(item): string {
+    if (!item.formValue) {
+      return `请选择 (${item.FieldModel.ControlType == 6 ? '多选' : '单选'})`;
+    } else {
+      let val = item.formValue.label || item.formValue;
+      if (!val) return null;
+      
+      return val.split('|')[0];
+    }
+  }
+
   gotoSelect(item) {
     console.log(item);
     // 跳到选择界面选择
+    let arr = item.Option;
+    let data = [];
+    arr.forEach(element => {
+      data.push({label: element.DataSetText, value: `${element.DataSetText}|${element.DataSetValue}`})
+    });
+
+    this.navCtrl.push('FlowSelectPage', { data: data, control: item });
   }
 
   dataList: any = [];
