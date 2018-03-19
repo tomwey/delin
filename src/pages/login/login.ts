@@ -20,7 +20,7 @@ import { UserService } from '../../services/user-service';
 export class LoginPage {
 
   emp: any = {
-    loginname: 'huyue',
+    loginname: 'A1.827',
     pwd: '123321',
   };
   constructor(
@@ -41,6 +41,8 @@ export class LoginPage {
       this.nativeService.showToast('登录名不能为空');
       return;
     }
+
+    console.log(this.emp);
 
     this.users.login(this.emp.loginname, this.emp.pwd)
       .then(data => {

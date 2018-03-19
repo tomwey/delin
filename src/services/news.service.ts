@@ -65,6 +65,8 @@ export class NewsService {
      */
     getBanners(productID = 'OA', callback) {
         this.users.currentUser().then(user => {
+            console.log(user);
+            
             this.api.post('GetCPRecommendListResult', { empcode: user.EmpCode, productid: productID })
                 .then(data => {
                     if (callback) {
