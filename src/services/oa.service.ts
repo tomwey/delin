@@ -543,4 +543,22 @@ export class OAService {
         });
     }
 
+    GetLeaveBillList(callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetLeaveBillList', { empcode: user.EmpCode, formname: "请假单" })
+                .then(data => {
+                    // console.log(data);
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    // console.log(error);
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
 }

@@ -36,7 +36,7 @@ export class FlowDetailPage {
       if (this.navParams.data)
         this.showCharts = this.navParams.data.showCharts;
       
-      this.item = this.navParams.data.item;
+      this.item = this.navParams.data.item.Model || this.navParams.data.item;
 
       this.flowType = this.navParams.data.flowType;
   }
@@ -63,7 +63,7 @@ export class FlowDetailPage {
   }
 
   loadData() {
-    this.oa.getOAFormInstanceDetail(this.item.Model.FormInstanceID, (data, error) => {
+    this.oa.getOAFormInstanceDetail(this.item.FormInstanceID||this.item.Model.FormInstanceID, (data, error) => {
       console.log(data);
 
       if (error) {
@@ -138,7 +138,7 @@ export class FlowDetailPage {
   }
 
   openFlowChart() {
-    this.app.getRootNavs()[0].push('FlowDetailPage', { showCharts: true });
+    this.app.getRootNavs()[0].push('FlowDetailPage', { showCharts: true, item: this.item });
   }
 
   fieldsList: any = [];
