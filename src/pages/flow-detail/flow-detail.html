@@ -8,19 +8,19 @@
 
   <ion-navbar>
     <ion-title>我的事项</ion-title>
-    <ion-buttons end *ngIf="!showCharts">
+    <!-- <ion-buttons end *ngIf="!showCharts">
       <button ion-button (click)="openFlowChart();">
         <img src="assets/imgs/btn_flowpic.png" class="custom-img-btn">
       </button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-navbar>
 
 </ion-header>
 
 <ion-content class="content">
   <div class="flow-head">
-    <h2 class="name">{{item.Model?.FormName}}</h2>
-    <p class="flow-no">编号:{{item.Model?.FormInstanceID}}</p>
+    <h2 class="name">{{item.FormName}}</h2>
+    <p class="flow-no">编号:{{item.FormInstanceID}}</p>
   </div>
   <h2>{{showCharts ? '流程信息' : '详细信息'}}</h2>
   <div class="flow-body" *ngIf="!showCharts">

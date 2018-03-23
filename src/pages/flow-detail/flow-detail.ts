@@ -109,7 +109,7 @@ export class FlowDetailPage {
   }
 
   openCommitPage(data) {
-    data.forminstanceid = this.item.Model.FormInstanceID;
+    data.forminstanceid = this.item.FormInstanceID;
     let modal = this.modalCtrl.create('FlowCommitPage', data, {
       enableBackdropDismiss: false
     });
