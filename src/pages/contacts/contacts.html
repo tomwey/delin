@@ -6,7 +6,15 @@
 -->
 <ion-header no-border>
 
-  <ion-navbar>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons start>
+      <button ion-button icon-only (click)="back();">
+        <ion-icon name="ios-arrow-round-back-outline"></ion-icon>
+      </button>&emsp;
+      <button ion-button icon-only (click)="backToRoot();" *ngIf="breadcrumb.breadcrumbs.length > 1">
+        <ion-icon name="ios-close-outline"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>通讯录</ion-title>
   </ion-navbar>
 

@@ -99,6 +99,34 @@ export class ContactsPage {
     this.app.getRootNavs()[0].push('ProfilePage', { empcode: item.ObjID });
   }
 
+  back() {
+    this.breadcrumb.breadcrumbs.pop()
+
+    this.changeBreadcrumbs();
+
+    this.navCtrl.pop()
+
+    if (this.breadcrumb.breadcrumbs.length === 0) {
+      this.breadcrumb.breadcrumbs = [
+        {
+            name: '通讯录',
+            current: 1,
+        }
+    ];
+    }
+  }
+
+  backToRoot() {
+    this.breadcrumb.breadcrumbs = [
+      {
+          name: '通讯录',
+          current: 1,
+      }
+  ];
+
+    this.app.getActiveNav().popToRoot()
+  }
+
   forwardTo(b) {
     if (b.current && b.current === 1) return;
     
