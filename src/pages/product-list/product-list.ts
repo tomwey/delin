@@ -17,6 +17,7 @@ import { ERPService } from '../../services/erp.service';
 })
 export class ProductListPage {
 
+  keyword: string = '';
   constructor(
     public navCtrl: NavController,
     public actionSheetCtrl: ActionSheetController,
@@ -33,9 +34,19 @@ export class ProductListPage {
     }, 100);
   }
 
+  cancelSearch() {
+    this.keyword = '';
+    this.loadData();
+  }
+
+  doSearch() {
+    if (this.keyword) {
+      this.loadData();
+    }
+  }
   loadData() {
     this.loading = true;
-    this.erp.GetERPProductList('', (data, error) => {
+    this.erp.GetERPProductList(this.keyword, (data, error) => {
       this.loading = false;
       this.error = error;
 

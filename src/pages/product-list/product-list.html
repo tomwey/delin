@@ -9,9 +9,32 @@
   <ion-navbar>
     <ion-title>产品列表</ion-title>
   </ion-navbar>
-  <ion-toolbar color="white-color">
-      <ion-searchbar placeholder="搜索"></ion-searchbar>
-    </ion-toolbar>
+  
+  <!-- <ion-row no-margin no-padding>
+    <ion-col col-10 no-margin no-padding>
+      <ion-toolbar color="white-color">
+        <ion-searchbar placeholder="搜索产品名称"></ion-searchbar>
+      </ion-toolbar>
+    </ion-col>
+    <ion-col col-2 no-margin no-padding style="text-align:right;">
+        <button ion-button clear>取消</button>
+    </ion-col>
+  </ion-row> -->
+
+  <!-- <ion-list no-margin no-padding>
+    <ion-item no-margin no-padding class="nav-item">
+      <button ion-button item-right clear *ngIf="enableCancel" color="dark">取消</button> -->
+      <ion-toolbar color="white-color">
+        <ion-searchbar placeholder="搜索产品名称" [(ngModel)]="keyword" 
+          cancelButtonText="取消" 
+          [showCancelButton]="true" 
+          (ionCancel)="cancelSearch();"
+          (search)="doSearch();"
+        ></ion-searchbar>
+      </ion-toolbar>
+    <!-- </ion-item>
+  </ion-list> -->
+
 </ion-header>
 
 <ion-content>

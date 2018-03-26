@@ -20,4 +20,11 @@ page-product-list {
             color: #999;
         }
     }
+
+    .nav-item {
+        .label-ios, .label {
+            padding: 0;
+            margin: 0;
+        }
+    }
 }
