@@ -7,28 +7,22 @@
 <ion-header no-border>
 
   <ion-navbar>
-    <ion-title></ion-title>
-    <ion-buttons end>
+    <ion-title>详情</ion-title>
+    <!-- <ion-buttons end>
       <button ion-button icon-only>
         <ion-icon name="ios-more-outline"></ion-icon>
       </button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-  <div class="caption">
-    <img [src]="article.CoverImg">
+
+  <div class="page">
     <h2>{{article.Topic}}</h2>
-    <p>{{article.Summary}}</p>
-    <p>{{article.UpdateDateStr}}</p>
+    <div class="body" [innerHTML]="article.body"></div>
   </div>
-  
-  <div class="body" [innerHTML]="article.body">
-
     
-
-  </div>
 </ion-content>

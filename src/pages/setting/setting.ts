@@ -41,9 +41,9 @@ export class SettingPage {
   }
 
 
-  gotoProfile() {
-    this.app.getRootNavs()[0].push('ProfilePage');
-  }
+  // gotoProfile() {
+  //   this.app.getRootNavs()[0].push('ProfilePage');
+  // }
 
   gotoPassword() {
     this.app.getRootNavs()[0].push('PasswordPage');

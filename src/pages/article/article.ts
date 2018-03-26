@@ -22,6 +22,7 @@ export class ArticlePage {
     private news: NewsService,
     private sanitizer: DomSanitizer,
      public navParams: NavParams) {
+       
   }
 
   ionViewDidLoad() {

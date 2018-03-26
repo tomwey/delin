@@ -69,6 +69,7 @@ export class HomePage {
   }
 
   openBanner(banner) {
+    // this.app.getRootNavs()[0].push('CloudZoneDetailPage', banner);
     this.app.getRootNavs()[0].push('ArticlePage', { id: banner.ContentID });
   }
 
@@ -175,6 +176,11 @@ export class HomePage {
         color: '#ed890c',
         items: [
           {
+            icon: 'icon_my_mp.png',
+            name: '我的设置',
+            page: 'SettingPage',//'CustomerPage',
+          },
+          {
             icon: 'icon_gzrz.png',
             name: '个人日志',
             page: 'WorkLogPage'//'CustomerPage',
@@ -197,7 +203,7 @@ export class HomePage {
           {
             icon: 'icon_my_mp.png',
             name: '我的名片',
-            page: 'SettingPage',//'CustomerPage',
+            page: 'ProfilePage',//'CustomerPage',
           },
           {
             icon: 'icon_qjd.png',
