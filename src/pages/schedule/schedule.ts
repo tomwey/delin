@@ -4,7 +4,6 @@ import { ModalController } from 'ionic-angular';
 import { OAService } from '../../services/oa.service';
 import { Utils } from '../../providers/Utils';
 import { CalendarComponentOptions } from 'ion2-calendar';
-import * as moment from 'moment';
 
 /**
  * Generated class for the SchedulePage page.
@@ -33,6 +32,12 @@ export class SchedulePage {
   dateOptions: CalendarComponentOptions = {
     monthFormat: 'YYYY 年 MM 月 ',
     weekdays: ['日', '一', '二', '三', '四', '五', '六'],
+    monthPickerFormat: [
+      '1月','2月','3月',
+      '4月','5月','6月',
+      '7月','8月','9月',
+      '10月','11月','12月',
+    ],
     weekStart: 0,
     from: new Date(2000, 0, 1),
   };
@@ -45,7 +50,6 @@ export class SchedulePage {
     private modalCtrl: ModalController, 
     private oa: OAService,
     public navParams: NavParams) {
-      moment.locale('zh-cn');
   }
 
   ionViewDidLoad() {
