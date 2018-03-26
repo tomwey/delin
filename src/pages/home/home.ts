@@ -176,7 +176,7 @@ export class HomePage {
         color: '#ed890c',
         items: [
           {
-            icon: 'icon_my_mp.png',
+            icon: 'icon_settings.png',
             name: '我的设置',
             page: 'SettingPage',//'CustomerPage',
           },
