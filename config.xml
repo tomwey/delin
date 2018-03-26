@@ -85,6 +85,7 @@
     <allow-navigation href="http://10.19.0.129:8100" />
     <engine name="android" spec="^6.2.3" />
     <engine name="ios" spec="^4.5.4" />
+    <plugin name="com.kit.cordova.amaplocation" spec="git+https://github.com/yanxiaojun617/com.kit.cordova.amaplocation.git" />
     <plugin name="com.woodstream.cordova.fix.blackscreen" spec="https://github.com/woodstream/cordova-fix-blackscreen" />
     <plugin name="cordova-custom-config" spec="^5.0.2" />
     <plugin name="cordova-plugin-device" spec="^1.1.7" />
@@ -96,5 +97,4 @@
     <plugin name="cordova-plugin-x-toast" spec="^2.6.0" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
-    <plugin name="com.kit.cordova.amaplocation" spec="https://github.com/yanxiaojun617/com.kit.cordova.amaplocation" />
 </widget>
