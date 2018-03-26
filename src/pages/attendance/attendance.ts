@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { OAService } from '../../services/oa.service';
 import { NativeService } from '../../providers/NativeService';
 import { Utils } from '../../providers/Utils';
+import { CalendarComponentOptions } from 'ion2-calendar';
 
 /**
  * Generated class for the AttendancePage page.
@@ -38,13 +39,20 @@ export class AttendancePage {
     },
   ];
 
-  currentDate: any = new Date();
-  dateOptions: any = {
+  currentDate: string = Utils.dateFormat(new Date());
+  // dateOptions: any = {
+  //   monthFormat: 'YYYY 年 MM 月 ',
+  //   weekdays: ['日', '一', '二', '三', '四', '五', '六'],
+  //   weekStart: 0,
+  //   color: 'primary',
+  //   defaultDate: new Date()
+  // };
+
+  dateOptions: CalendarComponentOptions = {
     monthFormat: 'YYYY 年 MM 月 ',
     weekdays: ['日', '一', '二', '三', '四', '五', '六'],
     weekStart: 0,
-    color: 'primary',
-    defaultDate: new Date()
+    from: new Date(2000, 0, 1),
   };
 
   dataList: any = [];

@@ -18,7 +18,7 @@
     <p>{{errorEmptyMsg}}</p>
   </div>
   <ion-list *ngIf="dataList.length > 0">
-    <button detail-none ion-item (click)="openItem(item);" *ngFor="let item of dataList">
+    <button class="custom-item" detail-none ion-item (click)="openItem(item);" *ngFor="let item of dataList">
       <ion-row class="info">
         <ion-col col-9>
           <span class="time">创建于 {{item.DailyLogCreateDateStr}}</span>
