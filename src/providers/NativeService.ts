@@ -209,11 +209,11 @@ export class NativeService {
     
             } else if (msg.indexOf('WIFI信息不足') != -1) {
               // alert('定位失败,请确保连上WIFI或者关掉WIFI只开流量数据')
-              alert('定位失败,请确保连上WIFI或者关掉WIFI只开流量数据');
+              // alert('定位失败,请确保连上WIFI或者关掉WIFI只开流量数据');
             } else if (msg.indexOf('网络连接异常') != -1) {
-              alert('网络连接异常,请检查您的网络是否畅通')
+              // alert('网络连接异常,请检查您的网络是否畅通')
             } else {
-              alert('位置错误,错误消息:' + msg);
+              // alert('位置错误,错误消息:' + msg);
               // this.logger.log(msg, '获取位置失败');
             }
           });
