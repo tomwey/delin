@@ -222,21 +222,23 @@ export class AttendancePage {
   addCard() {
     this.nativeServ.getUserLocation(true).then(data => {
       // console.log(data);
-      alert(JSON.stringify(data));
+      // alert(JSON.stringify(data));
+      this.oa.AddCarRecord(data.lng, data.lat, (data, error) => {
+        if (error) {
+          this.nativeServ.showToast(error.message || error);
+        } else {
+          this.nativeServ.showToast('打卡成功!');
+  
+          this.loadHisData(this.date);
+        }
+      });
+
     }).catch(error => {
       // console.log(error);
       alert(error);
     });
 
-    this.oa.AddCarRecord(104.312398, 30.3837271, (data, error) => {
-      if (error) {
-        this.nativeServ.showToast(error.message || error);
-      } else {
-        this.nativeServ.showToast('打卡成功!');
-
-        this.loadHisData(this.date);
-      }
-    });
+    
   }
 
 }
