@@ -43,7 +43,7 @@
       <p>暂无审批信息</p>
     </div>
     <div class="flow-opinion" *ngFor="let opinion of flowOpinions">
-      <p class="agree sign-{{opinion.SignType}}">{{formatSignState(opinion)}}</p>
+      <p class="agree sign-{{opinion.SignType}}">{{pinion.SignTypeStr}}</p>
       <p class="opinion" *ngIf="!!opinion.SignAdvice">{{opinion.SignAdvice}}</p>
       <p class="user">
         <span class="name">{{opinion.SignBy}}({{opinion.PositionName}})</span>

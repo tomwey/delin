@@ -176,7 +176,7 @@ export class HomePage {
         items: [
           {
             icon: 'icon_gzrz.png',
-            name: '工作日志',
+            name: '个人日志',
             page: 'WorkLogPage'//'CustomerPage',
           },
           // {

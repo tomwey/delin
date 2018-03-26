@@ -125,11 +125,12 @@ export class WorkLogPage {
           temp.push({ label: '创建人', value: data.Model.EmpName });
           temp.push({ label: '创建日期', value: data.Model.DailyLogCreateDateStr });
           temp.push({ label: '日志时间', value: data.Model.DailyLogDateStr });
+          temp.push({ label: '日志标题', value: data.Model.DailyLogTopic });
           temp.push({ label: '日志内容', value: data.Model.DailyLogContent });
         }
         
         if (temp.length > 0) {
-          this.app.getRootNavs()[0].push('ItemDetailPage', { title: '日志详情', data: temp });
+          this.app.getRootNavs()[0].push('ItemDetailPage', { title: data.Model.DailyLogTopic, data: temp });
         } else {
           this.nativeService.showToast('日志详情数据为空');
         }
@@ -158,6 +159,7 @@ export class WorkLogPage {
         time: log.DailyLogDateStr,
         content: log.DailyLogContent,
         author: log.EmpName,
+        topic: log.DailyLogTopic,
       };
     } else {
       item = null;

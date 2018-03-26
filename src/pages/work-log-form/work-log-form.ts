@@ -21,6 +21,7 @@ export class WorkLogFormPage {
 
   title: string = null;
   log: any = {
+    topic: '',
     ID: '',
     create_time: '',
     time: '',
@@ -76,7 +77,7 @@ export class WorkLogFormPage {
         let params = { dailylogcode: this.log.ID, 
           dailylogdate: this.log.time, 
           // dailylogcreatedate: this.log.create_time, 
-          dailylogcontent: this.log.content };
+          dailylogcontent: this.log.content, dailylogtopic: this.log.topic };
 
         this.oa.updateWorkLog(params, (data, error) => {
           // console.log(data);
@@ -91,7 +92,9 @@ export class WorkLogFormPage {
         let params = { dailylogcode: this.log.ID, 
           dailylogdate: this.log.time, 
           dailylogcreatedate: this.log.create_time, 
-          dailylogcontent: this.log.content };
+          dailylogcontent: this.log.content,
+          dailylogtopic: this.log.topic,
+         };
 
         this.oa.createWorkLog(params, (data, error) => {
           // console.log(data);
