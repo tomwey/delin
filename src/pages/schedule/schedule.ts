@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { OAService } from '../../services/oa.service';
 import { Utils } from '../../providers/Utils';
+import { CalendarComponentOptions } from 'ion2-calendar';
+import * as moment from 'moment';
 
 /**
  * Generated class for the SchedulePage page.
@@ -18,13 +20,21 @@ import { Utils } from '../../providers/Utils';
 })
 export class SchedulePage {
 
-  currentDate: any = new Date();
-  dateOptions: any = {
+  currentDate: string = Utils.dateFormat(new Date());
+  // dateOptions: any = {
+  //   monthFormat: 'YYYY 年 MM 月 ',
+  //   weekdays: ['日', '一', '二', '三', '四', '五', '六'],
+  //   weekStart: 0,
+  //   color: 'primary',
+  //   defaultDate: new Date(),
+  //   from: new Date(1900,1,1)
+  // };
+
+  dateOptions: CalendarComponentOptions = {
     monthFormat: 'YYYY 年 MM 月 ',
     weekdays: ['日', '一', '二', '三', '四', '五', '六'],
     weekStart: 0,
-    color: 'primary',
-    defaultDate: new Date()
+    from: new Date(2000, 0, 1),
   };
 
   needShowEmptyErrorBox: boolean = false;
@@ -35,19 +45,22 @@ export class SchedulePage {
     private modalCtrl: ModalController, 
     private oa: OAService,
     public navParams: NavParams) {
+      moment.locale('zh-cn');
   }
 
   ionViewDidLoad() {
     // console.log('ionViewDidLoad SchedulePage');
-    this.loadData();
+    this.loadData(this.currentDate);
   }
 
-  loadData() {
-    this.oa.getScheduleList(Utils.dateFormat(new Date()), (data, error) => {
+  loadData(dateString) {
+    this.events = [];
+
+    this.oa.getScheduleList(dateString, (data, error) => {
       if (error) {
         this.emptyErrorMessage = error.message || error;
         this.needShowEmptyErrorBox = true;
-
+        this.events = [];
       } else {
         this.events = data.DataList;
 
@@ -57,12 +70,19 @@ export class SchedulePage {
     });
   }
 
+  changeDate(ev) {
+    // console.log()
+    this.loadData(ev);
+  }
+
   newSchedule() {
     // this.app.getRootNavs()[0].push('NewSchedulePage');
     let modal = this.modalCtrl.create('NewSchedulePage');
     modal.onDidDismiss((data) => {
       if (data) {
-        this.loadData();
+        this.currentDate = Utils.dateFormat(new Date());
+
+        this.loadData(this.currentDate);
       }
     });
     modal.present();
