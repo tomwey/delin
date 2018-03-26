@@ -28,6 +28,7 @@
         "@ionic-native/toast": "^4.5.2",
         "@ionic/storage": "2.1.3",
         "call-number": "^1.0.1",
+        "com.kit.cordova.amaplocation": "git+https://github.com/yanxiaojun617/com.kit.cordova.amaplocation.git",
         "com.woodstream.cordova.fix.blackscreen": "https://github.com/woodstream/cordova-fix-blackscreen",
         "cordova-android": "^6.2.3",
         "cordova-custom-config": "^5.0.2",
@@ -67,7 +68,8 @@
             "cordova-plugin-network-information": {},
             "mx.ferreyra.callnumber": {},
             "com.woodstream.cordova.fix.blackscreen": {},
-            "cordova-custom-config": {}
+            "cordova-custom-config": {},
+            "com.kit.cordova.amaplocation": {}
         },
         "platforms": [
             "android",

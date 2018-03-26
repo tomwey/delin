@@ -561,4 +561,22 @@ export class OAService {
         });
     }
 
+    GetApplyByAndTime(callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetApplyByAndTime', { empcode: user.EmpCode })
+                .then(data => {
+                    // console.log(data);
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    // console.log(error);
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
 }

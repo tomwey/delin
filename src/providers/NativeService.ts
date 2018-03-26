@@ -9,6 +9,8 @@ import {Toast} from "@ionic-native/toast";
 import {Network} from "@ionic-native/network";
 import {CallNumber} from "@ionic-native/call-number";
 
+declare var LocationPlugin;
+
 @Injectable()
 export class NativeService {
     private loading: Loading;
@@ -58,6 +60,26 @@ export class NativeService {
      */
     isConnecting(): boolean {
         return this.getNetworkType() != 'none';
+    }
+
+    /**
+     * 获得用户当前坐标
+     * @return {Promise<T>}
+     */
+    getUserLocation() {
+        return new Promise((resolve, reject) => {
+            if (this.isMobile()) {
+                LocationPlugin.getLocation(data => {
+                    resolve({'lng': data.longitude, 'lat': data.latitude});
+                    }, msg => {
+                console.error('定位错误消息' + msg);
+                    alert(msg.indexOf('缺少定位权限') == -1 ? ('错误消息：' + msg) : '缺少定位权限，请在手机设置中开启');
+                    reject('定位失败');
+                });
+            } else {
+                console.log('非手机环境,即测试环境返回固定坐标');
+                resolve({'lng': 113.350912, 'lat': 23.119495});
+            }});
     }
 
     /**

@@ -96,4 +96,5 @@
     <plugin name="cordova-plugin-x-toast" spec="^2.6.0" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
+    <plugin name="com.kit.cordova.amaplocation" spec="https://github.com/yanxiaojun617/com.kit.cordova.amaplocation" />
 </widget>
