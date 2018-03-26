@@ -22,7 +22,7 @@
         <ion-input *ngIf="item.FieldModel.ControlType == 2 || item.FieldModel.ControlType == 8"
           type="{{item.FieldModel.ControlType == 8 ? 'number' : 'text'}}"
           placeholder="输入{{item.FieldModel.FieldName}}" 
-          [(ngModel)]="item.formValue"></ion-input>
+          [(ngModel)]="item.formValue" [disabled]="item.disabled"></ion-input>
 
         <!-- 多文本输入框 -->
         <ion-textarea *ngIf="item.FieldModel.ControlType == 3" rows="6" 
@@ -47,6 +47,8 @@
           displayFormat="YYYY-MM-DD" 
           placeholder="设置{{item.FieldModel.FieldName}}" 
           [(ngModel)]="item.formValue"
+          [disabled]="item.disabled"
+          
           ></ion-datetime>
 
       </ion-item>

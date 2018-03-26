@@ -19,6 +19,7 @@ import { App } from 'ionic-angular/components/app/app';
 export class FlowFormPage {
 
   item: any = null;
+  fixedData: any = null;
   constructor(public navCtrl: NavController, 
     private oa: OAService,
     private nativeServ: NativeService,
@@ -28,8 +29,17 @@ export class FlowFormPage {
   }
 
   ionViewDidLoad() {
-    // console.log('ionViewDidLoad FlowFormPage');
 
+      this.oa.GetApplyByAndTime((data, error) => {
+        this.fixedData = data;
+
+        setTimeout(() => {
+          this.loadFormFields();
+        }, 10);
+      });
+  }
+
+  loadFormFields() {
     this.oa.getFormFields(this.item.FormID, (data, error) => {
       if (data) {
         this.dataList = data.DataList;
@@ -37,17 +47,28 @@ export class FlowFormPage {
         this.dataList.sort((o1, o2) => {
           return o1.FieldModel.OrderNo - o2.FieldModel.OrderNo;
         });
-
-        console.log(this.dataList);
       } else {
         this.dataList = [];
       }
+
+      this.dataList.forEach(element => {
+        if (element.FieldModel.FieldName === '申请人') {
+          element.formValue = this.fixedData.ApplyBy;
+          element.disabled = true
+        } else if (element.FieldModel.FieldName === '填单日期') {
+          element.formValue = this.fixedData.ApplyTime;
+          element.disabled = true
+        } else {
+          element.disabled = false;
+        }
+      });
 
     });
   }
 
   commit() {
     let formFieldsValue = [];
+
     this.dataList.forEach(element => {
         // console.log(element.formValue);
         formFieldsValue.push({
@@ -59,8 +80,8 @@ export class FlowFormPage {
     this.oa.addFormInstance({ formid: this.item.FormID, 
       formfieldsvalue: JSON.stringify(formFieldsValue) 
     }, (data, error) => {
-      console.log(data);
-      console.log(error);
+      // console.log(data);
+      // console.log(error);
       if (error) {
         this.nativeServ.showToast(error.message || error);
       } else {
