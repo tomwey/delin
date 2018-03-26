@@ -220,12 +220,12 @@ export class AttendancePage {
   }
 
   addCard() {
-    this.nativeServ.getUserLocation().then(data => {
+    this.nativeServ.getUserLocation(true).then(data => {
       // console.log(data);
       alert(JSON.stringify(data));
     }).catch(error => {
       // console.log(error);
-      alert(JSON.stringify(error));
+      alert(error);
     });
 
     this.oa.AddCarRecord(104.312398, 30.3837271, (data, error) => {

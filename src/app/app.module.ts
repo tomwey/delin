@@ -13,6 +13,7 @@ import { HomePage } from '../pages/home/home';
 
 import {Toast} from "@ionic-native/toast";
 import {Network} from "@ionic-native/network";
+import { Diagnostic } from '@ionic-native/diagnostic';
 import {CallNumber} from "@ionic-native/call-number";
 import { ApiService } from '../providers/api-service';
 import { NativeService } from '../providers/NativeService';
@@ -63,6 +64,7 @@ import { BreadcrumbService } from '../services/breadcrumb.service';
     ERPService,
     BreadcrumbService,
     GlobalData,
+    Diagnostic,
   ]
 })
 export class AppModule {}
