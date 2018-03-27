@@ -20,6 +20,8 @@ import { CalendarComponentOptions } from 'ion2-calendar';
 export class AttendancePage {
   dataType = 'dk';
 
+  doCarding: boolean = false;
+
   date: string;
   time: string;
 
@@ -220,6 +222,10 @@ export class AttendancePage {
   }
 
   addCard() {
+    if (this.doCarding) return;
+
+    this.doCarding = true;
+
     this.nativeServ.getUserLocation(true).then(data => {
       // console.log(data);
       // alert(JSON.stringify(data));
@@ -231,10 +237,15 @@ export class AttendancePage {
   
           this.loadHisData(this.date);
         }
+
+        this.doCarding = false;
+        
       });
 
     }).catch(error => {
       // console.log(error);
+      this.doCarding = false;
+
       alert(error);
     });
 
