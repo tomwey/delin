@@ -1,9 +1,9 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { OAService } from '../../services/oa.service';
 import { NativeService } from '../../providers/NativeService';
 import { Utils } from '../../providers/Utils';
-import { CalendarComponentOptions } from 'ion2-calendar';
+import { CalendarComponentOptions, DayConfig, CalendarComponent } from 'ion2-calendar';
 
 /**
  * Generated class for the AttendancePage page.
@@ -19,6 +19,8 @@ import { CalendarComponentOptions } from 'ion2-calendar';
 })
 export class AttendancePage {
   dataType = 'dk';
+
+  @ViewChild('calendar') calendar: CalendarComponent;
 
   doCarding: boolean = false;
 
@@ -85,6 +87,37 @@ export class AttendancePage {
   ionViewDidLoad() {
     // console.log('ionViewDidLoad AttendancePage');
     this.loadData();
+
+    this.loadEventsData(this.currentDate);
+  }
+
+  loadEventsData(dateStr) {
+    let arr = dateStr.split('-')
+    this.oa.GetOACardRecordDateList(arr[0], arr[1], (data, error) => {
+
+      if (data && data.DataList) {
+        let _daysConfig: DayConfig[] = [];
+        data.DataList.forEach(dateStr => {
+          let date = new Date(dateStr);
+          console.log(date);
+
+          _daysConfig.push({
+            date: date,
+            subTitle: `●`,
+            // marked: true,
+          });
+        });
+        
+        this.dateOptions.daysConfig = _daysConfig;
+        // console.log(this.dateOptions);
+
+      } else {
+        this.dateOptions.daysConfig = [];
+      }
+
+      this.calendar.options = this.dateOptions;
+
+    });
   }
 
   ionViewWillLeave() {
@@ -98,6 +131,11 @@ export class AttendancePage {
     // console.log(ev);
     this.hisDate = ev;
     this.loadHisData(ev);
+  }
+
+  changeMonth(ev) {
+    // console.log(ev.newMonth.months);
+    this.loadEventsData(Utils.dateFormat(ev.newMonth.dateObj));
   }
 
   loadData() {

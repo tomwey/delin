@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { OAService } from '../../services/oa.service';
 import { Utils } from '../../providers/Utils';
-import { CalendarComponentOptions } from 'ion2-calendar';
+import { CalendarComponentOptions,DayConfig, CalendarComponent } from 'ion2-calendar';
 
 /**
  * Generated class for the SchedulePage page.
@@ -18,6 +18,8 @@ import { CalendarComponentOptions } from 'ion2-calendar';
   templateUrl: 'schedule.html',
 })
 export class SchedulePage {
+
+  @ViewChild('calendar') calendar: CalendarComponent;
 
   currentDate: string = Utils.dateFormat(new Date());
   // dateOptions: any = {
@@ -55,6 +57,37 @@ export class SchedulePage {
   ionViewDidLoad() {
     // console.log('ionViewDidLoad SchedulePage');
     this.loadData(this.currentDate);
+
+    this.loadHisData(this.currentDate);
+  }
+
+  loadHisData(dateStr) {
+    let arr = dateStr.split('-')
+    this.oa.GetOAScheduleDateList(arr[0], arr[1], (data, error) => {
+
+      if (data && data.DataList) {
+        let _daysConfig: DayConfig[] = [];
+        data.DataList.forEach(dateStr => {
+          let date = new Date(dateStr);
+          console.log(date);
+
+          _daysConfig.push({
+            date: date,
+            subTitle: `●`,
+            // marked: true,
+          });
+        });
+        
+        this.dateOptions.daysConfig = _daysConfig;
+        // console.log(this.dateOptions);
+
+      } else {
+        this.dateOptions.daysConfig = [];
+      }
+
+      this.calendar.options = this.dateOptions;
+
+    });
   }
 
   loadData(dateString) {
@@ -77,6 +110,11 @@ export class SchedulePage {
   changeDate(ev) {
     // console.log()
     this.loadData(ev);
+  }
+
+  changeMonth(ev) {
+    // console.log(ev.newMonth.months);
+    this.loadHisData(Utils.dateFormat(ev.newMonth.dateObj));
   }
 
   newSchedule() {

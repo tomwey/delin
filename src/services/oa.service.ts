@@ -579,4 +579,42 @@ export class OAService {
         });
     }
 
+    GetOAScheduleDateList(year, month, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetOAScheduleDateList', { scheduleyear: year, 
+                schedulemonth: month, empcode: user.EmpCode })
+                .then(data => {
+                    // console.log(data);
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    // console.log(error);
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
+    GetOACardRecordDateList(year, month, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetOACardRecordDateList', { cardrecordyear: year, 
+                cardrecordmonth: month, empcode: user.EmpCode })
+                .then(data => {
+                    // console.log(data);
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    // console.log(error);
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
 }

@@ -37,8 +37,10 @@
   </div>
   <div class="his-container" [hidden]="dataType !== 'his'">
     <ion-calendar [(ngModel)]="currentDate"
+      #calendar
       [options]="dateOptions"
       (onChange)="onChange($event)"
+      (monthChange)="changeMonth($event);"
       [format]="'YYYY-MM-DD'">
     </ion-calendar>
   </div>

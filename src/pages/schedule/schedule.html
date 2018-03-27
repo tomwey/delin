@@ -19,8 +19,10 @@
 
 <ion-content class="content">
   <ion-calendar [(ngModel)]="currentDate"
+    #calendar
     [options]="dateOptions"
     (onChange)="changeDate($event);"
+    (monthChange)="changeMonth($event);"
     [format]="'YYYY-MM-DD'">
   </ion-calendar>
 
