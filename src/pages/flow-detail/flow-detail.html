@@ -30,7 +30,7 @@
     <table *ngIf="fieldsList.length > 0">
       <tr *ngFor="let info of fieldsList">
         <td class="label">{{info.label}}</td>
-        <td class="value">{{info.value}}</td>
+        <td class="value">{{info.value && info.value.split('|')[0]}}</td>
       </tr>
     </table>
   </div>
@@ -43,7 +43,7 @@
       <p>暂无审批信息</p>
     </div>
     <div class="flow-opinion" *ngFor="let opinion of flowOpinions">
-      <p class="agree sign-{{opinion.SignType}}">{{pinion.SignTypeStr}}</p>
+      <p class="agree sign-{{opinion.SignType}}">{{opinion.SignTypeStr}}</p>
       <p class="opinion" *ngIf="!!opinion.SignAdvice">{{opinion.SignAdvice}}</p>
       <p class="user">
         <span class="name">{{opinion.SignBy}}({{opinion.PositionName}})</span>

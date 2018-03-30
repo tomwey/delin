@@ -63,6 +63,8 @@ export class FlowDetailPage {
   }
 
   loadData() {
+    console.log(this.item);
+    
     this.oa.getOAFormInstanceDetail(this.item.FormInstanceID||this.item.Model.FormInstanceID, (data, error) => {
       console.log(data);
 

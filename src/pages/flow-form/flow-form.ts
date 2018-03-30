@@ -73,7 +73,7 @@ export class FlowFormPage {
         // console.log(element.formValue);
         let value = element.formValue;
         if (value.label) {
-          value = value.value;
+          value = `${value.label}|${value.value}`;
         }
 
         formFieldsValue.push({
