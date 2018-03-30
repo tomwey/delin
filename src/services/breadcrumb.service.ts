@@ -12,4 +12,7 @@ export class BreadcrumbService {
             current: 1,
         }
     ];
+
+    public from: any = null;
+    
 }

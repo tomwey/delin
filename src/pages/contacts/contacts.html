@@ -9,18 +9,13 @@
   <ion-navbar hideBackButton="true">
     <ion-buttons start>
       <button ion-button icon-only (click)="back();">
-        <ion-icon name="ios-arrow-round-back-outline"></ion-icon>
+        <ion-icon name="ios-arrow-round-back-outline" color="white"></ion-icon>
       </button>&emsp;
       <button ion-button icon-only (click)="backToRoot();" *ngIf="breadcrumb.breadcrumbs.length > 1">
-        <ion-icon name="ios-close-outline"></ion-icon>
+        <ion-icon name="ios-close-outline" color="white"></ion-icon>
       </button>
     </ion-buttons>
     <ion-title>通讯录</ion-title>
-    <ion-buttons end *ngIf="!!formControl">
-      <button ion-button (click)="confirm();">
-        确定
-      </button>
-    </ion-buttons>
   </ion-navbar>
 
   <div class="sub-navbar">

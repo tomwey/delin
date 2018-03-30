@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { App } from 'ionic-angular/components/app/app';
 import { OAService } from '../../services/oa.service';
 import { BreadcrumbService } from '../../services/breadcrumb.service';
-import { EmploySelectService } from '../../services/employ-select.service';
 
 /**
  * Generated class for the ContactsPage page.
@@ -38,7 +37,6 @@ export class ContactsPage {
     private app: App,
     private oa: OAService,
     public breadcrumb: BreadcrumbService,
-    private esService: EmploySelectService,
     public navParams: NavParams) {
     if (this.navParams.data.item) {
       this.dept = JSON.parse(JSON.stringify(this.navParams.data.item));
@@ -47,11 +45,21 @@ export class ContactsPage {
       
     }
 
+    if (this.navParams.data.from) {
+      this.breadcrumb.from = this.navParams.data.from;
+    }
+
     this.formControl = this.navParams.data.control;
 
     if (this.formControl) {
       this.selectionType = this.formControl.FieldModel.ControlType;
     } 
+
+    if (this.selectionType === 9) {
+
+    } else if (this.selectionType == 10) {
+
+    }
 
     // if (this.navParams.data.breadcrumbs) {
     //   let bc = this.navParams.data.breadcrumbs;
@@ -87,11 +95,34 @@ export class ContactsPage {
         this.dataList = [];
       }
 
+      // console.log(this.esService.selectedEmp);
+
       this.dataList.forEach(element => {
         if (element.ObjType == '2') {
           this.manData.push(element);
+          if (this.formControl && 
+            this.formControl.selectedEmp && 
+            element.ObjID === this.formControl.selectedEmp.ObjID) {
+            element.selected = true;
+
+            this.formControl.selectedEmp = element; // 更换指针对象
+          } else {
+            element.selected = false;
+          }
+
         } else {
           this.deptData.push(element);
+
+          if (this.formControl && 
+            this.formControl.selectedDept && 
+            element.ObjID === this.formControl.selectedDept.ObjID) {
+            element.selected = true;
+
+            this.formControl.selectedDept = element;
+          } else {
+            element.selected = false;
+          }
+
           let arr = JSON.parse(JSON.stringify(this.breadcrumb.breadcrumbs));
 
           arr.push({
@@ -123,7 +154,9 @@ export class ContactsPage {
             name: '通讯录',
             current: 1,
         }
-    ];
+      ];
+
+      this.breadcrumb.from = null;
     }
   }
 
@@ -135,7 +168,13 @@ export class ContactsPage {
       }
     ];
 
-    this.app.getActiveNav().popToRoot()
+    if (this.breadcrumb.from) {
+      this.app.getRootNavs()[0].popTo(this.breadcrumb.from);
+    } else {
+      this.app.getActiveNav().popToRoot()
+    }
+
+    this.breadcrumb.from = null;
   }
 
   forwardTo(b) {
@@ -147,7 +186,14 @@ export class ContactsPage {
 
     this.changeBreadcrumbs();
 
-    this.navCtrl.popTo(this.navCtrl.getByIndex(index+1));
+    // console.log(this.navCtrl.getViews());
+
+    let fromIndex = 0;
+    if (this.breadcrumb.from) {
+      fromIndex = this.navCtrl.indexOf(this.breadcrumb.from);
+    }
+
+    this.navCtrl.popTo(this.navCtrl.getByIndex(fromIndex + index + 1));
   }
 
   changeBreadcrumbs() {
@@ -166,24 +212,37 @@ export class ContactsPage {
     ev.stopPropagation();
 
     // console.log(item);
-    if (this.esService.selectedDept) {
-      this.esService.selectedDept.selected = false;
+    if (this.formControl && this.formControl.selectedDept) {
+      this.formControl.selectedDept.selected = false;
     } 
 
-    this.esService.selectedDept = item;
-    item.selected = true;
+    if (this.formControl && this.formControl.FieldModel.ControlType == 10) {
+      this.formControl.formValue = { label: item.ObjName, value: item.ObjID };
+      // this.formControl.selectedDept = item;
+
+      this.formControl.selectedDept = item;
+      item.selected = true;
+
+    }
   }
 
   selectMan(ev, item) {
     ev.stopPropagation();
 
     // console.log(item);
-    if (this.esService.selectedEmp) {
-      this.esService.selectedEmp.selected = false;
+    if (this.formControl && this.formControl.selectedEmp) {
+      console.log(this.formControl.selectedEmp);
+      this.formControl.selectedEmp.selected = false;
     } 
 
-    this.esService.selectedEmp = item;
-    item.selected = true;
+    if (this.formControl && this.formControl.FieldModel.ControlType == 9) {
+      this.formControl.formValue = { label: item.ObjName, value: item.ObjID };
+
+      this.formControl.selectedEmp = item;
+      item.selected = true;
+
+      // this.formControl.selectedEmp = item;
+    }
   }
 
   gotoContacts(item) {

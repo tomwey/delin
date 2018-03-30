@@ -71,9 +71,14 @@ export class FlowFormPage {
 
     this.dataList.forEach(element => {
         // console.log(element.formValue);
+        let value = element.formValue;
+        if (value.label) {
+          value = value.value;
+        }
+
         formFieldsValue.push({
           fieldid: element.FieldModel.FieldID,
-          fieldvalue: element.formValue
+          fieldvalue: value
         });
     });
 
@@ -103,12 +108,13 @@ export class FlowFormPage {
   }
 
   gotoSelect(item) {
-    console.log(item);
+    // console.log(item);
 
     if (item.FieldModel.ControlType == 9 || 
         item.FieldModel.ControlType == 10) {
       // 部门或者员工选择
-      this.navCtrl.push('ContactsPage', { control: item })
+      // this.modalCtrl.create('ContactsPage',{ control: item }).present();
+      this.app.getRootNavs()[0].push('ContactsPage', { control: item, from: this.navCtrl.getActive() })
     } else {
       // 其它选择
       // 跳到选择界面选择
