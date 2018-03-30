@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { UserService } from '../../services/user-service';
 import { Events } from 'ionic-angular/util/events';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the SettingPage page.
@@ -35,7 +36,11 @@ export class SettingPage {
 
   logout() {
     this.users.logout().then(() => {
-      this.events.publish('user:logout');
+      // this.events.publish('user:logout');
+      setTimeout(() => {
+        this.app.getRootNavs()[0].setRoot(LoginPage);
+      }, 10);
+      
     })
     .catch(errror => {});
   }
