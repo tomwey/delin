@@ -16,4 +16,14 @@ page-flow-form {
             margin-top: 3px;
         }
     }
+
+    .form-box {
+        .item-datetime-disabled {
+            .label-ios, .label {
+                color: #666;
+                opacity: 1.0;
+            }
+            
+        }
+    }
 }

@@ -16,6 +16,11 @@
       </button>
     </ion-buttons>
     <ion-title>通讯录</ion-title>
+    <ion-buttons end *ngIf="!!formControl">
+      <button ion-button (click)="confirm();">
+        确定
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
   <div class="sub-navbar">
@@ -41,12 +46,20 @@
   <ion-list></ion-list>
   <ion-list>
     <button ion-item *ngFor="let item of deptData" (click)="gotoContacts(item);">
+      <button ion-button icon-only item-left *ngIf="selectionType === 10" clear (click)="selectDept($event, item);">
+        <ion-icon name="{{ item.selected ? 'ios-radio-button-on-outline' : 'ios-radio-button-off-outline' }}"></ion-icon>
+      </button>  
+      
       <h2>{{item.ObjName}}</h2>
       <!-- <ion-note item-right>412</ion-note> -->
     </button>
   </ion-list>
-  <ion-list>
+  <ion-list *ngIf="selectionType !== 10">
     <button ion-item *ngFor="let person of manData" (click)="gotoManInfo(person);">
+      <button ion-button clear icon-only *ngIf="selectionType === 9" item-left (click)="selectMan($event,person)">
+        <ion-icon name="{{ person.selected ? 'ios-radio-button-on-outline' : 'ios-radio-button-off-outline' }}"></ion-icon>
+      </button>
+
       <ion-avatar item-left>
         <img [src]="person.ObjHeadImg">
       </ion-avatar>

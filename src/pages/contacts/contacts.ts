@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { App } from 'ionic-angular/components/app/app';
 import { OAService } from '../../services/oa.service';
 import { BreadcrumbService } from '../../services/breadcrumb.service';
+import { EmploySelectService } from '../../services/employ-select.service';
 
 /**
  * Generated class for the ContactsPage page.
@@ -30,10 +31,14 @@ export class ContactsPage {
   // breadcrumbs: any = [];
   // activeBreadcrumb: string = '通讯录';
 
+  formControl: any = null;
+  selectionType: number = 0;
+
   constructor(public navCtrl: NavController, 
     private app: App,
     private oa: OAService,
     public breadcrumb: BreadcrumbService,
+    private esService: EmploySelectService,
     public navParams: NavParams) {
     if (this.navParams.data.item) {
       this.dept = JSON.parse(JSON.stringify(this.navParams.data.item));
@@ -41,6 +46,12 @@ export class ContactsPage {
     } else {
       
     }
+
+    this.formControl = this.navParams.data.control;
+
+    if (this.formControl) {
+      this.selectionType = this.formControl.FieldModel.ControlType;
+    } 
 
     // if (this.navParams.data.breadcrumbs) {
     //   let bc = this.navParams.data.breadcrumbs;
@@ -122,7 +133,7 @@ export class ContactsPage {
           name: '通讯录',
           current: 1,
       }
-  ];
+    ];
 
     this.app.getActiveNav().popToRoot()
   }
@@ -151,6 +162,30 @@ export class ContactsPage {
     }
   }  
 
+  selectDept(ev, item) {
+    ev.stopPropagation();
+
+    // console.log(item);
+    if (this.esService.selectedDept) {
+      this.esService.selectedDept.selected = false;
+    } 
+
+    this.esService.selectedDept = item;
+    item.selected = true;
+  }
+
+  selectMan(ev, item) {
+    ev.stopPropagation();
+
+    // console.log(item);
+    if (this.esService.selectedEmp) {
+      this.esService.selectedEmp.selected = false;
+    } 
+
+    this.esService.selectedEmp = item;
+    item.selected = true;
+  }
+
   gotoContacts(item) {
     // this.breadcrumbs.push(item.ObjName);
     this.breadcrumb.breadcrumbs = JSON.parse(JSON.stringify(item.breadcrumbs));
@@ -158,8 +193,11 @@ export class ContactsPage {
 
     this.changeBreadcrumbs();
     
+    this.app.getRootNavs()[0].push('ContactsPage', { item: item, control: this.formControl });
+  }
 
-    this.app.getRootNavs()[0].push('ContactsPage', { item: item });
+  confirm() {
+
   }
 
 }

@@ -35,7 +35,9 @@
           item-content 
           *ngIf="item.FieldModel.ControlType == 4 || 
             item.FieldModel.ControlType == 5 || 
-            item.FieldModel.ControlType == 6">
+            item.FieldModel.ControlType == 6 ||
+            item.FieldModel.ControlType == 9 ||
+            item.FieldModel.ControlType == 10">
             {{selectValueFromItem(item)}}
           <ion-icon name="ios-arrow-forward-outline"></ion-icon>
         </div>

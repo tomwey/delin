@@ -52,7 +52,7 @@ export class FlowFormPage {
       }
 
       this.dataList.forEach(element => {
-        if (element.FieldModel.FieldName === '申请人') {
+        if (element.FieldModel.FieldName === '制单人') {
           element.formValue = this.fixedData.ApplyBy;
           element.disabled = true
         } else if (element.FieldModel.FieldName === '填单日期') {
@@ -104,14 +104,22 @@ export class FlowFormPage {
 
   gotoSelect(item) {
     console.log(item);
-    // 跳到选择界面选择
-    let arr = item.Option;
-    let data = [];
-    arr.forEach(element => {
-      data.push({label: element.DataSetText, value: `${element.DataSetText}|${element.DataSetValue}`})
-    });
 
-    this.navCtrl.push('FlowSelectPage', { data: data, control: item });
+    if (item.FieldModel.ControlType == 9 || 
+        item.FieldModel.ControlType == 10) {
+      // 部门或者员工选择
+      this.navCtrl.push('ContactsPage', { control: item })
+    } else {
+      // 其它选择
+      // 跳到选择界面选择
+      let arr = item.Option;
+      let data = [];
+      arr.forEach(element => {
+        data.push({label: element.DataSetText, value: `${element.DataSetText}|${element.DataSetValue}`})
+      });
+
+      this.navCtrl.push('FlowSelectPage', { data: data, control: item });
+    }    
   }
 
   dataList: any = [];

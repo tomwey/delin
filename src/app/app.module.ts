@@ -25,6 +25,7 @@ import { OAService } from '../services/oa.service';
 import { CRMService } from '../services/crm.service';
 import { ERPService } from '../services/erp.service';
 import { BreadcrumbService } from '../services/breadcrumb.service';
+import { EmploySelectService } from '../services/employ-select.service';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { BreadcrumbService } from '../services/breadcrumb.service';
     CRMService,
     ERPService,
     BreadcrumbService,
+    EmploySelectService,
     GlobalData,
     Diagnostic,
   ]
