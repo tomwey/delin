@@ -16,6 +16,11 @@
       </button>
     </ion-buttons>
     <ion-title>通讯录</ion-title>
+    <ion-buttons end>
+      <button ion-button *ngIf="!!formControl" (click)="confirm();">
+        确定
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
   <div class="sub-navbar">
