@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { App } from 'ionic-angular/components/app/app';
 import { OAService } from '../../services/oa.service';
 
@@ -26,13 +26,16 @@ export class FlowPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     private oa: OAService,
+    private events: Events,
     private app: App
   ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FlowPage');
-
+    this.events.subscribe('reload:flow', () => {
+      this.loadData();
+    });
     this.loadData();
   }
 
@@ -65,8 +68,8 @@ export class FlowPage {
         this.emptyErrorMessage = '暂无待办事项';
       } else if (this.flowType == '1') {
         this.emptyErrorMessage = '暂无流程中单据';
-      } else if ( this.flowType == '3' ) {
-        this.emptyErrorMessage = '暂无被退回单据';
+      } else if ( this.flowType == '5' ) {
+        this.emptyErrorMessage = '暂无单据';
       }
     });
   }

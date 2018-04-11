@@ -29,6 +29,7 @@ export class UserService {
     }
 
     logout() {
+        this.user = null;
         return this.storage.remove('logined.user');
     }
 

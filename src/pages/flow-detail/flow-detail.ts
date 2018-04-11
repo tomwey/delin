@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { ModalController } from 'ionic-angular/components/modal/modal-controller';
 import { App } from 'ionic-angular/components/app/app';
 import { OAService } from '../../services/oa.service';
@@ -31,6 +31,7 @@ export class FlowDetailPage {
     private modalCtrl: ModalController, 
     private app: App,
     private oa: OAService,
+    private events: Events,
     private navtiveServ: NativeService,
     public navParams: NavParams) {
       if (this.navParams.data)
@@ -74,11 +75,13 @@ export class FlowDetailPage {
       }
       if (data && data.FieldList) {
         
+        let temp = [];
         data.FieldList.forEach(element => {
-          this.fieldsList.push({ 
+          temp.push({ 
             label: element.FieldValue.FieldName, 
             value: element.FieldValue.ControlText });
         });
+        this.fieldsList = temp;
       } else {
         this.fieldsList = [];
       }
@@ -117,6 +120,7 @@ export class FlowDetailPage {
     });
     modal.onDidDismiss((data) => {
       if (data) {
+        this.events.publish('reload:flow');
         this.loadData();
       }
     });
@@ -146,19 +150,19 @@ export class FlowDetailPage {
   fieldsList: any = [];
 
   flowOpinions: any = [
-    {
-      agree: 1,
-      opinion: '',
-      user: '李瑞思',
-      job: '部门主管',
-      time: '2017-12-26 12:12:34',
-    },
-    {
-      agree: 1,
-      opinion: '工资将于下一次薪酬结算日发放',
-      user: '刘慧思',
-      job: '财务主管',
-      time: '2017-12-26 12:12:34',
-    },
+    // {
+    //   agree: 1,
+    //   opinion: '',
+    //   user: '李瑞思',
+    //   job: '部门主管',
+    //   time: '2017-12-26 12:12:34',
+    // },
+    // {
+    //   agree: 1,
+    //   opinion: '工资将于下一次薪酬结算日发放',
+    //   user: '刘慧思',
+    //   job: '财务主管',
+    //   time: '2017-12-26 12:12:34',
+    // },
   ];
 }

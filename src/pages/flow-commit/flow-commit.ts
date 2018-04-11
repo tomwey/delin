@@ -21,6 +21,9 @@ export class FlowCommitPage {
   formData: any = {
     advice: '',
   };
+
+  title = '';
+
   constructor(public navCtrl: NavController, 
     private viewController: ViewController,
     private oa: OAService,
@@ -29,6 +32,11 @@ export class FlowCommitPage {
       if (this.navParams.data) {
         this.formData.forminstanceid = this.navParams.data.forminstanceid;
         this.formData.signtype = this.navParams.data.signtype;
+        if (this.formData.signtype === 1) {
+          this.title = "同意";
+        } else if (this.formData.signtype === 2) {
+          this.title = "驳回";
+        }
       }
   }
 
