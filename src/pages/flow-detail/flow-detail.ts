@@ -64,7 +64,7 @@ export class FlowDetailPage {
   }
 
   loadData() {
-    console.log(this.item);
+    // console.log(this.item);
     
     this.oa.getOAFormInstanceDetail(this.item.FormInstanceID||this.item.Model.FormInstanceID, (data, error) => {
       console.log(data);
@@ -147,6 +147,24 @@ export class FlowDetailPage {
   openFlowChart() {
     this.app.getRootNavs()[0].push('FlowDetailPage', { showCharts: true, item: this.item });
   }
+
+  changeSeg(type) {
+    this.changeSegType = type;
+
+    if (type === 0) {
+      this.loadData();
+    } else if (type === 1) {
+      this.loadFlowTree();
+    }
+  }
+
+  loadFlowTree() {
+    this.oa.GetFormTree(this.item.FormInstanceID||this.item.Model.FormInstanceID, (data, error) => {
+      console.log(data);
+    });
+  }
+
+  changeSegType: number = 0;
 
   fieldsList: any = [];
 

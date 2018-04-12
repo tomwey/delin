@@ -22,8 +22,8 @@
     <h2 class="name">{{item.FormName}}</h2>
     <p class="flow-no">编号:{{item.FormInstanceID}}</p>
   </div>
-  <h2>{{showCharts ? '流程信息' : '详细信息'}}</h2>
-  <div class="flow-body" *ngIf="!showCharts">
+  <h2>详细信息</h2>
+  <div class="flow-body">
     <div class="empty-error-box" *ngIf="fieldsList.length == 0">
       <p>暂无详细信息</p>
     </div>
@@ -37,8 +37,13 @@
   <div class="flow-charts" *ngIf="showCharts" id="flowChart">
     <img src="assets/imgs/img-flow.png">
   </div>
-  <h2 *ngIf="!showCharts">审批信息</h2>
-  <div class="flow-opinions" *ngIf="!showCharts">
+  <h2 class="segtitle">
+    <a class="link" [class.active]="changeSegType === 0" tappable (tap)="changeSeg(0);">审批信息</a>
+    <a class="link" [class.active]="changeSegType === 1" tappable (tap)="changeSeg(1);">流程总览</a>
+  </h2>
+
+  <!-- 流程审批信息 -->
+  <div class="flow-opinions" [hidden]="changeSegType !== 0">
     <div class="empty-error-box" *ngIf="flowOpinions.length == 0">
       <p>暂无审批信息</p>
     </div>
@@ -51,6 +56,12 @@
       </p>
     </div>
   </div>
+
+  <!-- 流程总览 -->
+  <div class="flow-tree" [hidden]="changeSegType !== 1">
+    
+  </div>
+
 </ion-content>
 
 <ion-footer *ngIf="flowType === '0'">
