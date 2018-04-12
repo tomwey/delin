@@ -161,12 +161,26 @@ export class FlowDetailPage {
   loadFlowTree() {
     this.oa.GetFormTree(this.item.FormInstanceID||this.item.Model.FormInstanceID, (data, error) => {
       console.log(data);
+      if (data && data.DataList) {
+        this.flowTreeData = data.DataList;
+      } else {
+        this.flowTreeData = [];
+      }
     });
+  }
+
+  formatNodeName(item) {
+    if (item.SignStepNum === '0') return item.SignPeople;
+
+    if (parseInt(item.SignStepNum) === this.flowTreeData.length - 1) return item.StepName;
+
+    return `${item.StepName}（${item.SignPeople}）`;
   }
 
   changeSegType: number = 0;
 
   fieldsList: any = [];
+  flowTreeData: any = [];
 
   flowOpinions: any = [
     // {

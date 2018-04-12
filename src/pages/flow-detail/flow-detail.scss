@@ -84,6 +84,87 @@ page-flow-detail {
     .flow-tree {
         background: white;
         padding: 20px;
+
+        .time-line {
+            list-style: none; // 不显示列表默认样式(即就是左侧的小黑点或数字)
+            margin: 0;
+            font-size: 14px;
+            color: #999;
+            // padding: 0;
+            position: relative;
+            top: -18px;
+            
+             // 列表项内容
+            .list-content {
+              display: flex;
+              font-size: 14px;
+            //   font-weight: 200;
+              padding: 15px;
+              margin-left: 15px;
+              position: relative;
+              bottom: -22px;
+              border-bottom: 1px solid #eee;
+              padding-left: 0;
+
+              .title {
+                flex-grow: 1;
+              }
+          
+              .time {
+                font-weight: 200;
+                font-size: 12px;
+                color: #ddd;
+              }
+            }
+          
+            .timeline-stone {
+                border-left: rgb(205, 205, 205) 1px solid;
+                position: relative;
+                margin-left: -23px;
+                // font-weight: 200;
+                color: #999;
+                &:before {
+                    content: '';
+                    width: 9px;
+                    height: 9px;
+                    background-color: rgb(152,152,152);
+                    border-radius: 50%;
+                    position: absolute;
+                    bottom: 0;
+                    left: -5px;
+                }
+
+                &:last-child {
+                    .list-content {
+                        border-bottom: 0;
+                    }
+                }
+
+                &.start {
+                    // 226,139,33
+                    &::before {
+                        background-color: rgb(226,139,33)!important;
+                    }
+                }
+
+                &.timeline-item {
+                    &:first-child {
+                        border-left: transparent 1px solid;
+                    }
+                }
+            
+                &.processed {
+                    // border-left-color: red;
+                    z-index: 1;
+                    color: #666;
+                    // font-weight: 600;
+
+                    &:before {
+                        background-color: color($colors, primary);//rgb(108,143,244);
+                    }
+                }
+            }
+        }
     }
 
     .flow-charts {

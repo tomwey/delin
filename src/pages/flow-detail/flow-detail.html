@@ -59,7 +59,16 @@
 
   <!-- 流程总览 -->
   <div class="flow-tree" [hidden]="changeSegType !== 1">
-    
+    <ul class='time-line'>
+      <li class='timeline-stone timeline-item' 
+          [class.processed]="item.IsProcessed === '1'"
+          [class.start]="item.SignStepNum === '0'"
+          *ngFor="let item of flowTreeData">
+        <div class='list-content'>
+          <div class="title">{{formatNodeName(item)}}</div>
+        </div>
+      </li>
+    </ul>
   </div>
 
 </ion-content>
