@@ -121,6 +121,7 @@ export class FlowDetailPage {
     modal.onDidDismiss((data) => {
       if (data) {
         this.events.publish('reload:flow');
+        this.flowType = '-1';
         this.loadData();
       }
     });
