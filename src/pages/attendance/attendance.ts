@@ -1,5 +1,5 @@
 import { Component, NgZone, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { OAService } from '../../services/oa.service';
 import { NativeService } from '../../providers/NativeService';
 import { Utils } from '../../providers/Utils';
@@ -81,6 +81,7 @@ export class AttendancePage {
     private oa: OAService,
     private nativeServ: NativeService,
     private zone: NgZone,
+    private alertCtrl: AlertController,
     public navParams: NavParams) {
   }
 
@@ -292,14 +293,33 @@ export class AttendancePage {
   }
 
   remove(card) {
-    this.oa.DeleteCardRecord(card.CardRecordID, (data, error) => {
-      if (error) {
-        this.nativeServ.showToast(error.message || error);
-      } else {
-        this.loadHisData(this.date);
-          this.loadEventsData(this.date);
-      }
-    });
+    this.alertCtrl.create({
+      title: '删除提示',
+      message: "您确定要删除吗？",
+      buttons: [
+        {
+          text: '取消',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: '确定',
+          handler: data => {
+            this.oa.DeleteCardRecord(card.CardRecordID, (data, error) => {
+              if (error) {
+                this.nativeServ.showToast(error.message || error);
+              } else {
+                this.loadHisData(this.date);
+                  this.loadEventsData(this.date);
+              }
+            });
+          }
+        }
+      ]
+    }).present();
+
+    
   }
 
 }
