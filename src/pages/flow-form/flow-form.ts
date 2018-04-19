@@ -60,6 +60,9 @@ export class FlowFormPage {
           element.disabled = true
         } else {
           element.disabled = false;
+          if (element.FieldModel.ControlType === 11 || element.FieldModel.FieldName === '申请人') { // 申请人控件需要有默认值
+            element.formValue = { label: this.fixedData.ApplyBy, value: this.fixedData.ApplyCode };
+          }
         }
       });
 
