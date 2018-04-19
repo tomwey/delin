@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,App } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,App, Events } from 'ionic-angular';
 import { OAService } from '../../services/oa.service';
 
 /**
@@ -20,6 +20,7 @@ export class LeaveBillPage {
     // private actionSheetCtrl: ActionSheetController,
     private app: App,
     private oa: OAService,
+    private events: Events,
     public navParams: NavParams) {
   }
 
@@ -31,6 +32,10 @@ export class LeaveBillPage {
     setTimeout(() => {
       this.loadData();
     }, 100);
+
+    this.events.subscribe('flow:commited', () => {
+      this.loadData();
+    });
   }
 
   loadData() {
@@ -49,7 +54,7 @@ export class LeaveBillPage {
   }
 
   newItem() {
-    
+    this.app.getRootNavs()[0].push('FlowFormPage', { FormName: '请假单', FormID: '请假单' });
   }
 
   openItem(item) {

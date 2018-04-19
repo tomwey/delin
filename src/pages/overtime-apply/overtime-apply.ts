@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ActionSheetController,App } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ActionSheetController,App, Events } from 'ionic-angular';
 import { OAService } from '../../services/oa.service';
 
 /**
@@ -20,6 +20,7 @@ export class OvertimeApplyPage {
     private actionSheetCtrl: ActionSheetController,
     private app: App,
     private oa: OAService,
+    private events: Events,
     public navParams: NavParams) {
   }
 
@@ -32,6 +33,10 @@ export class OvertimeApplyPage {
       this.loadData();
     }, 100);
 
+    this.events.subscribe('flow:commited', () => {
+      this.loadData();
+    });
+
   }
 
   loadData() {
@@ -39,8 +44,8 @@ export class OvertimeApplyPage {
       this.error = error;
       this.loading = false;
 
-      if (data && data.DataSet) {
-        this.dataList = data.DataSet;
+      if (data && data.DataList) {
+        this.dataList = data.DataList;
       } else {
         this.dataList = [];
       }
@@ -50,7 +55,7 @@ export class OvertimeApplyPage {
   }
 
   newItem() {
-    
+    this.app.getRootNavs()[0].push('FlowFormPage', { FormName: '加班申请单', FormID: '加班申请单' });
   }
 
   openItem(item) {

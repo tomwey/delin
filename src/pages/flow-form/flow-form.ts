@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { OAService } from '../../services/oa.service';
 import { NativeService } from '../../providers/NativeService';
 import { App } from 'ionic-angular/components/app/app';
@@ -24,6 +24,7 @@ export class FlowFormPage {
     private oa: OAService,
     private nativeServ: NativeService,
     private app: App,
+    private events: Events,
     public navParams: NavParams) {
     this.item = this.navParams.data;
   }
@@ -94,6 +95,9 @@ export class FlowFormPage {
         this.nativeServ.showToast(error.message || error);
       } else {
         this.nativeServ.showToast('发起流程成功！');
+        
+        this.events.publish('flow:commited');
+
         this.app.getRootNavs()[0].pop();
       }
     });
