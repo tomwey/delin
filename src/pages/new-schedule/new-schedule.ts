@@ -51,7 +51,12 @@ export class NewSchedulePage {
     }
 
     this.oa.addSchedule(this.formData, (data, error) => {
-      this.viewCtrl.dismiss(1);
+      if (error) {
+        this.nativeServ.showToast(error.message || error);
+      } else {
+        this.viewCtrl.dismiss(1);
+      }
+      
     });
   }
 

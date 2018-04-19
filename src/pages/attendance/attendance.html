@@ -48,12 +48,36 @@
   <error-empty-message-box [data]="dataList" [error]="error" [needShow]="!loading"></error-empty-message-box>
     
   <div class="card-records">
+
+    <ion-list no-lines>
+      <ion-item-sliding *ngFor="let card of dataList" class="card-record" no-lines>
+        <ion-item no-margin no-padding>
+          <!-- <h2><ion-icon name="ios-time-outline"></ion-icon>&nbsp;{{event.Time}}</h2>
+          <h2 text-wrap>{{event.ScheduleTopic}}</h2>
+          <p text-wrap>{{event.ScheduleContent}}</p> -->
+          <!-- <p class="time-box">打卡时间 <span class="t">{{card.CardRecordTimeStr}}</span></p>
+        <p class="address">{{card.Address}}</p> -->
+        <div class="card-record-inner">
+            <p class="time-box">打卡时间 <span class="t">{{card.CardRecordTimeStr}}</span></p>
+            <p class="address">{{card.Address}}</p>
+          </div>
+
+        </ion-item>
+        <ion-item-options side="right">
+            <button ion-button color="danger" (click)="remove(card);" >
+              <ion-icon name="ios-trash-outline"></ion-icon>
+              删除
+            </button>
+          </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+<!-- 
     <div class="card-record" *ngFor="let card of dataList">
       <div class="card-record-inner">
         <p class="time-box">打卡时间 <span class="t">{{card.CardRecordTimeStr}}</span></p>
         <p class="address">{{card.Address}}</p>
       </div>
-    </div>
+    </div> -->
   </div>
   <!-- <img src="assets/imgs/img-attend-{{dataType}}.png" /> -->
 </ion-content>

@@ -97,13 +97,13 @@ page-attendance {
             .card-record-inner {
                 // border-left: 0.55px solid #ccc;
                 padding: 0 10px;
-                padding-bottom: 15px;
+                // padding-bottom: 15px;
             }
 
             .time-box {
                 font-size: 13px;
                 color: #999;
-
+                // padding-left: 5px;
                 .t {
                     font-size: 15px;
                     color: #333;
@@ -114,14 +114,14 @@ page-attendance {
             .time-box:before {
                 content: '';
                 display: block;
-                width: 8px;
-                height: 8px;
+                width: 6px;
+                height: 6px;
                 border-radius: 50%;
                 background: #ccc;
                 position: absolute;
 
                 top: 50%;
-                left: -14px;
+                left: -10px;
                 margin-top: -2px;
 
             }
@@ -131,5 +131,13 @@ page-attendance {
                 font-size: 12px;
             }
         }
+
+        .list-ios > .item-block, .list-ios > .item-wrapper .item-block {
+            border: 0!important;
+        }
+    }
+
+    .days-btn small {
+        font-size: 6px!important;
     }
 }

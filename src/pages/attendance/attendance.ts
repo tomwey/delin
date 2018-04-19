@@ -274,6 +274,7 @@ export class AttendancePage {
           this.nativeServ.showToast('打卡成功!');
   
           this.loadHisData(this.date);
+          this.loadEventsData(this.date);
         }
 
         this.doCarding = false;
@@ -288,6 +289,17 @@ export class AttendancePage {
     });
 
     
+  }
+
+  remove(card) {
+    this.oa.DeleteCardRecord(card.CardRecordID, (data, error) => {
+      if (error) {
+        this.nativeServ.showToast(error.message || error);
+      } else {
+        this.loadHisData(this.date);
+          this.loadEventsData(this.date);
+      }
+    });
   }
 
 }

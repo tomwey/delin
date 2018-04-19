@@ -635,4 +635,22 @@ export class OAService {
         });
     }
 
+    DeleteCardRecord(cardrecordid, callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('DeleteCardRecord', { cardrecordid: cardrecordid, empcode: user.EmpCode })
+                .then(data => {
+                    // console.log(data);
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    // console.log(error);
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
 }

@@ -80,6 +80,7 @@ export class SchedulePage {
         
         this.dateOptions.daysConfig = _daysConfig;
         // console.log(this.dateOptions);
+        this.calendar.options = this.dateOptions;
 
       } else {
         this.dateOptions.daysConfig = [];
@@ -125,6 +126,8 @@ export class SchedulePage {
         this.currentDate = Utils.dateFormat(new Date());
 
         this.loadData(this.currentDate);
+
+        this.loadHisData(this.currentDate);
       }
     });
     modal.present();
