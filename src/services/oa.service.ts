@@ -561,6 +561,24 @@ export class OAService {
         });
     }
 
+    GetOvertiemApplyList(callback) {
+        this.users.currentUser().then(user => {
+            this.api.post('GetOvertiemApplyList', { empcode: user.EmpCode, formname: "加班申请" })
+                .then(data => {
+                    // console.log(data);
+                    if (callback) {
+                        callback(data, null);
+                    }
+                })
+                .catch(error => {
+                    // console.log(error);
+                    if (callback) {
+                        callback(null, error);
+                    }
+                });
+        });
+    }
+
     GetApplyByAndTime(callback) {
         this.users.currentUser().then(user => {
             this.api.post('GetApplyByAndTime', { empcode: user.EmpCode })

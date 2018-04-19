@@ -48,6 +48,10 @@ export class LeaveBillPage {
     });
   }
 
+  newItem() {
+    
+  }
+
   openItem(item) {
     this.app.getRootNavs()[0].push('FlowDetailPage', { item: item });
   }
