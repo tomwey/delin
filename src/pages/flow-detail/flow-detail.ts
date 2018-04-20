@@ -61,6 +61,12 @@ export class FlowDetailPage {
     } else {
       this.loadData();
     }
+
+    this.events.subscribe('flow:submited', () => {
+      this.flowType = '-1';
+      
+      this.loadData();
+    });
   }
 
   loadData() {
@@ -69,6 +75,10 @@ export class FlowDetailPage {
     this.oa.getOAFormInstanceDetail(this.item.FormInstanceID||this.item.Model.FormInstanceID, (data, error) => {
       console.log(data);
 
+      if (data && data.CurrentStep && data.CurrentStep.Model && data.CurrentStep.Model.IsSpecifyNextStep) {
+        this.isSpecifyNextStep = data.CurrentStep.Model.IsSpecifyNextStep == 1;
+      }
+      
       if (error) {
         this.navtiveServ.showToast(error.message || error);
         return;
@@ -115,18 +125,25 @@ export class FlowDetailPage {
 
   openCommitPage(data) {
     data.forminstanceid = this.item.FormInstanceID;
-    let modal = this.modalCtrl.create('FlowCommitPage', data, {
-      enableBackdropDismiss: false
-    });
-    modal.onDidDismiss((data) => {
-      if (data) {
-        this.events.publish('reload:flow');
-        this.flowType = '-1';
-        this.loadData();
-      }
-    });
-    modal.present();
+    data.isSpecifyNextStep = (data.signtype  == 1 && this.isSpecifyNextStep);
+
+    this.app.getRootNavs()[0].push('FlowSubmitPage', data);
   }
+
+  // openCommitPage(data) {
+  //   data.forminstanceid = this.item.FormInstanceID;
+  //   let modal = this.modalCtrl.create('FlowCommitPage', data, {
+  //     enableBackdropDismiss: false
+  //   });
+  //   modal.onDidDismiss((data) => {
+  //     if (data) {
+  //       this.events.publish('reload:flow');
+  //       this.flowType = '-1';
+  //       this.loadData();
+  //     }
+  //   });
+  //   modal.present();
+  // }
 
   public formatSignState(opinion): string {
     if (opinion.SignType == 0) {
@@ -181,6 +198,8 @@ export class FlowDetailPage {
 
   fieldsList: any = [];
   flowTreeData: any = [];
+
+  isSpecifyNextStep: boolean = false;
 
   flowOpinions: any = [
     // {

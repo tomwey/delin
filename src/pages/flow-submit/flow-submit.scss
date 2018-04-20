@@ -1,0 +1,29 @@
+page-flow-submit {
+    .content {
+        background: rgb(248,248,248);
+    }
+
+    .single-select {
+        // background: red;
+        width: 100%;
+        // padding: 10px;
+        padding-left: 15px;
+        padding-right: 5px;
+        font-size: 14px;
+        color: #999;
+        ion-icon {
+            float: right;
+            margin-top: 3px;
+        }
+    }
+
+    .form-box {
+        .item-datetime-disabled {
+            .label-ios, .label {
+                color: #666;
+                opacity: 1.0;
+            }
+            
+        }
+    }
+}
